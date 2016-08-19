@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="kalix-features-oa-1.0.0">
+    <!--<repository>mvn:org.apache.shiro/shiro-features/${shiro.version}/xml/features</repository>-->
+    <feature name="oa-all" version="1.0">
+        <feature>oa-core</feature>
+        <feature>oa-system</feature>
+        <feature>oa-workflow</feature>
+        <feature>oa-usecase</feature>
+    </feature>
+
+    <feature name="oa-core" version="1.0">
+        <bundle>mvn:com.kalix.oa.core/oa-core-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-system" version="1.0">
+        <feature>oa-system-dict</feature>
+        <feature>oa-system-meetingroom</feature>
+    </feature>
+
+    <feature name="oa-system-dict" version="1.0">
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-system-meetingroom" version="1.0">
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-workflow" version="1.0">
+        <feature>oa-workflow-carapply</feature>
+        <feature>oa-workflow-employapply</feature>
+        <feature>oa-workflow-meetingapply</feature>
+        <feature>oa-workflow-recruitapply</feature>
+        <feature>oa-workflow-sealapply</feature>
+    </feature>
+
+    <feature name="oa-workflow-carapply" version="1.0">
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-workflow-employapply" version="1.0">
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-workflow-meetingapply" version="1.0">
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-workflow-recruitapply" version="1.0">
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-workflow-sealapply" version="1.0">
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-usecase" version="1.0">
+        <feature>oa-usecase-candidate</feature>
+        <feature>oa-usecase-interview</feature>
+    </feature>
+
+    <feature name="oa-usecase-candidate" version="1.0">
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="oa-usecase-interview" version="1.0">
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-api/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-dao/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-biz/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-rest/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-extjs/${parent.version}</bundle>
+    </feature>
+</features>

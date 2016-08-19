@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>system-parent</artifactId>
+        <groupId>com.kalix.common.system</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kalix.common.system.dict</groupId>
+    <artifactId>dict-parent</artifactId>
+    <name>Kalix Common System Dict</name>
+    <modules>
+        <module>common-system-dict-entities</module>
+        <module>common-system-dict-api</module>
+        <module>common-system-dict-dao</module>
+        <module>common-system-dict-biz</module>
+        <module>common-system-dict-rest</module>
+        <module>common-system-dict-extjs</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.common.system.dict</groupId>
+                <artifactId>common-system-dict-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.common.system.dict</groupId>
+                <artifactId>common-system-dict-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

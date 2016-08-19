@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.kalix</groupId>
+        <artifactId>kalix-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.kalix.common</groupId>
+    <artifactId>common-parent</artifactId>
+    <name>Kalix Common Parent</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>core-parent</module>
+        <module>system-parent</module>
+        <module>karaf-features</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>${fabric8.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
+        <version>2.10</version>
+      </extension>
+    </extensions>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.framework.poms</groupId>
+                <artifactId>framework-poms-dm</artifactId>
+                <version>${globle.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.kalix.framework.poms</groupId>
+            <artifactId>framework-poms-dm</artifactId>
+            <type>pom</type>
+            <version>${globle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kalix.framework.core</groupId>
+            <artifactId>framework-core-api</artifactId>
+        </dependency>
+    </dependencies>
+    <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <detectLinks>true</detectLinks>
+          <detectJavaApiLink>true</detectJavaApiLink>
+          <linksource>true</linksource>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+</project>
