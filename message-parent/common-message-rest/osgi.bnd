@@ -1,0 +1,10 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Import-Package:com.kalix.admin.message.api.biz,\
+               com.kalix.framework.core.api.persistence,\
+               com.kalix.admin.message.entities,\
+               com.kalix.admin.message.api.query,*
+Bundle-Category: Kalix Admin Message

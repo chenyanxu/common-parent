@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="senderMessageService" interface="com.kalix.admin.message.api.biz.ISenderMessageBeanService"/>
+
+    <camelContext id="messageSenderCamel" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /message -->
+        <rest path="/messages/sender" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <description>message rest service</description>
+
+            <!-- this is a rest GET to find all sender message -->
+            <get id="route-getAllSenderMessage" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all Messages</description>
+                <to uri="bean:senderMessageService?method=getSenderMessage(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!--&lt;!&ndash; this is a rest GET to view a sender message by the given id &ndash;&gt;-->
+            <get uri="/{id}" id="route-getSenderMessage" outType="com.kalix.admin.message.entities.SenderMessageBean">
+                <description>Find Message by id</description>
+                <to uri="bean:senderMessageService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest POST to create a sender message -->
+            <post id="route-addSenderMessage" type="com.kalix.admin.message.entities.SenderMessageBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a Message</description>
+                <to uri="bean:senderMessageService?method=saveAllEntities"/>
+            </post>
+
+            <!-- this is a rest DELETE to delete a sender message -->
+            <delete uri="/{id}" id="route-deleteSenderMessage"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a Message</description>
+                <to uri="bean:senderMessageService?method=deleteEntity(${header.id})"/>
+            </delete>
+            <delete uri="/remove" id="route-batchDeleteSenderMessages"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Batch delete entities</description>
+                <to uri="bean:senderMessageService?method=batchDeleteEntity(${header.ids})"/>
+            </delete>
+        </rest>
+    </camelContext>
+</blueprint>

@@ -1,0 +1,60 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
+    <reference id="stackService" interface="com.kalix.framework.core.api.system.IStackService"/>
+    <reference id="messageBeanDao" interface="com.kalix.admin.message.api.dao.IMessageBeanDao"/>
+    <reference id="senderMessageBeanDao" interface="com.kalix.admin.message.api.dao.ISenderMessageBeanDao"/>
+    <reference id="userBeanService" interface="com.kalix.admin.core.api.biz.IUserBeanService"/>
+    <reference id="roleBeanService" interface="com.kalix.admin.core.api.biz.IRoleBeanService"/>
+
+    <service id="messageBeanService" interface="com.kalix.admin.message.api.biz.IMessageBeanService"
+             ref="beanServiceImpl">
+    </service>
+
+    <bean id="beanServiceImpl" class="com.kalix.admin.message.biz.MessageBeanServiceImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+        <property name="stackService" ref="stackService"/>
+    </bean>
+
+    <bean id="senderMessageBeanServiceImpl" class="com.kalix.admin.message.biz.SenderMessageBeanServiceImpl">
+        <property name="dao" ref="senderMessageBeanDao"/>
+        <property name="messageBeanService" ref="beanServiceImpl"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
+
+    <service id="senderMessageBeanService" interface="com.kalix.admin.message.api.biz.ISenderMessageBeanService"
+             ref="senderMessageBeanServiceImpl"/>
+
+    <service interface="org.osgi.service.event.EventHandler" ref="workFlowMessageEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="cn/com/rexen/engine/message"/>
+        </service-properties>
+    </service>
+
+    <bean id="workFlowMessageEventImpl" class="com.kalix.admin.message.biz.event.WorkFlowMessageEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+        <property name="roleBeanService" ref="roleBeanService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
+
+    <service interface="org.osgi.service.event.EventHandler" ref="workFlowStarterEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="cn/com/rexen/engine/starter"/>
+        </service-properties>
+    </service>
+
+    <bean id="workFlowStarterEventImpl" class="com.kalix.admin.message.biz.event.WorkFlowStarterEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
+
+</blueprint>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kalix.common.message</groupId>
+        <artifactId>message-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>admin-message-biz</artifactId>
+    <name>Kalix Admin Message Biz</name>
+    <description>Message Core</description>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.symbolicName>com.kalix.admin.message.biz</bundle.symbolicName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.message</groupId>
+            <artifactId>admin-message-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.message</groupId>
+            <artifactId>admin-message-entities</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.core</groupId>
+            <artifactId>admin-core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.core</groupId>
+            <artifactId>admin-core-biz</artifactId>
+        </dependency>
+    </dependencies>
+</project>

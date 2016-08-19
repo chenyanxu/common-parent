@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kalix.common.message</groupId>
+        <artifactId>message-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>admin-message-entities</artifactId>
+    <packaging>bundle</packaging>
+    <name>Kalix Admin Message Entities</name>
+    <description>Message Entities</description>
+
+    <properties>
+        <bundle.symbolicName>com.kalix.admin.message.entities</bundle.symbolicName>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.openjpa</groupId>
+                <artifactId>openjpa-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

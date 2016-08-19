@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.kalix.common</groupId>
+        <artifactId>common-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kalix.common.message</groupId>
+    <artifactId>message-parent</artifactId>
+    <name>Kalix Common Message Parent</name>
+    <packaging>pom</packaging>
+
+    <properties>
+
+    </properties>
+    <modules>
+        <module>common-message-entities</module>
+        <module>common-message-api</module>
+        <module>common-message-dao</module>
+        <module>common-message-biz</module>
+        <module>common-message-rest</module>
+        <module>common-message-extjs</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.common.message</groupId>
+                <artifactId>common-message-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kalix.common.message</groupId>
+                <artifactId>common-message-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.common.core</groupId>
+                <artifactId>common-core-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.admin.core</groupId>
+                <artifactId>admin-core-biz</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

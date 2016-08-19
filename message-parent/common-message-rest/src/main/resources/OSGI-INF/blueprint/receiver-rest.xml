@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="messageService" interface="com.kalix.admin.message.api.biz.IMessageBeanService"/>
+
+    <camelContext id="messageReceiverCamel" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /message -->
+        <rest path="/messages/receiver" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <description>message rest service</description>
+
+            <!-- this is a rest GET to find all message -->
+            <get id="route-getAllReceiverMessage" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all Messages</description>
+                <to uri="bean:messageService?method=getReceiverMessage(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest GET to view a message by the given id -->
+            <get uri="/{id}" id="route-getReceiverMessage" outType="com.kalix.admin.message.entities.MessageBean">
+                <description>Find Message by id</description>
+                <to uri="bean:messageService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a message -->
+            <put uri="/{id}" id="route-updateReceiverMessage" type="com.kalix.admin.message.entities.MessageBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a Message</description>
+                <to uri="bean:messageService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete a receiver message -->
+            <delete uri="/{id}" id="route-deleteReceiverMessage"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a Message</description>
+                <to uri="bean:messageService?method=deleteEntity(${header.id})"/>
+            </delete>
+            <!-- this is a rest DELETE to batch delete messages -->
+            <delete uri="/remove" id="route-batchDeleteReceiverMessages"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Batch delete entities</description>
+                <to uri="bean:messageService?method=batchDeleteEntity(${header.ids})"/>
+            </delete>
+        </rest>
+    </camelContext>
+</blueprint>

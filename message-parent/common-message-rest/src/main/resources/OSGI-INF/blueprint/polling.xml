@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <!--<reference id="messageService" interface="cn.com.rexen.bean.api.biz.IMessageBeanService"/>-->
+
+    <camelContext id="messagePollingCamel" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /message -->
+        <rest path="/messages/polling" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <description>message rest service</description>
+
+            <!-- this is a rest GET to find all message -->
+            <get uri="/msg" id="route-getPollingMessage" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Find Polling Messages</description>
+                <to uri="bean:messageService?method=getPollingMessage()"/>
+            </get>
+
+            <get uri="/msgCount" id="route-getUnreadMessageCount" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Get Unread Messages Count</description>
+                <to uri="bean:messageService?method=getNewMessageCount()"/>
+            </get>
+
+        </rest>
+    </camelContext>
+</blueprint>
