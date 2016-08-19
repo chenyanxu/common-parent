@@ -8,14 +8,14 @@
     <jpa:enable/>
     <tx:enable-annotations/>
 
-    <bean id="messageBeanDaoImpl" class="com.kalix.admin.message.dao.MessageBeanDaoImpl">
+    <bean id="messageBeanDaoImpl" class="com.kalix.common.message.dao.MessageBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
-    <bean id="senderMessageBeanDaoImpl" class="com.kalix.admin.message.dao.SenderMessageBeanDaoImpl">
+    <bean id="senderMessageBeanDaoImpl" class="com.kalix.common.message.dao.SenderMessageBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
 
-    <service interface="com.kalix.admin.message.api.dao.IMessageBeanDao" ref="messageBeanDaoImpl"/>
-    <service interface="com.kalix.admin.message.api.dao.ISenderMessageBeanDao" ref="senderMessageBeanDaoImpl"/>
+    <service interface="com.kalix.common.message.api.dao.IMessageBeanDao" ref="messageBeanDaoImpl"/>
+    <service interface="com.kalix.common.message.api.dao.ISenderMessageBeanDao" ref="senderMessageBeanDaoImpl"/>
 </blueprint>
 

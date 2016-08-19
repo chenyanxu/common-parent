@@ -11,13 +11,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>admin-message-extjs</artifactId>
+    <artifactId>common-message-extjs</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Kalix Admin Message Extjs</name>
+    <name>Kalix Common Message Extjs</name>
     <description>Kalix :: Message - Extjs</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>com.kalix.admin.message.extjs</bundle.symbolicName>
+        <bundle.symbolicName>com.kalix.common.message.extjs</bundle.symbolicName>
     </properties>
 </project>

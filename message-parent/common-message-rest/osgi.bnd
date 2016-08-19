@@ -3,8 +3,8 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:com.kalix.admin.message.api.biz,\
+Import-Package:com.kalix.common.message.api.biz,\
                com.kalix.framework.core.api.persistence,\
-               com.kalix.admin.message.entities,\
-               com.kalix.admin.message.api.query,*
-Bundle-Category: Kalix Admin Message
+               com.kalix.common.message.entities,\
+               com.kalix.common.message.api.query,*
+Bundle-Category: Kalix Common Message

@@ -29,7 +29,7 @@
     </cm:property-placeholder>
 
     <bean id="newMessageCountPollingServiceImpl"
-          class="com.kalix.admin.message.biz.system.NewMessageCountPollingServiceImpl">
+          class="com.kalix.common.message.biz.system.NewMessageCountPollingServiceImpl">
         <property name="id" value="${id}"/>
         <property name="type" value="${type}"/>
         <property name="interval" value="${interval}"/>
@@ -40,7 +40,7 @@
     <service interface="com.kalix.framework.core.api.system.IPollingService" ref="newMessageCountPollingServiceImpl"/>
 
 
-    <bean id="messagePollingImpl" class="com.kalix.admin.message.biz.system.MessagePollingServiceImpl">
+    <bean id="messagePollingImpl" class="com.kalix.common.message.biz.system.MessagePollingServiceImpl">
         <property name="id" value="$[count.id]"/>
         <property name="type" value="$[count.type]"/>
         <property name="interval" value="$[count.interval]"/>

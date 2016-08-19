@@ -6,4 +6,4 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Meta-Persistence: META-INF/persistence-jpa.xml
 Import-Package:*
 JPA-PersistenceUnits:message-cm
-Bundle-Category: Kalix Admin Message
+Bundle-Category: Kalix Common Message

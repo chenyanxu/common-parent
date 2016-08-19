@@ -4,4 +4,4 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package:javax.persistence,*
-Bundle-Category: Kalix Admin Message
+Bundle-Category: Kalix Common Message

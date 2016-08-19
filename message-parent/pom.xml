@@ -41,8 +41,8 @@
                 <version>${globle.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.kalix.common.core</groupId>
-                <artifactId>common-core-api</artifactId>
+                <groupId>com.kalix.admin.core</groupId>
+                <artifactId>admin-core-api</artifactId>
                 <version>${globle.version}</version>
             </dependency>
             <dependency>

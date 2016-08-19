@@ -11,13 +11,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>admin-message-biz</artifactId>
-    <name>Kalix Admin Message Biz</name>
+    <artifactId>common-message-biz</artifactId>
+    <name>Kalix Common Message Biz</name>
     <description>Message Core</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>com.kalix.admin.message.biz</bundle.symbolicName>
+        <bundle.symbolicName>com.kalix.common.message.biz</bundle.symbolicName>
     </properties>
 
     <dependencies>
@@ -26,12 +26,12 @@
             <artifactId>activiti-engine</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kalix.admin.message</groupId>
-            <artifactId>admin-message-api</artifactId>
+            <groupId>com.kalix.common.message</groupId>
+            <artifactId>common-message-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kalix.admin.message</groupId>
-            <artifactId>admin-message-entities</artifactId>
+            <groupId>com.kalix.common.message</groupId>
+            <artifactId>common-message-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>com.kalix.admin.core</groupId>

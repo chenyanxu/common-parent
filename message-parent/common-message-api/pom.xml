@@ -10,19 +10,19 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>admin-message-api</artifactId>
-    <name>Kalix Admin Message API</name>
+    <artifactId>common-message-api</artifactId>
+    <name>Kalix Common Message API</name>
     <description>Message API</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>com.kalix.admin.message.api</bundle.symbolicName>
+        <bundle.symbolicName>com.kalix.common.message.api</bundle.symbolicName>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.kalix.admin.message</groupId>
-            <artifactId>admin-message-entities</artifactId>
+            <groupId>com.kalix.common.message</groupId>
+            <artifactId>common-message-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>com.kalix.framework.core</groupId>
