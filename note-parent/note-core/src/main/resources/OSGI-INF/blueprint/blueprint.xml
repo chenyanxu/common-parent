@@ -1,0 +1,18 @@
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+">
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+
+    <service id="noteBeanService" interface="cn.com.rexen.roffice.note.api.biz.INoteBeanService"
+             ref="beanServiceImpl">
+    </service>
+
+    <bean id="beanServiceImpl" class="cn.com.rexen.roffice.note.core.biz.NoteBeanServiceImpl">
+        <property name="dao" ref="noteBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+
+    <reference id="noteBeanDao" interface="cn.com.rexen.roffice.note.api.dao.INoteBeanDao"/>
+</blueprint>
+

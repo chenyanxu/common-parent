@@ -16,6 +16,9 @@
         <module>core-parent</module>
         <module>system-parent</module>
         <module>karaf-features</module>
+        <module>news-parent</module>
+        <module>note-parent</module>
+        <module>message-parent</module>
     </modules>
     <build>
         <plugins>

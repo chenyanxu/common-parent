@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="noteService" interface="cn.com.rexen.roffice.note.api.biz.INoteBeanService"/>
+
+    <camelContext id="noteCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /note -->
+        <rest path="/notes" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <description>note rest service</description>
+
+            <!-- this is a rest GET to find all note -->
+            <get id="route-getAllNote" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all Notes</description>
+                <param name="page" type="query" required="true" dataType="String" defaultValue="1"
+                       description="page number"/>
+                <param name="limit" type="query" required="true" dataType="String" defaultValue="10"
+                       description="record size"/>
+                <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:noteService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest POST to create a note -->
+            <post id="route-addNote" type="cn.com.rexen.roffice.note.entities.NoteBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a Note</description>
+                <to uri="bean:noteService?method=saveEntity"/>
+            </post>
+
+            <!-- this is a rest GET to view a note by the given id -->
+            <get uri="/{id}" id="route-getNote" outType="cn.com.rexen.roffice.note.entities.NoteBean">
+                <description>Find Note by id</description>
+                <to uri="bean:noteService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a note -->
+            <put uri="/{id}" id="route-updateNote" type="cn.com.rexen.roffice.note.entities.NoteBean"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Updates a Note</description>
+                <to uri="bean:noteService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete a note -->
+            <delete uri="/{id}" id="route-deleteNote"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a Note</description>
+                <to uri="bean:noteService?method=deleteEntity(${header.id})"/>
+            </delete>
+
+        </rest>
+    </camelContext>
+</blueprint>

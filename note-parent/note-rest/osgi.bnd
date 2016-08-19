@@ -1,0 +1,7 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.roffice.note.entities,cn.com.rexen.roffice.note.api.query,*
+Bundle-Category: Rexen  Roffice Note
