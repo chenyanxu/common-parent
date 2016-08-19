@@ -17,14 +17,14 @@
             <description>news rest service</description>
 
             <!-- this is a rest GET to find all news -->
-            <get id="route-getAllNews" outType="cn.com.rexen.core.api.persistence.JsonData">
+            <get id="route-getAllNews" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all Newss</description>
                 <to uri="bean:newsService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
 
             <!-- this is a rest POST to create a news -->
             <post id="route-addNews" type="NewsBean"
-                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Create a News</description>
                 <to uri="bean:newsService?method=saveEntity"/>
             </post>
@@ -37,14 +37,14 @@
 
             <!-- this is a rest PUT to update a news -->
             <put uri="/{id}" id="route-updateNews" type="com.kalix.common.news.entities.NewsBean"
-                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Updates a News</description>
                 <to uri="bean:newsService?method=updateEntity"/>
             </put>
 
             <!-- this is a rest DELETE to delete a news -->
             <delete uri="/{id}" id="route-deleteNews"
-                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Delete a News</description>
                 <to uri="bean:newsService?method=deleteEntity(${header.id})"/>
             </delete>

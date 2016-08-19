@@ -4,9 +4,9 @@
  * @author
  * @version 1.0.0
  */
-Ext.define('kalix.roffice.news.store.NewsStore', {
+Ext.define('kalix.common.news.store.NewsStore', {
     extend: 'kalix.store.BaseStore',
-    model: 'kalix.roffice.news.model.NewsModel',
+    model: 'kalix.common.news.model.NewsModel',
     alias: 'store.newsStore',
     xtype: 'newsStore',
     storeId: "newsStore",

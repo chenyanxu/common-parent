@@ -6,20 +6,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.roffice.news</groupId>
+        <groupId>com.kalix.common.news</groupId>
         <artifactId>news-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>news-extjs</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>Roffice :: News - Extjs</name>
-    <description>Roffice :: News - Extjs</description>
+    <artifactId>common-news-extjs</artifactId>
+    <name>Kalix Common News Extjs</name>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.roffice.news.extjs</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bundle.symbolicName>com.kalix.common.news.extjs</bundle.symbolicName>
     </properties>
 </project>

@@ -3,7 +3,7 @@
  * @author
  * @version 1.0.0
  */
-Ext.define('kalix.roffice.news.view.NewsSearchForm', {
+Ext.define('kalix.common.news.view.NewsSearchForm', {
     extend: 'kalix.view.components.common.BaseSearchForm',
     alias: 'widget.newsSearchForm',
     xtype: 'newsSearchForm',

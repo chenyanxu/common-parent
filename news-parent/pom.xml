@@ -19,7 +19,7 @@
         <module>common-news-entities</module>
         <module>common-news-api</module>
         <module>common-news-dao</module>
-        <module>common-news-core</module>
+        <module>common-news-biz</module>
         <module>common-news-rest</module>
         <module>common-news-extjs</module>
     </modules>

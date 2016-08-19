@@ -1,2 +1,2 @@
 # news-parent
-新闻
+公司新闻

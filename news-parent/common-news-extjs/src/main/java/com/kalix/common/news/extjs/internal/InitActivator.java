@@ -1,7 +1,8 @@
 package com.kalix.common.news.extjs.internal;
 
-import cn.com.rexen.core.api.osgi.KalixBundleActivator;
-import cn.com.rexen.core.util.SystemUtil;
+
+import com.kalix.framework.core.api.osgi.KalixBundleActivator;
+import com.kalix.framework.core.util.SystemUtil;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpService;
@@ -18,20 +19,20 @@ public class InitActivator extends KalixBundleActivator {
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+        SystemUtil.startBundlePrintln(bundleContext);
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         httpService = (HttpService) bundleContext.getService(reference);
-        httpService.registerResources(contextPath+ "/app/roffice/news", "/roffice/news", null);
-        httpService.registerResources(contextPath+ "/roffice/news/resources/images", "/resources/images", null);
+        httpService.registerResources(contextPath + "/app/common/news", "/common/news", null);
+        httpService.registerResources(contextPath + "/common/news/resources/images", "/resources/images", null);
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME));
+        SystemUtil.stopBundlePrintln(bundleContext);
         if (httpService != null) {
-            httpService.unregister(contextPath+ "/app/roffice/news");
-            httpService.unregister(contextPath+ "/roffice/news/resources/images");
+            httpService.unregister(contextPath + "/app/common/news");
+            httpService.unregister(contextPath + "/common/news/resources/images");
         }
         if (reference != null)
             bundleContext.ungetService(reference);

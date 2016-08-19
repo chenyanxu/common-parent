@@ -1,6 +1,6 @@
 package com.kalix.common.news.biz;
 
-import cn.com.rexen.audit.core.biz.AuditBizServiceImpl;
+import com.kalix.admin.audit.biz.biz.AuditBizServiceImpl;
 import com.kalix.common.news.api.biz.INewsBeanService;
 import com.kalix.common.news.api.dao.INewsBeanDao;
 import com.kalix.common.news.entities.NewsBean;
@@ -20,6 +20,8 @@ import java.util.Date;
  * @修改备注：
  */
 public class NewsBeanServiceImpl extends AuditBizServiceImpl<INewsBeanDao, NewsBean> implements INewsBeanService {
+    private static final String APPLICATION_ALIAS = "我的首页";
+    private static final String NEWS_MENU_TEXT = "公司新闻";
     private JsonStatus jsonStatus = new JsonStatus();
 //    private IShiroService shiroService;
 
@@ -28,7 +30,7 @@ public class NewsBeanServiceImpl extends AuditBizServiceImpl<INewsBeanDao, NewsB
     public void beforeSaveEntity(NewsBean entity, JsonStatus status) {
         //添加时候，记录操作人和时间
 //        if (entity.getId() == -1) {
-        String userName = shiroService.getCurrentUserName();
+        String userName = shiroService.getCurrentUserRealName();
         Assert.notNull(userName, "用户名不能为空.");
         if (StringUtils.isNotEmpty(userName)) {
             entity.setPublishPeople(userName);
@@ -50,11 +52,11 @@ public class NewsBeanServiceImpl extends AuditBizServiceImpl<INewsBeanDao, NewsB
 
     @Override
     public String getAppName() {
-        return Const.APPLICATION_ALIAS;
+        return APPLICATION_ALIAS;
     }
 
     @Override
     public String getFunName() {
-        return Const.NEWS_MENU_TEXT;
+        return NEWS_MENU_TEXT;
     }
 }

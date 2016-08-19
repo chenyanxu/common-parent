@@ -4,20 +4,20 @@
  *         date:2015-7-3
  * @version 1.0.0
  */
-Ext.define('kalix.roffice.news.view.NewsGrid', {
+Ext.define('kalix.common.news.view.NewsGrid', {
     extend: 'kalix.view.components.common.BaseGrid',
     requires: [
-        'kalix.roffice.news.controller.NewsGridController',
-        'kalix.roffice.news.store.NewsStore'
+        'kalix.common.news.controller.NewsGridController',
+        'kalix.common.news.store.NewsStore'
     ],
     alias: 'widget.newsGrid',
     xtype: 'newsGridPanel',
     controller: {
         type: 'newsGridController',
         storeId: 'newsStore',
-        cfgForm: 'kalix.roffice.news.view.NewsWindow',
-        cfgViewForm: 'kalix.roffice.news.view.NewsViewWindow',
-        cfgModel: 'kalix.roffice.news.model.NewsModel'
+        cfgForm: 'kalix.common.news.view.NewsWindow',
+        cfgViewForm: 'kalix.common.news.view.NewsViewWindow',
+        cfgModel: 'kalix.common.news.model.NewsModel'
     },
     store: {
         type: 'newsStore'
@@ -55,9 +55,9 @@ Ext.define('kalix.roffice.news.view.NewsGrid', {
                 xtype: 'securityGridColumnRUD',
                 flex: 1,
                 permissions: [
-                    'roffice:commonsModule:newsMenu:view',
-                    'roffice:commonsModule:newsMenu:edit',
-                    'roffice:commonsModule:newsMenu:delete'
+                    'view',
+                    'edit',
+                    'delete'
                 ]
             }]
     },
@@ -81,7 +81,7 @@ Ext.define('kalix.roffice.news.view.NewsGrid', {
             {
                 text: '添加',
                 xtype: 'button',
-                permission: 'roffice:commonsModule:newsMenu:add',
+                permission: 'add',
                 bind: {icon: '{add_image_path}'},
                 handler: 'onAdd'
             }]

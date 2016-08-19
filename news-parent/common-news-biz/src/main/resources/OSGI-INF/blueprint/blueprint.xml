@@ -4,8 +4,8 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 ">
     <tx:enable-annotations/>
-    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
-    <reference id="auditService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
+    <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
+    <reference id="auditService" interface="com.kalix.admin.audit.api.biz.IAuditBeanService"/>
 
     <service id="newsBeanService" interface="com.kalix.common.news.api.biz.INewsBeanService"
              ref="beanServiceImpl">

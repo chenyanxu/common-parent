@@ -4,10 +4,10 @@
  * @author
  * @version 1.0.0
  */
-Ext.define('kalix.roffice.news.view.NewsWindow', {
+Ext.define('kalix.common.news.view.NewsWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
-        'kalix.roffice.news.viewModel.NewsViewModel',
+        'kalix.common.news.viewModel.NewsViewModel',
         'kalix.controller.BaseWindowController',
         'kalix.admin.user.store.UserStore',
         'Ext.ux.form.TinyMCETextArea'

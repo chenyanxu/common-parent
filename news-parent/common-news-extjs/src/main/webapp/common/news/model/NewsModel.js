@@ -5,7 +5,7 @@
  *         date:2015-7-3
  * @version 1.0.0
  */
-Ext.define('kalix.roffice.news.model.NewsModel', {
+Ext.define('kalix.common.news.model.NewsModel', {
     extend: 'kalix.model.BaseModel',
     fields: [{
         name: 'title',

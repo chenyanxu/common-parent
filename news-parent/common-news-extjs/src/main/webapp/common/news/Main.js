@@ -4,12 +4,12 @@
  * @author
  * @version 1.0.0
  */
-Ext.define('kalix.roffice.news.Main', {
+Ext.define('kalix.common.news.Main', {
     extend: 'kalix.container.BaseContainer',
     requires: [
-        'kalix.roffice.news.view.NewsGrid',
-        'kalix.roffice.news.view.NewsSearchForm',
-        'kalix.roffice.news.viewModel.NewsViewModel'
+        'kalix.common.news.view.NewsGrid',
+        'kalix.common.news.view.NewsSearchForm',
+        'kalix.common.news.viewModel.NewsViewModel'
     ],
     storeId: 'newsStore',
     viewModel: 'newsViewModel',

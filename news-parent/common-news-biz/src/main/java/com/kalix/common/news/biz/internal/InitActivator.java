@@ -1,7 +1,6 @@
 package com.kalix.common.news.biz.internal;
 
-import cn.com.rexen.core.util.SystemUtil;
-import org.apache.log4j.Logger;
+import com.kalix.framework.core.util.SystemUtil;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -10,19 +9,13 @@ import org.osgi.framework.BundleContext;
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Roffice News Core ";
-    private static BundleContext context;
-    private static Logger logger = Logger.getLogger(InitActivator.class);
-
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
-        context = bundleContext;
+        SystemUtil.startBundlePrintln(bundleContext);
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME));
-        context = null;
+        SystemUtil.stopBundlePrintln(bundleContext);
     }
 }
