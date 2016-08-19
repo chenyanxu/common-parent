@@ -24,7 +24,7 @@
         <module>common-note-entities</module>
         <module>common-note-api</module>
         <module>common-note-dao</module>
-        <module>common-note-core</module>
+        <module>common-note-biz</module>
         <module>common-note-rest</module>
         <module>common-note-extjs</module>
     </modules>

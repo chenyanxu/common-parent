@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Meta-Persistence: META-INF/persistence.xml
+Meta-Persistence: META-INF/persistence-jpa.xml
 Import-Package:*
 JPA-PersistenceUnits:note-cm
-Bundle-Category: Rexen  Roffice Note
+Bundle-Category: Kalix Common Note

@@ -3,5 +3,7 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.roffice.note.entities,cn.com.rexen.roffice.note.api.query,*
-Bundle-Category: Rexen  Roffice Note
+Import-Package:com.kalix.framework.core.api.persistence,\
+               com.kalix.framework.core.api.biz,\
+               com.kalix.common.note.entities,*
+Bundle-Category: Kalix Common Note

@@ -5,25 +5,28 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.roffice.note</groupId>
+        <groupId>com.kalix.common.note</groupId>
         <artifactId>note-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>note-api</artifactId>
-    <name>Roffice :: Note - API</name>
+    <artifactId>common-note-api</artifactId>
+    <name>Kalix Common Note API</name>
     <description>Note API</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.roffice.note.api</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+        <bundle.symbolicName>com.kalix.common.note.api</bundle.symbolicName>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.common.note</groupId>
+            <artifactId>common-note-entities</artifactId>
         </dependency>
     </dependencies>
 

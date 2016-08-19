@@ -8,10 +8,10 @@
     <jpa:enable/>
     <tx:enable-annotations/>
 
-    <bean id="noteBeanDaoImpl" class="cn.com.rexen.roffice.note.dao.NoteBeanDaoImpl">
+    <bean id="noteBeanDaoImpl" class="com.kalix.common.note.dao.NoteBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
 
-    <service interface="cn.com.rexen.roffice.note.api.dao.INoteBeanDao" ref="noteBeanDaoImpl"/>
+    <service interface="com.kalix.common.note.api.dao.INoteBeanDao" ref="noteBeanDaoImpl"/>
 </blueprint>
 

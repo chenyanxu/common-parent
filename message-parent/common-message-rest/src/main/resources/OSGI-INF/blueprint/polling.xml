@@ -17,12 +17,12 @@
             <description>message rest service</description>
 
             <!-- this is a rest GET to find all message -->
-            <get uri="/msg" id="route-getPollingMessage" outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <get uri="/msg" id="route-getPollingMessage" outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Find Polling Messages</description>
                 <to uri="bean:messageService?method=getPollingMessage()"/>
             </get>
 
-            <get uri="/msgCount" id="route-getUnreadMessageCount" outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <get uri="/msgCount" id="route-getUnreadMessageCount" outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Get Unread Messages Count</description>
                 <to uri="bean:messageService?method=getNewMessageCount()"/>
             </get>

@@ -6,20 +6,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.roffice.note</groupId>
+        <groupId>com.kalix.common.note</groupId>
         <artifactId>note-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>note-extjs</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>Roffice :: Note - Extjs</name>
-    <description>Roffice :: Note - Extjs</description>
+    <artifactId>common-note-extjs</artifactId>
+    <name>Kalix Common Note Extjs</name>
+    <description>Kalix :: Note - Extjs</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.roffice.note.extjs</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bundle.symbolicName>com.kalix.common.note.extjs</bundle.symbolicName>
     </properties>
 </project>

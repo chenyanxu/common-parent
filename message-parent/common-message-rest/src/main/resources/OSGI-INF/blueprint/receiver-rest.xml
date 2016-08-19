@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-    <reference id="messageService" interface="IMessageBeanService"/>
+    <reference id="messageService" interface="com.kalix.common.message.api.biz.IMessageBeanService"/>
 
     <camelContext id="messageReceiverCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
@@ -23,13 +23,13 @@
             </get>
 
             <!-- this is a rest GET to view a message by the given id -->
-            <get uri="/{id}" id="route-getReceiverMessage" outType="MessageBean">
+            <get uri="/{id}" id="route-getReceiverMessage" outType="com.kalix.common.message.entities.MessageBean">
                 <description>Find Message by id</description>
                 <to uri="bean:messageService?method=getEntity(${header.id})"/>
             </get>
 
             <!-- this is a rest PUT to update a message -->
-            <put uri="/{id}" id="route-updateReceiverMessage" type="MessageBean"
+            <put uri="/{id}" id="route-updateReceiverMessage" type="com.kalix.common.message.entities.MessageBean"
                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Updates a Message</description>
                 <to uri="bean:messageService?method=updateEntity"/>

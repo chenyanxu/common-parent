@@ -6,29 +6,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.roffice.note</groupId>
+        <groupId>com.kalix.common.note</groupId>
         <artifactId>note-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>note-rest</artifactId>
+    <artifactId>common-note-rest</artifactId>
     <packaging>bundle</packaging>
-    <name>Roffice :: Note - Rest</name>
+    <name>Kalix Common Note Rest</name>
     <description>Note Rest Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <bundle.symbolicName>cn.com.rexen.roffice.note.rest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+        <bundle.symbolicName>com.kalix.common.note.rest</bundle.symbolicName>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.poms</groupId>
-            <artifactId>poms-dm</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <type>pom</type>
-        </dependency>
+
     </dependencies>
 
     <build>
