@@ -23,7 +23,7 @@
             </get>
 
             <!-- this is a rest POST to create a news -->
-            <post id="route-addNews" type="NewsBean"
+            <post id="route-addNews" type="com.kalix.common.news.entities.NewsBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Create a News</description>
                 <to uri="bean:newsService?method=saveEntity"/>
