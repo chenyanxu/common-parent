@@ -8,8 +8,6 @@
 
 Ext.define('kalix.message.receiver.model.MessageModel', {
     extend: 'kalix.model.BaseModel',
-
-    //todo 在此修改模型定义
     fields: [
         {
             name: 'senderId',
@@ -26,8 +24,7 @@ Ext.define('kalix.message.receiver.model.MessageModel', {
         },
         {
             name: 'category',
-            type: 'string',
-            defaultValue: '1'
+            defaultValue: 2 //个人消息
         },
         {
             name: 'title',

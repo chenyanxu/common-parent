@@ -10,7 +10,7 @@ Ext.define('kalix.common.commonDict.store.CommonDictCacheStore', {
     xtype: 'commonDictCacheStore',
     storeId: 'commonDictCacheStore',
     pageSize:0,
-    autoLcommond:true,
+    autoLoad: true,
     singleton: true,
     proxyUrl: CONFIG.restRoot + '/camel/rest/common/dicts/cache/list'
 });

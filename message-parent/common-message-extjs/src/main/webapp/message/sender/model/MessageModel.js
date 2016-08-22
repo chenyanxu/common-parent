@@ -27,8 +27,7 @@ Ext.define('kalix.message.sender.model.MessageModel', {
         },
         {
             name: 'category',
-            type: 'string',
-            defaultValue: '1'
+            defaultValue: 2 //个人消息
         },
         {
             name: 'title',

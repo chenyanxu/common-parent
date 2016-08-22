@@ -8,13 +8,11 @@
 Ext.define('kalix.common.note.view.NoteWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
-        'kalix.common.note.viewModel.NoteViewModel',
         'kalix.controller.BaseWindowController',
         'kalix.admin.user.store.UserStore',
         'Ext.ux.form.TinyMCETextArea'
     ],
     alias: 'widget.noteWindow',
-    viewModel: 'noteViewModel',
     controller: {
         type: 'baseWindowController',
         storeId: 'noteStore'

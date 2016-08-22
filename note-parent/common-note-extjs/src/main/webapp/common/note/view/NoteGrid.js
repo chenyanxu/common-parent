@@ -8,7 +8,8 @@ Ext.define('kalix.common.note.view.NoteGrid', {
     requires: [
         'kalix.common.note.controller.NoteGridController',
         'kalix.common.note.store.NoteStore',
-        'Ext.grid.plugin.Exporter'
+        'Ext.grid.plugin.Exporter',
+        'Ext.ux.rating.Picker'
     ],
     alias: 'widget.noteGrid',
     xtype: 'noteGridPanel',
@@ -81,17 +82,15 @@ Ext.define('kalix.common.note.view.NoteGrid', {
                 flex: 1
             }, {
                 text: '发布时间',
-                dataIndex: 'publishDate',
-                flex: 1,
-                xtype: 'datecolumn',
-                formatter: 'date("Y-m-d H:i:s")'
+                dataIndex: 'creationDate',
+                flex: 1
             },
             {
                 xtype: 'securityGridColumnRUD',
                 permissions: [
-                    'common:commonsModule:noteMenu:view',
-                    'common:commonsModule:noteMenu:edit',
-                    'common:commonsModule:noteMenu:delete'
+                    'view',
+                    'edit',
+                    'delete'
                 ]
             }
         ],
@@ -121,8 +120,8 @@ Ext.define('kalix.common.note.view.NoteGrid', {
             {
                 text: '添加',
                 xtype: 'button',
-                permission: 'common:commonsModule:noteMenu:add',
-                bind: {icon: '{add_image_path}'},
+                permission: 'add',
+                iconCls: 'iconfont icon-add',
                 handler: 'onAdd'
             }
         ]

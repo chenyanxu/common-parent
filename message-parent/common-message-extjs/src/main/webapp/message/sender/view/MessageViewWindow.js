@@ -9,7 +9,8 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
         'kalix.message.sender.viewModel.MessageViewModel',
-        'kalix.admin.user.store.UserStore'
+        'kalix.admin.user.store.UserStore',
+        'kalix.common.commonDict.component.CommonDictCombobox'
     ],
     alias: 'widget.messageRecieverViewWindow',
     viewModel: 'messageSenderViewModel',
@@ -29,8 +30,8 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
             },
             {
                 fieldLabel: '消息类别',
-                xtype: 'dictCombobox',
-                dictType: 'category',
+                xtype: 'commonDictCombobox',
+                dictType: '消息类别',
                 name: 'category',
                 bind: {
                     value: '{rec.category}'

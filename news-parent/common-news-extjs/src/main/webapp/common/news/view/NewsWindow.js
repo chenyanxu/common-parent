@@ -7,13 +7,11 @@
 Ext.define('kalix.common.news.view.NewsWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
-        'kalix.common.news.viewModel.NewsViewModel',
         'kalix.controller.BaseWindowController',
         'kalix.admin.user.store.UserStore',
         'Ext.ux.form.TinyMCETextArea'
     ],
     alias: 'widget.newsWindow',
-    viewModel: 'newsViewModel',
     controller: {
         type: 'baseWindowController',
         storeId: 'newsStore'

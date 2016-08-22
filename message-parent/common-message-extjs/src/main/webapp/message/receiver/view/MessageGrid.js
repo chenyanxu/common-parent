@@ -8,7 +8,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
     requires: [
         'kalix.message.receiver.controller.MessageGridController',
         'kalix.message.receiver.store.MessageStore',
-        'kalix.admin.adminDict.component.AdminDictGridColumn'
+        'kalix.common.commonDict.component.CommonDictGridColumn'
     ],
     alias: 'widget.messageGrid',
     xtype: 'messageReceiverGridPanel',
@@ -28,71 +28,60 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
     manageHeight: true,
     forceFit: true,
     selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
-    columns: {
-        defaults: {
-            //renderer: 'addTooltip',
-            flex: 1
+    columns: [
+        {
+            xtype: "rownumberer"
         },
-        items: [
-            {
-                xtype: "rownumberer",
-                text: "行号",
-                width: 50,
-                flex: 0,
-                align: 'center',
-                renderer: this.update
-            },
-            {
-                text: '编号',
-                dataIndex: 'id',
-                hidden: true
-            },
-            {
-                text: '发件人',
-                dataIndex: 'senderName'
-            },
-            {
-                text: '消息类别',
-                xtype: 'adminDictGridColumn',
-                dictType: 'category',
-                dataIndex: 'category',
-                renderer: null
-            },
-            {
-                text: '消息主题',
-                dataIndex: 'title'
-            },
-            {
-                text: '收件时间',
-                dataIndex: 'creationDate'
-            },
-            {
-                text: '是否已读',
-                trueText: '已读',
-                falseText: '未读',
-                xtype: 'booleancolumn',
-                dataIndex: 'read',
-                renderer: null
-            },
-            {
-                xtype: 'securityGridColumnCommon',
-                items: [
-                    {
-                        iconCls: 'iconfont icon-view-column',
-                        permission: 'view',
-                        tooltip: '查看',
-                        handler: 'onView'
-                    },
-                    {
-                        iconCls: 'iconfont icon-delete',
-                        permission: 'delete',
-                        tooltip: '删除',
-                        handler: 'onDelete'
-                    }
-                ]
-            }
-        ]
-    },
+        {
+            text: '编号',
+            dataIndex: 'id',
+            hidden: true
+        },
+        {
+            text: '发件人',
+            dataIndex: 'senderName'
+        },
+        {
+            text: '消息类别',
+            xtype: 'commonDictGridColumn',
+            dictType: '消息类别',
+            dataIndex: 'category',
+            renderer: null
+        },
+        {
+            text: '消息主题',
+            dataIndex: 'title'
+        },
+        {
+            text: '收件时间',
+            dataIndex: 'creationDate'
+        },
+        {
+            text: '是否已读',
+            trueText: '已读',
+            falseText: '未读',
+            xtype: 'booleancolumn',
+            dataIndex: 'read',
+            renderer: null
+        },
+        {
+            xtype: 'securityGridColumnCommon',
+            items: [
+                {
+                    iconCls: 'iconfont icon-view-column',
+                    permission: 'view',
+                    tooltip: '查看',
+                    handler: 'onView'
+                },
+                {
+                    iconCls: 'iconfont icon-delete',
+                    permission: 'delete',
+                    tooltip: '删除',
+                    handler: 'onDelete'
+                }
+            ]
+        }
+    ],
     tbar: {
         xtype: 'securityToolbar',
         verifyItems: [

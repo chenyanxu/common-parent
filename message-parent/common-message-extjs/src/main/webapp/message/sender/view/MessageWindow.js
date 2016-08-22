@@ -40,14 +40,14 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
                         value: '{rec.receiverNames}'
                     }
                 },
-                {
+                /*{
                     fieldLabel: '消息类别',
                     xtype: 'adminDictCombobox',
                     dictType: '消息类别',
                     bind: {
                         value: '{rec.category}'
                     }
-                },
+                 },*/
                 {
                     fieldLabel: '消息主题',
                     allowBlank: false,

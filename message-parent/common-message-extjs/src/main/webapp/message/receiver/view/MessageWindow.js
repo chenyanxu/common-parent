@@ -10,7 +10,7 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
         'kalix.message.receiver.viewModel.MessageViewModel',
         'kalix.message.receiver.controller.MessageWindowController',
         'kalix.admin.user.store.UserStore',
-        'kalix.admin.adminDict.component.AdminDictCombobox'
+        'kalix.common.commonDict.component.CommonDictCombobox'
     ],
     alias: 'widget.messageReceiverWindow',
     viewModel: 'messageReceiverViewModel',
@@ -23,7 +23,6 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
     },
     xtype: "messageReceiverWindow",
     width: 400,
-    //todo 在此修改表单
     items: [
         {
             xtype: 'baseForm',
@@ -35,7 +34,7 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
                         value: '{rec.receiverName}'
                     }
                 },
-                {
+                /*                {
                     fieldLabel: '消息类别',
                     xtype: 'adminDictCombobox',
                     dictType: 'category',
@@ -43,7 +42,7 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
                     bind: {
                         value: '{rec.category}'
                     }
-                },
+                 },*/
                 {
                     fieldLabel: '消息主题',
                     allowBlank: false,

@@ -46,10 +46,8 @@ Ext.define('kalix.common.news.view.NewsGrid', {
                 flex: 1
             }, {
                 text: '发布时间',
-                dataIndex: 'publishDate',
-                xtype: 'datecolumn',      // the column type
-                flex: 1,
-                formatter: 'date("Y-m-d H:i:s")'
+                dataIndex: 'creationDate',
+                flex: 1
             },
             {
                 xtype: 'securityGridColumnRUD',
@@ -82,7 +80,7 @@ Ext.define('kalix.common.news.view.NewsGrid', {
                 text: '添加',
                 xtype: 'button',
                 permission: 'add',
-                bind: {icon: '{add_image_path}'},
+                iconCls: 'iconfont icon-add',
                 handler: 'onAdd'
             }]
     }

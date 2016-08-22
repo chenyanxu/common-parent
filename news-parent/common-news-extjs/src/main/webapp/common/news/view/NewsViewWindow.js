@@ -8,12 +8,10 @@
 Ext.define('kalix.common.news.view.NewsViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
-        'kalix.common.news.viewModel.NewsViewModel',
         'kalix.admin.user.store.UserStore',
         'Ext.ux.form.TinyMCETextArea'
     ],
     alias: 'widget.newsViewWindow',
-    viewModel: 'newsViewModel',
     xtype: "newsViewWindow",
     width: 950,
     height: 500,

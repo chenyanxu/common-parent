@@ -45,7 +45,7 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
     onSender: function () {
         var view = Ext.create('kalix.message.sender.view.MessageWindow');
         var vm = view.lookupViewModel();
-
+        vm.set('store', Ext.app.Application.instance.getApplication().getStore('messageSenderStore'));
         vm.set('rec', Ext.create('kalix.message.sender.model.MessageModel'));
         vm.set('title', '发件');
         view.show();
