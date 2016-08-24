@@ -13,7 +13,7 @@
     <artifactId>core-parent</artifactId>
     <name>Kalix Common Core Parent</name>
     <modules>
-        <module>common-core-web</module>
+        <!--<module>common-core-web</module>-->
         <module>common-core-extjs</module>
         <module>common-core-etc</module>
     </modules>
