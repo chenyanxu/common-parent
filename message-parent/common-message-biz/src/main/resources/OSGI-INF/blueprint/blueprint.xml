@@ -33,7 +33,7 @@
 
     <service interface="org.osgi.service.event.EventHandler" ref="workFlowMessageEventImpl">
         <service-properties>
-            <entry key="event.topics" value="cn/com/rexen/engine/message"/>
+            <entry key="event.topics" value="com/kalix/workflow/engine/message"/>
         </service-properties>
     </service>
 
@@ -46,7 +46,7 @@
 
     <service interface="org.osgi.service.event.EventHandler" ref="workFlowStarterEventImpl">
         <service-properties>
-            <entry key="event.topics" value="cn/com/rexen/engine/starter"/>
+            <entry key="event.topics" value="com/kalix/workflow/engine/starter"/>
         </service-properties>
     </service>
 
