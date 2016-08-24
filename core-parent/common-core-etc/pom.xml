@@ -56,6 +56,16 @@
                                     <type>cfg</type>
                                     <classifier>ConfigCommonDict</classifier>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigMessagePool.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigMessagePool</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigNewMessageCountPool.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigNewMessageCountPool</classifier>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>

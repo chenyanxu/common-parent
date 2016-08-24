@@ -16,17 +16,7 @@
         </cm:default-properties>
     </cm:property-placeholder>
 
-    <cm:property-placeholder id="ConfigMessagePool" persistent-id="ConfigMessagePool" update-strategy="reload"
-                             placeholder-prefix="$[count." placeholder-suffix="]">
-        <cm:default-properties>
-            <cm:property name="id" value="messagePolling"/>
-            <cm:property name="type" value="polling"/>
-            <cm:property name="interval" value="10000"/>
-            <cm:property name="url" value="camel/rest/messages/polling/msg"/>
-            <cm:property name="stop" value="false"/>
-            <cm:property name="callbackHandler" value="onWorkflowMsg"/>
-        </cm:default-properties>
-    </cm:property-placeholder>
+
 
     <bean id="newMessageCountPollingServiceImpl"
           class="com.kalix.common.message.biz.system.NewMessageCountPollingServiceImpl">
@@ -40,14 +30,5 @@
     <service interface="com.kalix.framework.core.api.system.IPollingService" ref="newMessageCountPollingServiceImpl"/>
 
 
-    <bean id="messagePollingImpl" class="com.kalix.common.message.biz.system.MessagePollingServiceImpl">
-        <property name="id" value="$[count.id]"/>
-        <property name="type" value="$[count.type]"/>
-        <property name="interval" value="$[count.interval]"/>
-        <property name="url" value="$[count.url]"/>
-        <property name="stop" value="$[count.stop]"/>
-        <property name="callbackHandler" value="$[count.callbackHandler]"/>
-    </bean>
-    <service interface="com.kalix.framework.core.api.system.IPollingService" ref="messagePollingImpl"/>
 </blueprint>
 

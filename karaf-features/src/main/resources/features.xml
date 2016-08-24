@@ -61,5 +61,11 @@
         <configfile finalname="/etc/ConfigCommonDict.cfg" override="true">
             mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigCommonDict
         </configfile>
+        <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
+            mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigMessagePool
+        </configfile>
+        <configfile finalname="/etc/ConfigNewMessageCountPool.cfg" override="true">
+            mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigNewMessageCountPool
+        </configfile>
     </feature>
 </features>
