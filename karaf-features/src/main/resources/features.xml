@@ -24,7 +24,6 @@
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-extjs/${parent.version}</bundle>
     </feature>
 
@@ -34,7 +33,6 @@
         <bundle>mvn:com.kalix.common.message/common-message-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-extjs/${parent.version}</bundle>
     </feature>
 
@@ -44,7 +42,6 @@
         <bundle>mvn:com.kalix.common.news/common-news-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-extjs/${parent.version}</bundle>
     </feature>
 
@@ -54,7 +51,6 @@
         <bundle>mvn:com.kalix.common.note/common-note-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-extjs/${parent.version}</bundle>
     </feature>
 
