@@ -14,7 +14,7 @@ import org.osgi.service.event.EventHandler;
  */
 public class ScheduleNewMsgEventImpl extends BaseMessageEvent implements EventHandler {
     public static final String MSG_CONTENT = "%s,您好！\r\n  您收到了一条由%s布置的新任务，任务名称为:%s，请查看！";
-    public static final String MSG_TITLE = "个人新信息提醒";
+    public static final String MSG_TITLE = "计划任务新任务提醒";
 
     @Override
     public void handleEvent(Event event) {
