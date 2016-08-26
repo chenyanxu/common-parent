@@ -3,6 +3,7 @@ package com.kalix.common.message.biz;
 
 import com.kalix.admin.core.api.biz.IUserBeanService;
 import com.kalix.admin.core.entities.UserBean;
+import com.kalix.common.message.api.Const;
 import com.kalix.common.message.api.biz.IMessageBeanService;
 import com.kalix.common.message.api.biz.ISenderMessageBeanService;
 import com.kalix.common.message.api.dao.IMessageBeanDao;
@@ -71,7 +72,8 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
             jsonStatus.setSuccess(true);
             String loginName = this.getShiroService().getSubject().getPrincipal().toString();
             UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
-            String topic = String.format(Const.POLLING_TOPIC_FORMAT, String.valueOf(userBean.getId()));
+            //轮询系统消息
+            String topic = String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId()));
             jsonStatus.setTag(stackService.consume(topic));
             return jsonStatus;
         } catch (Exception e) {

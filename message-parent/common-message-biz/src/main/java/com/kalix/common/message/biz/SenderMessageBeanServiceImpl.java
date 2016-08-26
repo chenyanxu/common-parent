@@ -3,6 +3,7 @@ package com.kalix.common.message.biz;
 
 import com.kalix.admin.core.api.biz.IUserBeanService;
 import com.kalix.admin.core.entities.UserBean;
+import com.kalix.common.message.api.Const;
 import com.kalix.common.message.api.biz.IMessageBeanService;
 import com.kalix.common.message.api.biz.ISenderMessageBeanService;
 import com.kalix.common.message.api.dao.ISenderMessageBeanDao;
@@ -11,6 +12,13 @@ import com.kalix.common.message.entities.SenderMessageBean;
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
+import com.kalix.framework.core.util.JNDIHelper;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventAdmin;
+
+import java.io.IOException;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 /**
  * @类描述：
@@ -23,6 +31,7 @@ import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
 public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISenderMessageBeanDao, SenderMessageBean> implements ISenderMessageBeanService {
     private IUserBeanService userBeanService;
     private IMessageBeanService messageBeanService;
+    private EventAdmin eventAdmin;
 
     public SenderMessageBeanServiceImpl() {
         super.init(SenderMessageBean.class.getName());
@@ -65,6 +74,8 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
                 newMessageBean.setContent(senderMessageBean.getContent());
                 newMessageBean.setRead(false);
                 newMessageBean.setState(0);
+                //发送消息通知
+                postCommonEvent(newMessageBean);
                 // 保存收件信息
                 messageBeanService.saveEntity(newMessageBean);
             }
@@ -80,6 +91,24 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
             jsonStatus.setMsg("发件失败");
             return jsonStatus;
         }
+    }
+
+    /**
+     * 发送消息通知
+     *
+     * @param msgBean
+     */
+    private void postCommonEvent(MessageBean msgBean) {
+        try {
+            eventAdmin = JNDIHelper.getJNDIServiceForName("org.osgi.service.event.EventAdmin");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Dictionary properties = new Hashtable();
+        properties.put("userId", msgBean.getReceiverId());
+        Event osgi_event = new Event(Const.COMMON_MESSAGE_TOPIC, properties);
+        System.out.println("User name: " + msgBean.getReceiverId() + " message is sent!");
+        eventAdmin.postEvent(osgi_event);
     }
 
     public IUserBeanService getUserBeanService() {

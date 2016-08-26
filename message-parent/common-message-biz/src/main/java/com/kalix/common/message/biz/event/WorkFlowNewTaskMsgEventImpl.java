@@ -5,9 +5,9 @@ import com.google.gson.Gson;
 import com.kalix.admin.core.api.biz.IRoleBeanService;
 import com.kalix.admin.core.entities.RoleBean;
 import com.kalix.admin.core.entities.RoleUserBean;
+import com.kalix.common.message.api.BaseMessageEvent;
+import com.kalix.common.message.api.Const;
 import com.kalix.common.message.api.dao.IMessageBeanDao;
-import com.kalix.common.message.biz.BaseWorkflowEvent;
-import com.kalix.common.message.biz.Const;
 import com.kalix.common.message.entities.MessageBean;
 import com.kalix.framework.core.util.Assert;
 import org.activiti.engine.impl.util.json.JSONObject;
@@ -21,9 +21,9 @@ import java.util.List;
  * 工作流中的消息进行监听处理类
  * Created by zangyanming on 2016/2/23.
  */
-public class WorkFlowMessageEventImpl extends BaseWorkflowEvent implements EventHandler {
-    private final static String MSG_TITLE = "待办流程提醒";
+public class WorkFlowNewTaskMsgEventImpl extends BaseMessageEvent implements EventHandler {
     private final static String MSG_CONTENT = "%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为[%s]。";
+    private final static String MSG_TITLE = "待办流程提醒";
 
     IMessageBeanDao dao;
     IRoleBeanService roleBeanService;
@@ -43,9 +43,9 @@ public class WorkFlowMessageEventImpl extends BaseWorkflowEvent implements Event
             //获得用户名
             String userName = userBeanService.getEntity(roleUserBean.getUserId()).getName();
             String content = String.format(MSG_CONTENT, userName, businessKey);
-            MessageBean messageBean = saveMessageBean(roleUserBean.getUserId(), content, MSG_TITLE);
+            MessageBean messageBean = createMessageBean(roleUserBean.getUserId(), content, MSG_TITLE);
             dao.save(messageBean);
-            stackService.publish(String.format(Const.POLLING_TOPIC_FORMAT, roleUserBean.getUserId()), gson.toJson(messageBean), day);
+            stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, roleUserBean.getUserId()), gson.toJson(messageBean), day);
         }
     }
 

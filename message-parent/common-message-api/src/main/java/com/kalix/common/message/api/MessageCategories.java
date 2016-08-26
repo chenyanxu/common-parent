@@ -1,10 +1,10 @@
-package com.kalix.common.message.biz;
+package com.kalix.common.message.api;
 
 /**
  * Created by zangyanming on 2016/3/3.
  */
 public enum MessageCategories {
-    MESSAGE("系统消息", 1), SUGGESTION("建议", 2), WARNING("警告", 3), ASSIGNMENT("分配", 4);
+    SYSTEM("系统消息", 0), WORKFLOW("流程消息", 1), COMMON("个人消息", 2), ASSIGNMENT("计划任务消息", 3);
     // 成员变量
     private String CategoryName;
     private int id;

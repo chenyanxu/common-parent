@@ -1,4 +1,4 @@
-package com.kalix.common.message.biz;
+package com.kalix.common.message.api;
 
 
 import com.kalix.admin.core.api.biz.IUserBeanService;
@@ -8,22 +8,23 @@ import com.kalix.framework.core.api.system.IStackService;
 
 /**
  * Created by sunlf on 2016/2/26.
- * 工作流消息处理抽象类
+ * 消息处理抽象类
  */
-public abstract class BaseWorkflowEvent {
+public abstract class BaseMessageEvent {
     protected IMessageBeanDao dao;
     protected IStackService stackService;
     protected IUserBeanService userBeanService;
+    //消息在stack保留的时间
     protected static final int day = 24 * 60 * 60 * 1000;
-    protected static final int ADMIN_USER_ID = 5601;
-    protected static final String ADMIN_USER_NAME = "系统管理员";
+    protected static final int ADMIN_USER_ID = 1;
+    protected static final String ADMIN_USER_NAME = "管理员";
 
-    protected MessageBean saveMessageBean(long receiverId, String content, String title) {
+    protected MessageBean createMessageBean(long receiverId, String content, String title) {
         MessageBean messageBean = new MessageBean();
         messageBean.setSenderId(ADMIN_USER_ID);
         messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
-        messageBean.setCategory(1);//1、系统消息；2、建议；3、警告；4、分配；
+        messageBean.setCategory(0);//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息
         messageBean.setTitle(title);
         messageBean.setContent(content);
         messageBean.setRead(false);//未读的消息

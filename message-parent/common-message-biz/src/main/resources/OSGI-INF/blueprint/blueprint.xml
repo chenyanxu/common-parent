@@ -37,7 +37,7 @@
         </service-properties>
     </service>
 
-    <bean id="workFlowMessageEventImpl" class="com.kalix.common.message.biz.event.WorkFlowMessageEventImpl">
+    <bean id="workFlowMessageEventImpl" class="com.kalix.common.message.biz.event.WorkFlowNewTaskMsgEventImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="stackService" ref="stackService"/>
         <property name="roleBeanService" ref="roleBeanService"/>
@@ -50,7 +50,45 @@
         </service-properties>
     </service>
 
-    <bean id="workFlowStarterEventImpl" class="com.kalix.common.message.biz.event.WorkFlowStarterEventImpl">
+    <bean id="workFlowStarterEventImpl" class="com.kalix.common.message.biz.event.WorkFlowProgressMsgEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
+    <!--个人消息-->
+    <service interface="org.osgi.service.event.EventHandler" ref="commonMsgEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="com/kalix/common/message"/>
+        </service-properties>
+    </service>
+
+    <bean id="commonMsgEventImpl" class="com.kalix.common.message.biz.event.CommonMsgEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
+
+    <!--新计划任务消息-->
+    <service interface="org.osgi.service.event.EventHandler" ref="scheduleNewMsgEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="com/kalix/schedule/message/new"/>
+        </service-properties>
+    </service>
+
+    <bean id="scheduleNewMsgEventImpl" class="com.kalix.common.message.biz.event.ScheduleNewMsgEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
+
+    <!--计划任务状态修改消息-->
+    <service interface="org.osgi.service.event.EventHandler" ref="scheduleChangeMsgEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="com/kalix/schedule/message/change"/>
+        </service-properties>
+    </service>
+
+    <bean id="scheduleChangeMsgEventImpl" class="com.kalix.common.message.biz.event.ScheduleChangeMsgEventImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="stackService" ref="stackService"/>
         <property name="userBeanService" ref="userBeanService"/>
