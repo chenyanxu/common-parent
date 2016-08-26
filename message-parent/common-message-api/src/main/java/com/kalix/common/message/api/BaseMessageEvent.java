@@ -24,7 +24,7 @@ public abstract class BaseMessageEvent {
         messageBean.setSenderId(ADMIN_USER_ID);
         messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
-        messageBean.setCategory(0);//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息
+        messageBean.setCategory(MessageCategories.SYSTEM.getId());//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息
         messageBean.setTitle(title);
         messageBean.setContent(content);
         messageBean.setRead(false);//未读的消息

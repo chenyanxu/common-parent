@@ -4,6 +4,7 @@ package com.kalix.common.message.biz;
 import com.kalix.admin.core.api.biz.IUserBeanService;
 import com.kalix.admin.core.entities.UserBean;
 import com.kalix.common.message.api.Const;
+import com.kalix.common.message.api.MessageCategories;
 import com.kalix.common.message.api.biz.IMessageBeanService;
 import com.kalix.common.message.api.biz.ISenderMessageBeanService;
 import com.kalix.common.message.api.dao.ISenderMessageBeanDao;
@@ -69,7 +70,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
                 newMessageBean.setSenderId(senderId);
                 newMessageBean.setSenderName(userBean.getName());
                 newMessageBean.setReceiverId(Long.parseLong(ids[i]));
-                newMessageBean.setCategory(2);//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息
+                newMessageBean.setCategory(MessageCategories.COMMON.getId());//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息
                 newMessageBean.setTitle(senderMessageBean.getTitle());
                 newMessageBean.setContent(senderMessageBean.getContent());
                 newMessageBean.setRead(false);
