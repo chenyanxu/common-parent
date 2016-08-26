@@ -1,6 +1,6 @@
 package com.kalix.common.news.biz;
 
-import com.kalix.admin.audit.biz.biz.AuditBizServiceImpl;
+import com.kalix.admin.audit.biz.AuditBizServiceImpl;
 import com.kalix.common.news.api.biz.INewsBeanService;
 import com.kalix.common.news.api.dao.INewsBeanDao;
 import com.kalix.common.news.entities.NewsBean;
