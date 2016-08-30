@@ -73,7 +73,9 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
             String loginName = this.getShiroService().getSubject().getPrincipal().toString();
             UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
             //轮询系统消息
-            String topic = String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId()));
+            String topic = "";
+            if (userBean != null)
+                topic = String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId()));
             jsonStatus.setTag(stackService.consume(topic));
             return jsonStatus;
         } catch (Exception e) {
