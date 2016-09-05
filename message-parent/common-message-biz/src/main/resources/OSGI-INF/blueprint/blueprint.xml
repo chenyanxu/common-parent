@@ -9,6 +9,7 @@
     <reference id="senderMessageBeanDao" interface="com.kalix.common.message.api.dao.ISenderMessageBeanDao"/>
     <reference id="userBeanService" interface="com.kalix.admin.core.api.biz.IUserBeanService"/>
     <reference id="roleBeanService" interface="com.kalix.admin.core.api.biz.IRoleBeanService"/>
+    <reference id="dutyBeanService" interface="com.kalix.admin.duty.api.biz.IDutyBeanService"/>
 
     <service id="messageBeanService" interface="com.kalix.common.message.api.biz.IMessageBeanService"
              ref="beanServiceImpl">
@@ -42,6 +43,7 @@
         <property name="stackService" ref="stackService"/>
         <property name="roleBeanService" ref="roleBeanService"/>
         <property name="userBeanService" ref="userBeanService"/>
+        <property name="dutyBeanService" ref="dutyBeanService"/>
     </bean>
 
     <service interface="org.osgi.service.event.EventHandler" ref="workFlowStarterEventImpl">
