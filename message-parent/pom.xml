@@ -50,6 +50,11 @@
                 <artifactId>admin-core-biz</artifactId>
                 <version>${globle.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.kalix.admin.duty</groupId>
+                <artifactId>admin-duty-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

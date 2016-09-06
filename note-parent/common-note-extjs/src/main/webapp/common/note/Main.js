@@ -22,7 +22,6 @@ Ext.define('kalix.common.note.Main', {
             xtype: 'noteGridPanel',
             id: 'noteGridPanel',
             title: '公司公告列表',
-            iconCls: 'x-fa fa-comment',
-            margin: 10
+            iconCls: 'x-fa fa-comment'
         }]
 });

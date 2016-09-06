@@ -2,6 +2,7 @@ package com.kalix.common.message.api;
 
 
 import com.kalix.admin.core.api.biz.IUserBeanService;
+import com.kalix.admin.duty.api.biz.IDutyBeanService;
 import com.kalix.common.message.api.dao.IMessageBeanDao;
 import com.kalix.common.message.entities.MessageBean;
 import com.kalix.framework.core.api.system.IStackService;
@@ -14,6 +15,7 @@ public abstract class BaseMessageEvent {
     protected IMessageBeanDao dao;
     protected IStackService stackService;
     protected IUserBeanService userBeanService;
+    protected IDutyBeanService dutyBeanService;
     //消息在stack保留的时间
     protected static final int day = 24 * 60 * 60 * 1000;
     protected static final int ADMIN_USER_ID = 1;
@@ -43,5 +45,9 @@ public abstract class BaseMessageEvent {
 
     public void setUserBeanService(IUserBeanService userBeanService) {
         this.userBeanService = userBeanService;
+    }
+
+    public void setDutyBeanService(IDutyBeanService dutyBeanService) {
+        this.dutyBeanService = dutyBeanService;
     }
 }

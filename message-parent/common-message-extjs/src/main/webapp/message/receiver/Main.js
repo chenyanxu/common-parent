@@ -21,8 +21,7 @@ Ext.define('kalix.message.receiver.Main', {
         }, {
             xtype: 'messageReceiverGridPanel',
             id: 'messageReceiverGridPanel',
-            title: '收件列表',
-            margin: 10
+            title: '收件列表'
         }
     ]
 });
