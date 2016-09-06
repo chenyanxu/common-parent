@@ -10,6 +10,8 @@ public class Const {
     public static final String COMMON_MESSAGE_TOPIC = "com/kalix/common/message";
     //计划任务 新消息topic
     public static final String SCHEDULE_ASSIGNMENT_NEW_TOPIC = "com/kalix/schedule/message/new";
+     //计划任务督办 新消息topic
+    public static final String SCHEDULE_ASSIGNMENT_SUPERVISE_TOPIC = "com/kalix/schedule/message/supervise";
     //计划任务 状态修改消息topic
     public static final String SCHEDULE_ASSIGNMENT_CHANGE_TOPIC = "com/kalix/schedule/message/change";
 }

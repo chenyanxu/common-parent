@@ -96,5 +96,17 @@
         <property name="userBeanService" ref="userBeanService"/>
     </bean>
 
+    <!--新计划任务消息-->
+    <service interface="org.osgi.service.event.EventHandler" ref="scheduleSuperviseMsgEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="com/kalix/schedule/message/supervise"/>
+        </service-properties>
+    </service>
+
+    <bean id="scheduleSuperviseMsgEventImpl" class="com.kalix.common.message.biz.event.ScheduleSuperviseMsgEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+    </bean>
 </blueprint>
 
