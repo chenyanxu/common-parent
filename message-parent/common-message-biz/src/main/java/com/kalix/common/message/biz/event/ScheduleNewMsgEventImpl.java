@@ -26,7 +26,7 @@ public class ScheduleNewMsgEventImpl extends BaseMessageEvent implements EventHa
         Long head = (Long) event.getProperty("head");
         UserBean userBean = userBeanService.getEntity(head);
         String headName = userBean.getName();
-        String content = String.format(MSG_CONTENT, headName, taskName, userName);
+        String content = String.format(MSG_CONTENT, headName, userName, taskName);
 
         MessageBean messageBean = createMessageBean(userBean.getId(), content, MSG_TITLE);
         dao.save(messageBean);
