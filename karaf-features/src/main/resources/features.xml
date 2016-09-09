@@ -10,7 +10,6 @@
     </feature>
 
     <feature name="common-core" version="1.0">
-        <bundle>mvn:com.kalix.common.core/common-core-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.common.core/common-core-extjs/${parent.version}</bundle>
     </feature>
 
