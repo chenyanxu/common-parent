@@ -1,0 +1,11 @@
+---
+pipeline: "workflows/maven/Deploy/Jenkinsfile"
+buildName: "common-parent"
+codeReview: true
+links:
+  Current: "http://172.30.8.74:80/kubernetes/pods?namespace=develop"
+  Git: "https://github.com/chenyanxu/common-parent.git"
+  Job: "http://jenkins.app.kalix.com/job/common-parent"
+environments:
+  Current: "develop"
+useLocalFlow: true
