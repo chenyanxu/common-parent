@@ -11,6 +11,7 @@
 
     <feature name="common-core" version="1.0">
         <bundle>mvn:com.kalix.common.core/common-core-extjs/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.common.core/common-core-etc/${parent.version}</bundle>
     </feature>
 
     <feature name="common-system" version="1.0">
