@@ -18,26 +18,30 @@ public class ScheduleChangeMsgEventImpl extends BaseMessageEvent implements Even
 
     @Override
     public void handleEvent(Event event) {
+        //布置人ID
+        Long userId = (Long) event.getProperty("userId");
         //布置人
         String userName = (String) event.getProperty("userName");
         //任务名称
         String taskName = (String) event.getProperty("taskName");
         //负责人
         Long head = (Long) event.getProperty("head");
-        UserBean userBean = userBeanService.getEntity(head);
-        String headName = userBean.getName();
+        UserBean headUserBean = userBeanService.getEntity(head);
+        String headName = headUserBean.getName();
         //任务状态
         String state = (String) event.getProperty("state");
         //任务旧状态
         String oldState = (String) event.getProperty("oldState");
 
+        //格式化向布置人发送消息
         String content = String.format(MSG_CONTENT, userName, taskName, headName, oldState, state);
 
-        MessageBean messageBean = createMessageBean(userBean.getId(), content, MSG_TITLE);
+        MessageBean messageBean = createMessageBean(userId, content, MSG_TITLE);
         dao.save(messageBean);
         //add msg to stack
         Gson gson = new Gson();
+        //向布置人发送消息
         stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT,
-                String.valueOf(userBean.getId())), gson.toJson(messageBean), day);
+                String.valueOf(userId)), gson.toJson(messageBean), day);
     }
 }
