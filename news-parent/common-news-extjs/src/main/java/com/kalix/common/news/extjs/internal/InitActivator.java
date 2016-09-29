@@ -11,9 +11,6 @@ import org.osgi.service.http.HttpService;
  * Created by sunlf on 14-3-23.
  */
 public class InitActivator extends KalixBundleActivator {
-
-    private static final String BUNDLE_NAME = " Kalix News Extjs ";
-
     private ServiceReference reference;
     private HttpService httpService;
 
@@ -23,7 +20,13 @@ public class InitActivator extends KalixBundleActivator {
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         httpService = (HttpService) bundleContext.getService(reference);
-        httpService.registerResources(contextPath + "/app/common/news", "/common/news", null);
+
+        if(deploy){
+            httpService.registerResources(contextPath + "/app/common/news", "/min/common/news", null);
+        }
+        else{
+            httpService.registerResources(contextPath + "/app/common/news", "/common/news", null);
+        }
     }
 
     @Override

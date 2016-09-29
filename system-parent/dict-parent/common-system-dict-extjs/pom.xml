@@ -16,4 +16,13 @@
     <properties>
         <bundle.symbolicName>com.kalix.common.system.dict.extjs</bundle.symbolicName>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
