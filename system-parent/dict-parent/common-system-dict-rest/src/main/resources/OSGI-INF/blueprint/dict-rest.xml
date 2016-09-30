@@ -8,7 +8,7 @@
     <camelContext id="commonDictCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <restConfiguration component="servlet" bindingMode="json">
-            <dataFormatProperty key="prettyPrint" value="true"/>
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
         </restConfiguration>
 
         <rest path="/common/dicts" consumes="application/json;charset=utf-8" produces="application/json">
