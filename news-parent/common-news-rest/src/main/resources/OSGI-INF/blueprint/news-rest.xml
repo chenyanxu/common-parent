@@ -19,7 +19,7 @@
             <!-- this is a rest GET to find all news -->
             <get id="route-getAllNews" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all Newss</description>
-                <to uri="bean:newsService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:newsService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
 
             <!-- this is a rest POST to create a news -->

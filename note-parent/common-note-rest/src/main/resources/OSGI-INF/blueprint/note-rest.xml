@@ -24,7 +24,7 @@
                 <param name="limit" type="query" required="true" dataType="String" defaultValue="10"
                        description="record size"/>
                 <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
-                <to uri="bean:noteService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:noteService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
 
             <!-- this is a rest POST to create a note -->

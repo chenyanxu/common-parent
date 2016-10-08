@@ -16,7 +16,7 @@
 
             <get id="route-getAllCommonDict" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all CommonDict</description>
-                <to uri="bean:commonDictBeanService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:commonDictBeanService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
 
             <post id="route-addCommonDict" type="com.kalix.common.system.dict.entities.CommonDictBean"
