@@ -7,4 +7,5 @@ Import-Package:com.kalix.common.message.api.biz,\
                com.kalix.framework.core.api.persistence,\
                com.kalix.common.message.entities,\
                com.kalix.common.message.api.query,*
+Include-Resource: target/classes
 Bundle-Category: Kalix Common Message
