@@ -10,6 +10,6 @@ Ext.define('kalix.message.receiver.viewModel.MessageViewModel', {
     alias: 'viewmodel.messageReceiverViewModel',
     data: {
         // batchDeleteUrl为执行批量删除服务的地址
-        batchDeleteUrl: '/kalix/camel/rest/messages/receiver/remove'
+        batchDeleteUrl: CONFIG.restRoot + '/camel/rest/messages/receiver/remove'
     }
 });
