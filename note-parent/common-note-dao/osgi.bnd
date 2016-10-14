@@ -4,4 +4,4 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package:javax.persistence,com.kalix.common.note.dao,*
-Bundle-Category: Rexen  Roffice Note
+Bundle-Category: Kalix Common Note

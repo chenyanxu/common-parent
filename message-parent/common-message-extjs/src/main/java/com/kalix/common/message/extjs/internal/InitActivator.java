@@ -12,35 +12,28 @@ import org.osgi.service.http.HttpService;
  */
 public class InitActivator extends KalixBundleActivator {
 
-    public static final String KALIX_APP_ROFFICE_PATH = "/kalix/app/message";
-    public static final String KALIX_ROFFICE_RESOURCES_IMAGES = "/kalix/message/resources/images";
-    private static BundleContext context;
     private ServiceReference reference;
     private HttpService httpService;
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
         SystemUtil.startBundlePrintln(bundleContext);
-        context = bundleContext;
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         httpService = (HttpService) bundleContext.getService(reference);
 
-        if(deploy){
-            httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/min/message", null);
-        }
-        else{
-            httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/message", null);
+        if (deploy) {
+            httpService.registerResources(contextPath + "/app/message", "/min/message", null);
+        } else {
+            httpService.registerResources(contextPath + "/app/message", "/message", null);
         }
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
         SystemUtil.stopBundlePrintln(bundleContext);
-        context = null;
         if (httpService != null) {
-            httpService.unregister(KALIX_APP_ROFFICE_PATH);
-            httpService.unregister(KALIX_ROFFICE_RESOURCES_IMAGES);
+            httpService.unregister(contextPath + "/app/message");
         }
         if (reference != null)
             bundleContext.ungetService(reference);
