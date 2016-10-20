@@ -24,6 +24,10 @@ public class ScheduleNewMsgEventImpl extends BaseMessageEvent implements EventHa
         String taskName = (String) event.getProperty("taskName");
         //负责人
         Long head = (Long) event.getProperty("head");
+        //参与人
+        String participant = (String) event.getProperty("participant");
+
+        //根据用户id获取实体，进而获取到用户名称
         UserBean userBean = userBeanService.getEntity(head);
         String headName = userBean.getName();
         String content = String.format(MSG_CONTENT, headName, userName, taskName);
@@ -33,5 +37,19 @@ public class ScheduleNewMsgEventImpl extends BaseMessageEvent implements EventHa
         //add msg to stack
         Gson gson = new Gson();
         stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId())), gson.toJson(messageBean), day);
+
+        String participants[] = participant.split(",");
+        if(participants.length > 0){
+            for(int i = 0; i < participants.length; i++) {
+                userBean = userBeanService.getEntity(Long.parseLong(participants[i]));
+                String participantName = userBean.getName();
+                content = String.format(MSG_CONTENT,participantName,userName,taskName);
+                messageBean = createMessageBean(userBean.getId(),content,MSG_TITLE);
+                dao.save(messageBean);
+
+                stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId())), gson.toJson(messageBean), day);
+            }
+
+        }
     }
 }
