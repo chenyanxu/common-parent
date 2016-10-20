@@ -15,6 +15,6 @@ Ext.define('kalix.common.news.view.NewsSearchForm', {
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
-            name: 'title'
+            name: '%title%'
         }]
 });
