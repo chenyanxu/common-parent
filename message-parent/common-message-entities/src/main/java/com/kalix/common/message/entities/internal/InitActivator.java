@@ -1,23 +1,10 @@
 package com.kalix.common.message.entities.internal;
 
-import com.kalix.framework.core.util.SystemUtil;
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
+import com.kalix.framework.core.api.osgi.BaseBundleActivator;
 
 /**
- * Created by sunlf on 14-3-23.
+ * @author chenyanxu
  */
-public class InitActivator implements BundleActivator {
-
-    private static final String BUNDLE_NAME = " Kalix Message Entities ";
-
-    @Override
-    public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.startBundlePrintln(bundleContext);
-    }
-
-    @Override
-    public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.stopBundlePrintln(bundleContext);
-    }
+public class InitActivator extends BaseBundleActivator {
 }
+
