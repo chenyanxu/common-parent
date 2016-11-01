@@ -6,11 +6,10 @@
     <tx:enable-annotations/>
     <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
     <reference id="auditService" interface="com.kalix.admin.audit.api.biz.IAuditBeanService"/>
+    <reference id="newsBeanDao" interface="com.kalix.common.news.api.dao.INewsBeanDao"/>
 
     <service id="newsBeanService" interface="com.kalix.common.news.api.biz.INewsBeanService"
-             ref="beanServiceImpl">
-    </service>
-
+             ref="beanServiceImpl"/>
 
     <bean id="beanServiceImpl" class="com.kalix.common.news.biz.NewsBeanServiceImpl">
         <tx:transaction method="*" value="Required"/>
@@ -19,6 +18,5 @@
         <property name="dao" ref="newsBeanDao"/>
     </bean>
 
-    <reference id="newsBeanDao" interface="com.kalix.common.news.api.dao.INewsBeanDao"/>
 </blueprint>
 
