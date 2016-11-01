@@ -65,5 +65,33 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
                 }
             ]
         }
+    ],
+    buttons: [
+        {
+            text: '发送',
+            iconCls: 'iconfont icon-save iconfont-btn-small',
+            handler: 'onSave',
+            bind: {
+                hidden: '{view_operation}'
+            }
+        },
+        {
+            text: '重置',
+            iconCls: 'iconfont icon-reset iconfont-btn-small',
+            handler: 'onReset',
+            bind: {
+                hidden: '{view_operation}'
+            }
+        },
+        {
+            text: '关闭',
+            glyph: 'xf00d@FontAwesome',
+            handler: function () {
+                this.up('window').close();
+            },
+            bind: {
+                hidden: '{!view_operation}'
+            }
+        }
     ]
 });
