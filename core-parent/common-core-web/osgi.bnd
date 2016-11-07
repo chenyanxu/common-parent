@@ -1,8 +1,0 @@
-#-----------------------------------------------------------------
-# Use this file to add customized Bnd instructions for the bundle
-#-----------------------------------------------------------------
-
-Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Bundle-Category: Kalix OA Core
-Bundle-Classifier:IApplication
-Bundle-ApplicationId:oa

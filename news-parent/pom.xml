@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.kalix.common</groupId>
         <artifactId>common-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -29,17 +29,17 @@
             <dependency>
                 <groupId>com.kalix.common.news</groupId>
                 <artifactId>common-news-api</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.kalix.common.news</groupId>
                 <artifactId>common-news-entities</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.kalix.admin.audit</groupId>
                 <artifactId>admin-audit-biz</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.admin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -8,13 +8,15 @@
     <parent>
         <groupId>com.kalix.common.news</groupId>
         <artifactId>news-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>common-news-rest</artifactId>
-    <packaging>bundle</packaging>
     <name>Kalix Common News Rest</name>
     <description>News Rest Service</description>
+    <version>${project.common.version}</version>
+    <packaging>bundle</packaging>
+
 
     <properties>
         <bundle.symbolicName>com.kalix.common.news.rest</bundle.symbolicName>

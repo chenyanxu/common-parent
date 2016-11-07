@@ -10,8 +10,8 @@
     </feature>
 
     <feature name="common-core" version="1.0">
-        <bundle>mvn:com.kalix.common.core/common-core-extjs/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.core/common-core-etc/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.common.core/common-core-extjs/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.core/common-core-etc/${project.common.version}</bundle>
     </feature>
 
     <feature name="common-system" version="1.0">
@@ -19,53 +19,53 @@
     </feature>
 
     <feature name="common-system-dict" version="1.0">
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-entities/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-api/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-dao/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-biz/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-extjs/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-entities/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-api/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-dao/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-biz/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-rest/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-extjs/${project.common.version}</bundle>
     </feature>
 
     <feature name="common-message" version="1.0">
-        <bundle>mvn:com.kalix.common.message/common-message-entities/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-api/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-dao/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-biz/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-extjs/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.common.message/common-message-entities/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.message/common-message-api/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.message/common-message-dao/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.message/common-message-biz/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.message/common-message-rest/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.message/common-message-extjs/${project.common.version}</bundle>
     </feature>
 
     <feature name="common-news" version="1.0">
-        <bundle>mvn:com.kalix.common.news/common-news-entities/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-api/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-dao/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-biz/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-extjs/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.common.news/common-news-entities/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.news/common-news-api/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.news/common-news-dao/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.news/common-news-biz/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.news/common-news-rest/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.news/common-news-extjs/${project.common.version}</bundle>
     </feature>
 
     <feature name="common-note" version="1.0">
-        <bundle>mvn:com.kalix.common.note/common-note-entities/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-api/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-dao/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-biz/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-extjs/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.common.note/common-note-entities/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.note/common-note-api/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.note/common-note-dao/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.note/common-note-biz/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.note/common-note-rest/${project.common.version}</bundle>
+        <bundle>mvn:com.kalix.common.note/common-note-extjs/${project.common.version}</bundle>
     </feature>
 
     <feature name="common-config">
         <configfile finalname="/etc/ConfigCommonApp.cfg" override="true">
-            mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigCommonApp
+            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigCommonApp
         </configfile>
         <configfile finalname="/etc/ConfigCommonDict.cfg" override="true">
-            mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigCommonDict
+            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigCommonDict
         </configfile>
         <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
-            mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigMessagePool
+            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigMessagePool
         </configfile>
         <configfile finalname="/etc/ConfigNewMessageCountPool.cfg" override="true">
-            mvn:com.kalix.common.core/common-core-etc/${project.version}/cfg/ConfigNewMessageCountPool
+            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigNewMessageCountPool
         </configfile>
     </feature>
 </features>

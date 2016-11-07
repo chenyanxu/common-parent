@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.kalix.common</groupId>
         <artifactId>common-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -32,28 +32,28 @@
             <dependency>
                 <groupId>com.kalix.common.message</groupId>
                 <artifactId>common-message-entities</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.common.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.kalix.common.message</groupId>
                 <artifactId>common-message-api</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.kalix.admin.core</groupId>
                 <artifactId>admin-core-api</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.admin.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.kalix.admin.core</groupId>
                 <artifactId>admin-core-biz</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.admin.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.kalix.admin.duty</groupId>
                 <artifactId>admin-duty-api</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.admin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

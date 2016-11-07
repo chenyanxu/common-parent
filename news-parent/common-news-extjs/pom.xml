@@ -8,11 +8,12 @@
     <parent>
         <groupId>com.kalix.common.news</groupId>
         <artifactId>news-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>common-news-extjs</artifactId>
     <name>Kalix Common News Extjs</name>
+    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
     <properties>

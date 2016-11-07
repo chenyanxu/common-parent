@@ -6,12 +6,13 @@
     <parent>
         <groupId>com.kalix.common.news</groupId>
         <artifactId>news-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>common-news-api</artifactId>
     <name>Kalix Common News API</name>
     <description>News API</description>
+    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
     <properties>

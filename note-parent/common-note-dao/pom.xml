@@ -7,13 +7,15 @@
     <parent>
         <groupId>com.kalix.common.note</groupId>
         <artifactId>note-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>common-note-dao</artifactId>
-    <packaging>bundle</packaging>
     <name>Kalix Common Note DAO</name>
     <description>Note JPA</description>
+    <version>${project.common.version}</version>
+    <packaging>bundle</packaging>
+
 
     <properties>
         <bundle.symbolicName>com.kalix.common.note.dao</bundle.symbolicName>

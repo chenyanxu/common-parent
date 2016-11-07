@@ -8,12 +8,13 @@
     <parent>
         <groupId>com.kalix.common.message</groupId>
         <artifactId>message-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>common-message-biz</artifactId>
     <name>Kalix Common Message Biz</name>
     <description>Message Core</description>
+    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
