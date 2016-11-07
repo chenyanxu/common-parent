@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="kalix-features-common-1.0.0">
-    <feature name="common-all" version="1.0">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="kalix-features-common-${project.common.version}">
+    <feature name="common-all" version="${project.common.version}">
         <feature>common-core</feature>
         <feature>common-system</feature>
         <feature>common-config</feature>
@@ -9,16 +9,16 @@
         <feature>common-note</feature>
     </feature>
 
-    <feature name="common-core" version="1.0">
+    <feature name="common-core" version="${project.common.version}">
         <bundle>mvn:com.kalix.common.core/common-core-extjs/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.core/common-core-etc/${project.common.version}</bundle>
     </feature>
 
-    <feature name="common-system" version="1.0">
+    <feature name="common-system" version="${project.common.version}">
         <feature>common-system-dict</feature>
     </feature>
 
-    <feature name="common-system-dict" version="1.0">
+    <feature name="common-system-dict" version="${project.common.version}">
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-entities/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-api/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-dao/${project.common.version}</bundle>
@@ -27,7 +27,7 @@
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-extjs/${project.common.version}</bundle>
     </feature>
 
-    <feature name="common-message" version="1.0">
+    <feature name="common-message" version="${project.common.version}">
         <bundle>mvn:com.kalix.common.message/common-message-entities/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-api/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-dao/${project.common.version}</bundle>
@@ -36,7 +36,7 @@
         <bundle>mvn:com.kalix.common.message/common-message-extjs/${project.common.version}</bundle>
     </feature>
 
-    <feature name="common-news" version="1.0">
+    <feature name="common-news" version="${project.common.version}">
         <bundle>mvn:com.kalix.common.news/common-news-entities/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-api/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-dao/${project.common.version}</bundle>
@@ -45,7 +45,7 @@
         <bundle>mvn:com.kalix.common.news/common-news-extjs/${project.common.version}</bundle>
     </feature>
 
-    <feature name="common-note" version="1.0">
+    <feature name="common-note" version="${project.common.version}">
         <bundle>mvn:com.kalix.common.note/common-note-entities/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-api/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-dao/${project.common.version}</bundle>
@@ -54,7 +54,7 @@
         <bundle>mvn:com.kalix.common.note/common-note-extjs/${project.common.version}</bundle>
     </feature>
 
-    <feature name="common-config">
+    <feature name="common-config" version="${project.common.version}">
         <configfile finalname="/etc/ConfigCommonApp.cfg" override="true">
             mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigCommonApp
         </configfile>
