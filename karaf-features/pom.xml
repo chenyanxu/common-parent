@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>karaf-features</artifactId>
+    <version>${project.common.version}</version>
     <name>Kalix Common Karaf Features</name>
     <packaging>pom</packaging>
 
