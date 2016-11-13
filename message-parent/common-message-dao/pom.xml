@@ -7,13 +7,12 @@
     <parent>
         <groupId>com.kalix.common.message</groupId>
         <artifactId>message-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>common-message-dao</artifactId>
     <name>Kalix Common Message DAO</name>
     <description>Message JPA</description>
-    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
 

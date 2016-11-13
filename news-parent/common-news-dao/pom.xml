@@ -7,13 +7,12 @@
     <parent>
         <groupId>com.kalix.common.news</groupId>
         <artifactId>news-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>common-news-dao</artifactId>
     <name>Kalix Common DAO</name>
     <description>News JPA</description>
-    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
 

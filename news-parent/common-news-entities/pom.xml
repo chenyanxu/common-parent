@@ -5,13 +5,12 @@
     <parent>
         <groupId>com.kalix.common.news</groupId>
         <artifactId>news-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>common-news-entities</artifactId>
     <name>Kalix Common News Entities</name>
     <description>News Entities</description>
-    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
 

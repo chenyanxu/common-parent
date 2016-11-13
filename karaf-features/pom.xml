@@ -6,11 +6,10 @@
     <parent>
         <groupId>com.kalix.common</groupId>
         <artifactId>common-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>karaf-features</artifactId>
-    <version>${project.common.version}</version>
     <name>Kalix Common Karaf Features</name>
     <packaging>pom</packaging>
 

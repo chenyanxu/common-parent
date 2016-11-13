@@ -7,13 +7,12 @@
     <parent>
         <groupId>com.kalix.common.note</groupId>
         <artifactId>note-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>common-note-api</artifactId>
     <name>Kalix Common Note API</name>
     <description>Note API</description>
-    <version>${project.common.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
