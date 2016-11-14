@@ -18,6 +18,7 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
@@ -67,6 +68,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
             String[] ids = receiverIds.split(":");
             for (int i = 0; i < ids.length; i++) {
                 MessageBean newMessageBean = new MessageBean();
+                newMessageBean.setCreationDate(new Date());
                 newMessageBean.setSenderId(senderId);
                 newMessageBean.setSenderName(userBean.getName());
                 newMessageBean.setReceiverId(Long.parseLong(ids[i]));

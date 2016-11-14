@@ -7,6 +7,8 @@ import com.kalix.common.message.api.dao.IMessageBeanDao;
 import com.kalix.common.message.entities.MessageBean;
 import com.kalix.framework.core.api.system.IStackService;
 
+import java.util.Date;
+
 /**
  * Created by sunlf on 2016/2/26.
  * 消息处理抽象类
@@ -23,6 +25,7 @@ public abstract class BaseMessageEvent {
 
     protected MessageBean createMessageBean(long receiverId, String content, String title) {
         MessageBean messageBean = new MessageBean();
+        messageBean.setCreationDate(new Date());
         messageBean.setSenderId(ADMIN_USER_ID);
         messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
