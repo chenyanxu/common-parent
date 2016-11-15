@@ -22,7 +22,7 @@ public class MessageBean extends PersistentEntity {
      * @describe 发件人
      * @validator 不能为空
      */
-    private long senderId;
+    private Long senderId;
     /**
      * @describe 发件人名称
      * @validator 不能为空
@@ -32,7 +32,7 @@ public class MessageBean extends PersistentEntity {
      * @describe 接收者
      * @validator 不能为空
      */
-    private long receiverId;
+    private Long receiverId;
     /**
      * @describe 消息类别
      * @validator 不能为空
@@ -65,11 +65,11 @@ public class MessageBean extends PersistentEntity {
      */
     private int sign;
 
-    public long getSenderId() {
+    public Long getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(long senderId) {
+    public void setSenderId(Long senderId) {
         this.senderId = senderId;
     }
 
@@ -81,11 +81,11 @@ public class MessageBean extends PersistentEntity {
         this.senderName = senderName;
     }
 
-    public long getReceiverId() {
+    public Long getReceiverId() {
         return receiverId;
     }
 
-    public void setReceiverId(long receiverId) {
+    public void setReceiverId(Long receiverId) {
         this.receiverId = receiverId;
     }
 

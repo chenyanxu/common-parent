@@ -23,10 +23,10 @@ public abstract class BaseMessageEvent {
     protected static final int ADMIN_USER_ID = 1;
     protected static final String ADMIN_USER_NAME = "管理员";
 
-    protected MessageBean createMessageBean(long receiverId, String content, String title) {
+    protected MessageBean createMessageBean(Long receiverId, String content, String title) {
         MessageBean messageBean = new MessageBean();
         messageBean.setCreationDate(new Date());
-        messageBean.setSenderId(ADMIN_USER_ID);
+        messageBean.setSenderId(new Long(ADMIN_USER_ID));
         messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
         messageBean.setCategory(MessageCategories.SYSTEM.getId());//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息

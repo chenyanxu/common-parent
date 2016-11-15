@@ -59,7 +59,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
         String receiverNames = senderMessageBean.getReceiverNames();
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
-        long senderId = userBean.getId();
+        Long senderId = userBean.getId();
         try {
             jsonStatus.setSuccess(true);
             senderMessageBean.setSenderId(senderId);
