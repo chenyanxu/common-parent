@@ -31,7 +31,7 @@ public class WorkFlowNewTaskMsgEventImpl extends BaseMessageEvent implements Eve
         String json = (String) event.getProperty("body");
         Gson gson = new Gson();
         JSONObject taskJson = new JSONObject(json);
-        String businessKey = (String) taskJson.get("businessKey");
+        String businessNo = (String) taskJson.get("businessNo");
         //查找组对应的用户id
         String groupName = (String) taskJson.get("group");
         //解析group，orgName+“-”+职位
@@ -42,7 +42,7 @@ public class WorkFlowNewTaskMsgEventImpl extends BaseMessageEvent implements Eve
         for (String userloginName : loginUserList) {
             UserBean userBean = userBeanService.getUserBeanByLoginName(userloginName);
             String userName = userBean.getName();
-            String content = String.format(MSG_CONTENT, userName, businessKey);
+            String content = String.format(MSG_CONTENT, userName, businessNo);
             MessageBean messageBean = createMessageBean(userBean.getId(), content, MSG_TITLE);
             dao.save(messageBean);
             stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, userBean.getId()), gson.toJson(messageBean), day);

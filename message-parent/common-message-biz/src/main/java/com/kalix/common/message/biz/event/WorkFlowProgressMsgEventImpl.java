@@ -23,8 +23,8 @@ public class WorkFlowProgressMsgEventImpl extends BaseMessageEvent implements Ev
         JSONObject taskJson = new JSONObject(json);
         String receiverId = (String) taskJson.get("startUserId");
         UserBean userBean = userBeanService.getUserBeanByLoginName(receiverId);
-        String businessKey = (String) taskJson.get("businessKey");
-        String content = String.format(MSG_CONTENT, userBean.getName(), businessKey);
+        String businessNo = (String) taskJson.get("businessNo");
+        String content = String.format(MSG_CONTENT, userBean.getName(), businessNo);
 
         MessageBean messageBean = createMessageBean(userBean.getId(), content, MSG_TITLE);
         dao.save(messageBean);
