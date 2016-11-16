@@ -6,10 +6,14 @@
 Ext.define('kalix.message.receiver.view.MessageSearchForm', {
     extend: 'kalix.view.components.common.BaseSearchForm',
     requires: [
-        'kalix.admin.adminDict.component.AdminDictCombobox'
+        'kalix.admin.adminDict.component.AdminDictCombobox',
+        'kalix.message.receiver.controller.MessageSearchFormController'
     ],
     alias: 'widget.messageReceiverSearchForm',
     xtype: 'messageReceiverSearchForm',
+    controller: {
+        type: 'messageSearchFormController'
+    },
     storeId: 'messageReceiverStore',
     items: [
         {

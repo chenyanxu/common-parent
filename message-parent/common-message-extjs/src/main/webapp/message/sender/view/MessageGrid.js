@@ -26,7 +26,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
     //todo 在此修改grid显示列
     stripeRows: true,
     manageHeight: true,
-    forceFit: true,
+    //forceFit: true,
     selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
     columns: [
         {
