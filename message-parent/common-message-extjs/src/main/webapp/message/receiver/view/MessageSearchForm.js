@@ -44,7 +44,7 @@ Ext.define('kalix.message.receiver.view.MessageSearchForm', {
         },
         {
             xtype: 'datefield',
-            format: 'Y-m-d',
+            format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
             fieldLabel: '收件时间:',
             labelAlign: 'right',
             labelWidth: 60,
@@ -59,7 +59,7 @@ Ext.define('kalix.message.receiver.view.MessageSearchForm', {
         },
         {
             xtype: 'datefield',
-            format: 'Y-m-d',
+            format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
             headLabel: true,
             labelAlign: 'right',
             width: 140,

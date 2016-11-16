@@ -57,6 +57,7 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
                 allowBlank: false,
                 xtype: 'datefield',
                 format: 'Y-m-d H:i:s',
+                formatText:'格式为YYYY-mm-dd H:i:s',
                 bind: {
                     value: '{rec.creationDate}'
                 }
