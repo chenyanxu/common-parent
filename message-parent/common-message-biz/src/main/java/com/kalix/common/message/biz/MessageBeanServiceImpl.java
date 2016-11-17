@@ -62,7 +62,8 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         } else {
             jsonStr = jsonStr.replace("}", ",\"receiverId\":\"" + userId + "\"}");
         }
-        return super.getAllEntityByQuery(page, limit, jsonStr);
+        // 按照read进行排序
+        return super.getAllEntityByQuery(page, limit, jsonStr,"[{\"property\":\"read\",\"direction\":\"ASC\"}]");
     }
 
     @Override
