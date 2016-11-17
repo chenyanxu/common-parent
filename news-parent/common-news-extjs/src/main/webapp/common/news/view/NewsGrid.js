@@ -48,6 +48,10 @@ Ext.define('kalix.common.news.view.NewsGrid', {
                 text: '发布时间',
                 dataIndex: 'creationDate',
                 flex: 1
+            },{
+                text: '修改时间',
+                dataIndex: 'updateDate',
+                flex: 1
             },
             {
                 xtype: 'securityGridColumnRUD',
