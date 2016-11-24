@@ -45,7 +45,7 @@
             <!-- this is a rest DELETE to delete a news -->
             <delete uri="/{id}" id="route-deleteNews"
                     outType="com.kalix.framework.core.api.persistence.JsonStatus">
-                <description>Delete a News</description>
+                <description>删除一个记录</description>
                 <to uri="bean:newsService?method=deleteEntity(${header.id})"/>
             </delete>
 
