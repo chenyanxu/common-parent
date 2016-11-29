@@ -2,6 +2,8 @@ package com.kalix.common.news.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.framework.core.api.persistence.PersistentEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -17,12 +19,16 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "common_news")
+@ApiModel("新闻<br>NewsBean")
 public class NewsBean extends PersistentEntity {
+    @ApiModelProperty("标题")
     private String title;   //标题
+    @ApiModelProperty("内容")
     private String content; //内容
+    @ApiModelProperty(hidden = true)
     private String publishPeople;//发布人
-
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @ApiModelProperty(hidden = true)
     private Date publishDate;//发布时间
 
     public String getTitle() {
@@ -49,6 +55,7 @@ public class NewsBean extends PersistentEntity {
         this.publishPeople = publishPeople;
     }
 
+    @ApiModelProperty(hidden = true)
     public Date getPublishDate() {
         return publishDate;
     }

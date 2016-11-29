@@ -1,54 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-
     <reference id="newsService" interface="com.kalix.common.news.api.biz.INewsBeanService"/>
 
+    <bean id="newsRoute" class="com.kalix.framework.core.impl.camel.BaseRouteBuilder">
+        <property name="beanName" value="com.kalix.common.news.entities.NewsBean"/>
+    </bean>
     <camelContext id="newsCamel" xmlns="http://camel.apache.org/schema/blueprint">
-
-        <restConfiguration component="servlet" bindingMode="json">
-            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
-        </restConfiguration>
-
-        <!-- defines the rest services using the context-path /news -->
-        <rest path="/newss" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
-            <description>news rest service</description>
-
-            <!-- this is a rest GET to find all news -->
-            <get id="route-getAllNews" outType="com.kalix.framework.core.api.persistence.JsonData">
-                <description>Find all Newss</description>
-                <to uri="bean:newsService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
-            </get>
-
-            <!-- this is a rest POST to create a news -->
-            <post id="route-addNews" type="com.kalix.common.news.entities.NewsBean"
-                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
-                <description>Create a News</description>
-                <to uri="bean:newsService?method=saveEntity"/>
-            </post>
-
-            <!-- this is a rest GET to view a news by the given id -->
-            <get uri="/{id}" id="route-getNews" outType="com.kalix.common.news.entities.NewsBean">
-                <description>Find News by id</description>
-                <to uri="bean:newsService?method=getEntity(${header.id})"/>
-            </get>
-
-            <!-- this is a rest PUT to update a news -->
-            <put uri="/{id}" id="route-updateNews" type="com.kalix.common.news.entities.NewsBean"
-                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
-                <description>Updates a News</description>
-                <to uri="bean:newsService?method=updateEntity"/>
-            </put>
-
-            <!-- this is a rest DELETE to delete a news -->
-            <delete uri="/{id}" id="route-deleteNews"
-                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
-                <description>Delete a News</description>
-                <to uri="bean:newsService?method=deleteEntity(${header.id})"/>
-            </delete>
-
-        </rest>
+        <routeBuilder ref="newsRoute"/>
     </camelContext>
 </blueprint>
