@@ -20,11 +20,9 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.kalix.common.news</groupId>
+            <artifactId>common-news-api</artifactId>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-        </plugins>
-    </build>
-
 </project>
