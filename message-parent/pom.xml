@@ -54,6 +54,11 @@
                 <artifactId>admin-duty-api</artifactId>
                 <version>${project.admin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.kalix.middleware.xmpp</groupId>
+                <artifactId>middleware-xmpp-api</artifactId>
+                <version>${project.middleware.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
