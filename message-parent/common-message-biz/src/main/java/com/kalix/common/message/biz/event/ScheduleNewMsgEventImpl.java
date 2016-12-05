@@ -39,7 +39,7 @@ public class ScheduleNewMsgEventImpl extends BaseMessageEvent implements EventHa
         stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId())), gson.toJson(messageBean), day);
 
         String participants[] = participant.split(",");
-        if(participants.length > 0){
+        if(!participant.isEmpty() && participants.length > 0){
             for(int i = 0; i < participants.length; i++) {
                 userBean = userBeanService.getEntity(Long.parseLong(participants[i]));
                 String participantName = userBean.getName();
@@ -49,7 +49,6 @@ public class ScheduleNewMsgEventImpl extends BaseMessageEvent implements EventHa
 
                 stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId())), gson.toJson(messageBean), day);
             }
-
         }
     }
 }
