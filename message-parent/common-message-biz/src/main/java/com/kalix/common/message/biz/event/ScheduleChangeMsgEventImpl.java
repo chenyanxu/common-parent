@@ -1,18 +1,18 @@
 package com.kalix.common.message.biz.event;
 
-import com.google.gson.Gson;
 import com.kalix.common.message.api.BaseMailEvent;
 import com.kalix.common.message.api.Const;
 import com.kalix.common.message.biz.util.MessageUtil;
-import com.kalix.common.message.entities.MessageBean;
 import org.osgi.service.event.Event;
-import org.osgi.service.event.EventHandler;
+
+import java.util.Map;
 
 /**
  * 计划任务中的消息进行监听处理类,负责把任务的状态修改发送给任务的布置人。
  * Created by sunlf on 2016/8/26.
  */
-public class ScheduleChangeMsgEventImpl extends BaseMailEvent implements EventHandler {
+public class ScheduleChangeMsgEventImpl extends BaseMailEvent {
+
     //public static final String MSG_CONTENT = "%s,您好！\r\n  您布置的任务[%s]状态已经由[%s]修改,状态从[%s]修改为:[%s]，请查看！";
     public static final String MSG_TITLE = "计划任务状态修改提醒";
 
@@ -44,16 +44,12 @@ public class ScheduleChangeMsgEventImpl extends BaseMailEvent implements EventHa
         stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT,
                 String.valueOf(userId)), gson.toJson(messageBean), day);*/
 
-        //布置人ID
-        Long userId = (Long) event.getProperty("userId");
-        String content = MessageUtil.getScheduleChangeMessage(event);
-
-        MessageBean messageBean = createMessageBean(userId, content, MSG_TITLE);
-        dao.save(messageBean);
-        //add msg to stack
-        Gson gson = new Gson();
+        Map<Long, String> contents = getMessage(event);
         //向布置人发送消息
-        stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT,
-                String.valueOf(userId)), gson.toJson(messageBean), day);
+        sendMessage(contents, MSG_TITLE, Const.POLLING_MESSAGE_TOPIC_FORMAT, true);
+    }
+
+    protected Map<Long, String> getMessage(Event event) {
+        return MessageUtil.getScheduleChangeMessage(event);
     }
 }

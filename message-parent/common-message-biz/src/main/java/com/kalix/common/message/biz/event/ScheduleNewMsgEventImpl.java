@@ -1,12 +1,9 @@
 package com.kalix.common.message.biz.event;
 
-import com.google.gson.Gson;
 import com.kalix.common.message.api.BaseMailEvent;
 import com.kalix.common.message.api.Const;
 import com.kalix.common.message.biz.util.MessageUtil;
-import com.kalix.common.message.entities.MessageBean;
 import org.osgi.service.event.Event;
-import org.osgi.service.event.EventHandler;
 
 import java.util.Map;
 
@@ -14,7 +11,8 @@ import java.util.Map;
  * 计划任务中的消息进行监听处理类,负责把新建的任务发送给任务的执行人。
  * Created by sunlf on 2016/8/26.
  */
-public class ScheduleNewMsgEventImpl extends BaseMailEvent implements EventHandler {
+public class ScheduleNewMsgEventImpl extends BaseMailEvent {
+
     //public static final String MSG_CONTENT = "%s,您好！\r\n  您收到了一条由%s布置的新任务，任务名称为:%s，请查看！";
     public static final String MSG_TITLE = "计划任务新任务提醒";
 
@@ -53,17 +51,11 @@ public class ScheduleNewMsgEventImpl extends BaseMailEvent implements EventHandl
             }
         }*/
 
-        Map<Long, String> contents = MessageUtil.getScheduleNewMessage(event);
-        if (contents != null && !contents.isEmpty()) {
-            for (Long key : contents.keySet()) {
-                String content = contents.get(key);
+        Map<Long, String> contents = getMessages(event);
+        sendMessage(contents, MSG_TITLE, Const.POLLING_MESSAGE_TOPIC_FORMAT, true);
+    }
 
-                MessageBean messageBean = createMessageBean(key, content, MSG_TITLE);
-                dao.save(messageBean);
-                //add msg to stack
-                Gson gson = new Gson();
-                stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(key)), gson.toJson(messageBean), day);
-            }
-        }
+    protected Map<Long, String> getMessages(Event event) {
+        return  MessageUtil.getScheduleNewMessage(event);
     }
 }

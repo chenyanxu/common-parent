@@ -1,12 +1,9 @@
 package com.kalix.common.message.biz.event;
 
-import com.google.gson.Gson;
 import com.kalix.common.message.api.BaseMailEvent;
 import com.kalix.common.message.api.Const;
 import com.kalix.common.message.biz.util.MessageUtil;
-import com.kalix.common.message.entities.MessageBean;
 import org.osgi.service.event.Event;
-import org.osgi.service.event.EventHandler;
 
 import java.util.Map;
 
@@ -14,7 +11,8 @@ import java.util.Map;
  * 工作流中的消息进行监听处理类
  * Created by zangyanming on 2016/2/23.
  */
-public class WorkFlowNewTaskMsgEventImpl extends BaseMailEvent implements EventHandler {
+public class WorkFlowNewTaskMsgEventImpl extends BaseMailEvent {
+
     //private final static String MSG_CONTENT = "%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为[%s]。";
     private final static String MSG_TITLE = "待办流程提醒";
 
@@ -42,17 +40,11 @@ public class WorkFlowNewTaskMsgEventImpl extends BaseMailEvent implements EventH
         }
             //获得用户名*/
 
-        Map<Long, String> contents = MessageUtil.getWorkFlowNewTaskMessage(event);
-        if (contents != null && !contents.isEmpty()) {
-            for (Long key : contents.keySet()) {
-                String content = contents.get(key);
+        Map<Long, String> contents = getMessages(event);
+        sendMessage(contents, MSG_TITLE, Const.POLLING_MESSAGE_TOPIC_FORMAT, true);
+    }
 
-                MessageBean messageBean = createMessageBean(key, content, MSG_TITLE);
-                dao.save(messageBean);
-                //add msg to stack
-                Gson gson = new Gson();
-                stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(key)), gson.toJson(messageBean), day);
-            }
-        }
+    protected Map<Long, String> getMessages(Event event) {
+        return  MessageUtil.getWorkFlowNewTaskMessage(event);
     }
 }

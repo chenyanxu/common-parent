@@ -12,6 +12,7 @@ import java.util.Map;
  * Created by sunlf on 2016/2/23.
  */
 public class CommonMsgEventImpl extends BaseMailEvent {
+
     //public static final String MSG_CONTENT = "%s,您好！\r\n  您收到了一条新信息，请查看！";
     public static final String MSG_TITLE = "个人新信息提醒";
 

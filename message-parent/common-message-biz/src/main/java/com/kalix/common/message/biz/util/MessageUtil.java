@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/12/5.
+ * Created by houqj on 2016/12/5.
  */
 public class MessageUtil {
 
@@ -40,6 +40,7 @@ public class MessageUtil {
     }
 
     public static Map<Long,String> getScheduleNewMessage(Event event) {
+
         Map<Long, String> msgs = new HashMap<Long, String>();
 
         //布置人
@@ -70,7 +71,9 @@ public class MessageUtil {
         return  msgs;
     }
 
-    public static String getScheduleChangeMessage(Event event) {
+    public static Map<Long,String> getScheduleChangeMessage(Event event) {
+
+        Map<Long, String> msgs = new HashMap<Long, String>();
 
         //布置人
         String userName = (String) event.getProperty("userName");
@@ -83,11 +86,15 @@ public class MessageUtil {
         String oldState = (String) event.getProperty("oldState");
         //任务状态
         String state = (String) event.getProperty("state");
+        String msg = formatScheduleChangeMessage(userName, taskName, senderName, oldState, state);
+        msgs.put(head, msg);
 
-        return formatScheduleChangeMessage(userName, taskName, senderName, oldState, state);
+        return msgs;
     }
 
-    public static String getScheduleSuperviseMessage(Event event) {
+    public static Map<Long,String> getScheduleSuperviseMessage(Event event) {
+
+        Map<Long, String> msgs = new HashMap<Long, String>();
 
         //负责人
         Long head = (Long) event.getProperty("head");
@@ -97,8 +104,10 @@ public class MessageUtil {
         //任务名称
         String taskName = (String) event.getProperty("taskName");
         String info = (String) event.getProperty("info");
+        String msg = formatScheduleSuperviseMessage(receiverName, userName, taskName, info);
+        msgs.put(head, msg);
 
-        return formatScheduleSuperviseMessage(receiverName, userName, taskName, info);
+        return msgs;
     }
 
     public static Map<Long,String> getWorkFlowNewTaskMessage(Event event) {
@@ -124,15 +133,20 @@ public class MessageUtil {
         return  msgs;
     }
 
-    public static String getWorkFlowProgressMessage(Event event) {
+    public static Map<Long,String> getWorkFlowProgressMessage(Event event) {
+
+        Map<Long, String> msgs = new HashMap<Long, String>();
 
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
         String receiverId = (String) taskJson.get("startUserId");
-        String receiverName = getUserName(Long.parseLong(receiverId));
+        Long uid = Long.parseLong(receiverId);
+        String receiverName = getUserName(uid);
         String businessNo = (String) taskJson.get("businessNo");
+        String msg = formatWorkFlowProgressMessage(receiverName, businessNo);
+        msgs.put(uid, msg);
 
-        return formatWorkFlowProgressMessage(receiverName, businessNo);
+        return msgs;
     }
 
     protected static String formatCommonMessage(String receiverName) {
@@ -154,7 +168,7 @@ public class MessageUtil {
     }
 
     protected static String formatWorkFlowNewTaskMessage(String receiverName, String businessNo) {
-        return String.format(MSG_CONTENT_WORKFLOW_PROGRESS, receiverName, businessNo);
+        return String.format(MSG_CONTENT_WORKFLOW_NEW, receiverName, businessNo);
     }
 
     protected static String formatWorkFlowProgressMessage(String receiverName, String businessNo) {
