@@ -24,6 +24,10 @@
             <groupId>com.kalix.common.news</groupId>
             <artifactId>common-news-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.framework.core</groupId>
+            <artifactId>framework-core-impl</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

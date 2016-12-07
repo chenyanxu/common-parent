@@ -41,7 +41,6 @@
     <bean id="workFlowMessageEventImpl" class="com.kalix.common.message.biz.event.WorkFlowNewTaskMsgEventImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="stackService" ref="stackService"/>
-        <property name="roleBeanService" ref="roleBeanService"/>
         <property name="userBeanService" ref="userBeanService"/>
         <property name="dutyBeanService" ref="dutyBeanService"/>
     </bean>
