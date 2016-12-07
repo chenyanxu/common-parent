@@ -15,14 +15,12 @@ public abstract class BaseXMPPEvent extends BaseMessageEvent {
 
     protected IXMPPService xmppService;
 
-    protected List<String> getReceiverLoginName(Long userId) {
-        List<String> receivers = new ArrayList<String>();
-        UserBean userBean = userBeanService.getEntity(userId);
-        receivers.add(userBean.getLoginName());
-        return receivers;
-    }
+    protected void sendMessage(Map<Long, String> contents, String msgTitle, String constLabel, boolean isSave){
+        sendMessage(contents);
+    };
 
     protected void sendMessage(Map<Long, String> contents) {
+
         if (contents != null && !contents.isEmpty()) {
             for (Long key : contents.keySet()) {
                 String content = contents.get(key);
@@ -35,11 +33,11 @@ public abstract class BaseXMPPEvent extends BaseMessageEvent {
         }
     }
 
-    protected void sendMessage(Long userId, String content) {
-        if (!content.isEmpty()) {
-            List<String> receivers = getReceiverLoginName(userId);
-            xmppService.sendMessage(receivers, content);
-        }
+    protected List<String> getReceiverLoginName(Long userId) {
+        List<String> receivers = new ArrayList<String>();
+        UserBean userBean = userBeanService.getEntity(userId);
+        receivers.add(userBean.getLoginName());
+        return receivers;
     }
 
     public void setXmppService(IXMPPService xmppService) {
