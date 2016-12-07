@@ -27,10 +27,16 @@ public class MessageUtil {
     static IUserBeanService userBeanService = OsgiUtil.waitForServices(IUserBeanService.class,null);
     static IDutyBeanService dutyBeanService = OsgiUtil.waitForServices(IDutyBeanService.class,null);
 
-    public static String getCommonMessage(Event event) {
+    public static Map<Long,String> getCommonMessage(Event event) {
+
+        Map<Long, String> msgs = new HashMap<Long, String>();
+
         Long userId = (Long) event.getProperty("userId");
         String receiverName = getUserName(userId);
-        return formatCommonMessage(receiverName);
+        String msg = formatCommonMessage(receiverName);
+        msgs.put(userId, msg);
+
+        return msgs;
     }
 
     public static Map<Long,String> getScheduleNewMessage(Event event) {
