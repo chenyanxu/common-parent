@@ -7,7 +7,7 @@
     </bean>
     <service id="managedService" interface="org.osgi.service.cm.ManagedService" ref="commonApplicationConfig">
         <service-properties>
-            <entry key="service.pid" value="ConfigCommonApp"/>
+            <entry key="service.pid" value="config.common.app"/>
         </service-properties>
     </service>
 </blueprint>

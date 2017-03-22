@@ -45,14 +45,14 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>target/classes/ConfigCommonApp.cfg</file>
+                                    <file>target/classes/config.common.app.cfg</file>
                                     <type>cfg</type>
-                                    <classifier>ConfigCommonApp</classifier>
+                                    <classifier>config.common.app</classifier>
                                 </artifact>
                                 <artifact>
-                                    <file>target/classes/ConfigCommonDict.cfg</file>
+                                    <file>target/classes/config.common.dict.cfg</file>
                                     <type>cfg</type>
-                                    <classifier>ConfigCommonDict</classifier>
+                                    <classifier>config.common.dict</classifier>
                                 </artifact>
                                 <artifact>
                                     <file>target/classes/ConfigMessagePool.cfg</file>

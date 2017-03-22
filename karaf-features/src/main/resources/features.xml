@@ -55,11 +55,11 @@
     </feature>
 
     <feature name="common-config" version="${project.common.version}">
-        <configfile finalname="/etc/ConfigCommonApp.cfg" override="true">
-            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigCommonApp
+        <configfile finalname="/etc/config.common.app.cfg" override="true">
+            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/config.common.app
         </configfile>
-        <configfile finalname="/etc/ConfigCommonDict.cfg" override="true">
-            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigCommonDict
+        <configfile finalname="/etc/config.common.dict.cfg" override="true">
+            mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/config.common.dict
         </configfile>
         <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
             mvn:com.kalix.common.core/common-core-etc/${project.common.version}/cfg/ConfigMessagePool
