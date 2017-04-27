@@ -27,8 +27,8 @@ Ext.define('kalix.common.note.view.NoteGrid', {
         //defaults: {flex: 1},
         items: [
             /*{
-             xtype: "rownumberer",
-             text: "行号",
+             xtype: 'rownumberer',
+             text: '行号',
              width: 50,
              align: 'center'
              },*/
@@ -93,8 +93,7 @@ Ext.define('kalix.common.note.view.NoteGrid', {
                     'delete'
                 ]
             }
-        ],
-
+        ]
     },
     plugins: [
         {
@@ -135,7 +134,5 @@ Ext.define('kalix.common.note.view.NoteGrid', {
             iconCls: 'x-fa fa-file-excel-o',
             handler: 'exportToExcel'
         }]
-
     }
-
 });

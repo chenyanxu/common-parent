@@ -25,8 +25,8 @@ Ext.define('kalix.common.news.view.NewsGrid', {
     columns: {
         items: [
             /*{
-             xtype: "rownumberer",
-             text: "行号",
+             xtype: 'rownumberer',
+             text: '行号',
              width: 50,
              align: 'center'
              },*/

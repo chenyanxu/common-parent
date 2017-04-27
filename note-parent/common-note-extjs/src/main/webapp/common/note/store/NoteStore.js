@@ -9,6 +9,6 @@ Ext.define('kalix.common.note.store.NoteStore', {
     model: 'kalix.common.note.model.NoteModel',
     alias: 'store.noteStore',
     xtype: 'noteStore',
-    storeId: "noteStore",
+    storeId: 'noteStore',
     proxyUrl: CONFIG.restRoot + '/camel/rest/notes'
 });

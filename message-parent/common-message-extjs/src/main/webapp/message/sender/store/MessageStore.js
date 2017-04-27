@@ -9,7 +9,7 @@ Ext.define('kalix.message.sender.store.MessageStore', {
     model: 'kalix.message.sender.model.MessageModel',
     alias: 'store.messageSenderStore',
     xtype: 'messageSenderStore',
-    storeId: "messageSenderStore",
+    storeId: 'messageSenderStore',
     singleton: true,
     proxyUrl: CONFIG.restRoot + '/camel/rest/messages/sender'
 });

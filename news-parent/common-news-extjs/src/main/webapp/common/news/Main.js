@@ -17,7 +17,7 @@ Ext.define('kalix.common.news.Main', {
         }, {
             xtype: 'newsGridPanel',
             id: 'newsGridPanel',
-            title: '公司新闻列表',
+            title: '公司新闻列表'
         }
     ]
 });

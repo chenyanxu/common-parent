@@ -23,7 +23,7 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
         show: 'onShow'
     },
     iconCls: 'iconfont icon-add',
-    xtype: "messageSenderWindow",
+    xtype: 'messageSenderWindow',
     width: 600,
     modal: true,
     items: [

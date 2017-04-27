@@ -10,7 +10,6 @@ Ext.define('kalix.message.sender.controller.MessageWindowController', {
     onShow: function () {
         //this.getView().lookupViewModel().getData().rec.set('senderid', Ext.util.Cookies.get('currentUserName') || '系统管理员');
         //this.getView().lookupViewModel().getData().rec.dirty = false;
-
     },
     onChange: function (combo, newValue, oldValue, eOpts) {
         var records = combo.getValueRecords();

@@ -27,10 +27,10 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
     stripeRows: true,
     manageHeight: true,
     //forceFit: true,
-    selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
+    selModel: {selType: 'checkboxmodel', mode: 'SIMPLE'},
     columns: [
         {
-            xtype: "rownumberer"
+            xtype: 'rownumberer'
         },
         {
             text: '编号',

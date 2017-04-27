@@ -40,7 +40,7 @@ Ext.define('kalix.message.receiver.view.MessageSearchForm', {
             labelWidth: 60,
             width: 200,
             name: '%title%',
-            margin: '0 0 0 20',
+            margin: '0 0 0 20'
         },
         {
             xtype: 'datefield',

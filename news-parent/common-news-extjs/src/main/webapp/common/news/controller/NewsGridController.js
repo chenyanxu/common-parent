@@ -7,5 +7,4 @@
 Ext.define('kalix.common.news.controller.NewsGridController', {
     extend: 'kalix.controller.BaseGridController',
     alias: 'controller.newsGridController'
-
 });

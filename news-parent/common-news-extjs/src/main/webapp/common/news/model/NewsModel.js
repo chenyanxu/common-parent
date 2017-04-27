@@ -9,11 +9,11 @@ Ext.define('kalix.common.news.model.NewsModel', {
     extend: 'kalix.model.BaseModel',
     fields: [
         {
-            name: 'title',
+            name: 'title'
         }, {
-            name: 'content',
+            name: 'content'
         }, {
-            name: 'publishPeople',
+            name: 'publishPeople'
         }, {
             name: 'publishDate',
             type: 'date',

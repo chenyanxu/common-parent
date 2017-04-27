@@ -9,6 +9,6 @@ Ext.define('kalix.common.news.store.NewsStore', {
     model: 'kalix.common.news.model.NewsModel',
     alias: 'store.newsStore',
     xtype: 'newsStore',
-    storeId: "newsStore",
+    storeId: 'newsStore',
     proxyUrl: CONFIG.restRoot + '/camel/rest/newss'
 });

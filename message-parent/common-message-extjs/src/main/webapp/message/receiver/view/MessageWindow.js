@@ -21,7 +21,7 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
     listeners: {
         show: 'onShow'
     },
-    xtype: "messageReceiverWindow",
+    xtype: 'messageReceiverWindow',
     width: 400,
     items: [
         {

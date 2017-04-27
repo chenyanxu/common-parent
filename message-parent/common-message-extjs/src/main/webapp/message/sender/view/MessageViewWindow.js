@@ -14,7 +14,7 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
     ],
     alias: 'widget.messageRecieverViewWindow',
     viewModel: 'messageSenderViewModel',
-    xtype: "messageRecieverViewWindow",
+    xtype: 'messageRecieverViewWindow',
     width: 400,
     //todo 在此修改查看字段
     items: [{
