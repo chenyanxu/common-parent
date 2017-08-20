@@ -10,4 +10,12 @@
             <entry key="service.pid" value="config.common.app"/>
         </service-properties>
     </service>
+
+    <bean id="commonDictConfig" class="com.kalix.framework.core.impl.system.BaseDictConfig">
+    </bean>
+    <service interface="org.osgi.service.cm.ManagedService" ref="commonDictConfig">
+        <service-properties>
+            <entry key="service.pid" value="config.common.dict"/>
+        </service-properties>
+    </service>
 </blueprint>
