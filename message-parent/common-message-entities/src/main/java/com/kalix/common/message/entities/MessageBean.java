@@ -3,7 +3,9 @@ package com.kalix.common.message.entities;
 
 import com.kalix.framework.core.api.persistence.PersistentEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -47,6 +49,7 @@ public class MessageBean extends PersistentEntity {
      * @describe 消息内容
      * @validator 不能为空
      */
+    @Lob
     private String content;
 
     /**

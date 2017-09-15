@@ -4,6 +4,7 @@ package com.kalix.common.message.entities;
 import com.kalix.framework.core.api.persistence.PersistentEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -26,11 +27,13 @@ public class SenderMessageBean extends PersistentEntity {
      * @describe 接收者与用户表关联的主键id
      * @validator 不能为空
      */
+    @Lob
     private String receiverIds;
     /**
      * @describe 接收者
      * @validator 不能为空
      */
+    @Lob
     private String receiverNames;
     /**
      * @describe 消息类别
@@ -46,6 +49,7 @@ public class SenderMessageBean extends PersistentEntity {
      * @describe 消息内容
      * @validator 不能为空
      */
+    @Lob
     private String content;
 
     public Long getSenderId() {
