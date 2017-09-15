@@ -44,7 +44,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
         String userId = String.valueOf(userBean.getId());
-        if (jsonStr == null) {
+        if (jsonStr.equals("") || jsonStr == null) {
             jsonStr = "{\"senderId\":\"" + userId + "\"}";
         } else {
             jsonStr = jsonStr.replace("}", ",\"senderId\":\"" + userId + "\"}");
