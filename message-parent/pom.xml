@@ -24,7 +24,7 @@
         <module>common-message-biz</module>
         <module>common-message-rest</module>
         <module>common-message-extjs</module>
-        <module>common-xmpp-biz</module>
+        <!--<module>common-xmpp-biz</module>-->
     </modules>
 
     <dependencyManagement>
@@ -34,7 +34,6 @@
                 <artifactId>common-message-entities</artifactId>
                 <version>${project.common.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.kalix.common.message</groupId>
                 <artifactId>common-message-api</artifactId>
