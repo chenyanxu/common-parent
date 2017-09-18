@@ -1,7 +1,7 @@
 package com.kalix.common.xmpp.biz.event;
 
-import com.kalix.common.message.api.BaseXMPPEvent;
 import com.kalix.common.message.api.util.MessageUtil;
+import com.kalix.common.xmpp.biz.BaseXMPPEvent;
 import org.osgi.service.event.Event;
 
 import java.util.Map;

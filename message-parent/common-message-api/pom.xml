@@ -39,9 +39,5 @@
             <groupId>com.kalix.admin.duty</groupId>
             <artifactId>admin-duty-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.kalix.middleware.xmpp</groupId>
-            <artifactId>middleware-xmpp-api</artifactId>
-        </dependency>
     </dependencies>
 </project>
