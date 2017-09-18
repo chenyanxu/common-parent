@@ -1,16 +1,16 @@
-package com.kalix.common.message.biz.xmppevent;
+package com.kalix.common.xmpp.biz.event;
 
 import com.kalix.common.message.api.BaseXMPPEvent;
-import com.kalix.common.message.biz.util.MessageUtil;
+import com.kalix.common.message.api.util.MessageUtil;
 import org.osgi.service.event.Event;
 
 import java.util.Map;
 
 /**
- * 计划任务中的消息进行监听处理类,负责把新建的任务发送给任务的执行人。
+ * 工作流中的消息进行监听处理类,负责把工作流的进度发送给启动者。
  * Created by houqj on 2016/12/06.
  */
-public class ScheduleNewMsgEventImpl extends BaseXMPPEvent {
+public class CommonMsgEventImpl extends BaseXMPPEvent {
 
     @Override
     public void handleEvent(Event event) {
@@ -20,6 +20,6 @@ public class ScheduleNewMsgEventImpl extends BaseXMPPEvent {
     }
 
     protected Map<Long, String> getMessage(Event event) {
-        return MessageUtil.getScheduleNewMessage(event);
+        return MessageUtil.getCommonMessage(event);
     }
 }

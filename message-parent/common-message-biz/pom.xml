@@ -21,10 +21,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.kalix.common.message</groupId>
             <artifactId>common-message-api</artifactId>
         </dependency>

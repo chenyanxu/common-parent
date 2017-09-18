@@ -2,7 +2,7 @@ package com.kalix.common.message.biz.event;
 
 import com.kalix.common.message.api.BaseMailEvent;
 import com.kalix.common.message.api.Const;
-import com.kalix.common.message.biz.util.MessageUtil;
+import com.kalix.common.message.api.util.MessageUtil;
 import org.osgi.service.event.Event;
 
 import java.util.Map;

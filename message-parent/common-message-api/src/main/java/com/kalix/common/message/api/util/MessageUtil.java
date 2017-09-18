@@ -1,4 +1,4 @@
-package com.kalix.common.message.biz.util;
+package com.kalix.common.message.api.util;
 
 import com.kalix.admin.core.api.biz.IUserBeanService;
 import com.kalix.admin.core.entities.UserBean;
