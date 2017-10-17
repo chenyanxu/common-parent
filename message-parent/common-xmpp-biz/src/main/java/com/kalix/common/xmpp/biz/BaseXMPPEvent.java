@@ -1,6 +1,7 @@
-package com.kalix.common.message.api;
+package com.kalix.common.xmpp.biz;
 
 import com.kalix.admin.core.entities.UserBean;
+import com.kalix.common.message.api.BaseMessageEvent;
 import com.kalix.middleware.xmpp.api.biz.IXMPPService;
 
 import java.util.ArrayList;

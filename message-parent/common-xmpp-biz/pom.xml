@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>message-parent</artifactId>
+        <groupId>com.kalix.common.message</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>common-xmpp-biz</artifactId>
+    <name>Kalix Common XMPP Biz</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.kalix.common.message</groupId>
+            <artifactId>common-message-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.middleware.xmpp</groupId>
+            <artifactId>middleware-xmpp-api</artifactId>
+        </dependency>
+    </dependencies>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.symbolicName>com.kalix.common.xmpp.biz</bundle.symbolicName>
+    </properties>
+
+</project>
