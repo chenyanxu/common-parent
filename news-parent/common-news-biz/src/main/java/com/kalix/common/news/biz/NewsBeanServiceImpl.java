@@ -25,7 +25,7 @@ public class NewsBeanServiceImpl extends ShiroGenericBizServiceImpl<INewsBeanDao
         Assert.notNull(userName, "用户名不能为空.");
         if (StringUtils.isNotEmpty(userName)) {
             entity.setPublishPeople(userName);
-            entity.setPublishDate(new Date());
         }
+        super.beforeSaveEntity(entity, status);
     }
 }
