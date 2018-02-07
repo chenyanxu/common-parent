@@ -120,7 +120,7 @@ public class MessageUtil {
         //查找组对应的用户id
         String groupName = (String) taskJson.get("group");
         //解析group，orgName+“-”+职位
-        String str[] = groupName.split("-");
+        String str[] = groupName.split("::");
         String orgName = str[0];
         String dutyName = str[1];
         List<String> loginUserList = getUserList(orgName, dutyName);
