@@ -119,13 +119,21 @@ public class MessageUtil {
         String businessNo = (String) taskJson.get("businessNo");
         //查找组对应的用户id
         String groupName = (String) taskJson.get("group");
-        //解析group，orgName+“-”+职位
-        String str[] = groupName.split("::");
-        String orgName = str[0];
-        String dutyName = str[1];
-        List<String> loginUserList = getUserList(orgName, dutyName);
-        for (String userloginName : loginUserList) {
-            UserBean userBean = userBeanService.getUserBeanByLoginName(userloginName);
+        if (!groupName.equals("")) {
+            //解析group，orgName+“-”+职位
+            String str[] = groupName.split("::");
+            String orgName = str[0];
+            String dutyName = str[1];
+            List<String> loginUserList = getUserList(orgName, dutyName);
+            for (String userloginName : loginUserList) {
+                UserBean userBean = userBeanService.getUserBeanByLoginName(userloginName);
+                String content = formatWorkFlowNewTaskMessage(userBean.getName(), businessNo);
+                msgs.put(userBean.getId(), content);
+            }
+        }
+        String userId = (String) taskJson.get("userId");
+        if (!userId.equals("")) {
+            UserBean userBean = userBeanService.getUserBeanByLoginName(userId);
             String content = formatWorkFlowNewTaskMessage(userBean.getName(), businessNo);
             msgs.put(userBean.getId(), content);
         }
