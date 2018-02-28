@@ -147,12 +147,11 @@ public class MessageUtil {
 
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
-        String receiverId = (String) taskJson.get("startUserId");
-        Long uid = Long.parseLong(receiverId);
-        String receiverName = getUserName(uid);
+        String userId = (String) taskJson.get("startUserId");
+        UserBean userBean = userBeanService.getUserBeanByLoginName(userId);
         String businessNo = (String) taskJson.get("businessNo");
-        String msg = formatWorkFlowProgressMessage(receiverName, businessNo);
-        msgs.put(uid, msg);
+        String msg = formatWorkFlowProgressMessage(userId, businessNo);
+        msgs.put(userBean.getId(), msg);
 
         return msgs;
     }
