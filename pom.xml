@@ -26,6 +26,7 @@
         <module>news-parent</module>
         <module>note-parent</module>
         <module>message-parent</module>
+        <module>address-parent</module>
     </modules>
     <build>
         <plugins>

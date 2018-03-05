@@ -1,0 +1,7 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Import-Package:javax.persistence,com.kalix.common.address.dao,*
+Bundle-Category: Kalix Common Address

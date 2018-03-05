@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.kalix.common</groupId>
+        <artifactId>common-parent</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.kalix.common.address</groupId>
+    <artifactId>address-parent</artifactId>
+
+    <name>Kalix Common Address</name>
+
+    <packaging>pom</packaging>
+
+    <properties>
+
+    </properties>
+    <modules>
+        <module>common-address-entities</module>
+        <module>common-address-api</module>
+        <module>common-address-dao</module>
+        <module>common-address-biz</module>
+        <module>common-address-rest</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.common.address</groupId>
+                <artifactId>common-address-api</artifactId>
+                <version>${project.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.common.address</groupId>
+                <artifactId>common-address-entities</artifactId>
+                <version>${project.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.admin.core</groupId>
+                <artifactId>admin-core-api</artifactId>
+                <version>${project.admin.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

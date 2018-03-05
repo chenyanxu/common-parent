@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="addressService" interface="com.kalix.common.address.api.biz.IAddressBeanService"/>
+
+    <camelContext id="addressCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /addresslist -->
+        <rest path="/addresslists" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <description>address rest service</description>
+
+            <!-- this is a rest GET to find all addresslist -->
+            <get id="route-getAllAddressLists" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all AddressLists</description>
+                <param name="page" type="query" required="true" dataType="String" defaultValue="1"
+                       description="page number"/>
+                <param name="limit" type="query" required="true" dataType="String" defaultValue="10"
+                       description="record size"/>
+                <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:addressService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+
+            <!-- this is a rest POST to create a addresslist -->
+            <post id="route-addAddressList" type="com.kalix.common.note.entities.AddressBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a AddressList</description>
+                <to uri="bean:addressService?method=saveEntity"/>
+            </post>
+
+            <!-- this is a rest GET to view a addresslist by the given id -->
+            <get uri="/{id}" id="route-getAddressList" outType="com.kalix.common.note.entities.AddressBean">
+                <description>Find AddressList by id</description>
+                <to uri="bean:addressService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a addresslist -->
+            <put uri="/{id}" id="route-updateAddressList" type="com.kalix.common.note.entities.AddressBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a AddressList</description>
+                <to uri="bean:addressService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete a addresslist -->
+            <delete uri="/{id}" id="route-deleteAddressList"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a AddressList</description>
+                <to uri="bean:addressService?method=deleteEntity(${header.id})"/>
+            </delete>
+
+        </rest>
+    </camelContext>
+</blueprint>

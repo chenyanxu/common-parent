@@ -1,0 +1,26 @@
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <service id="addressBeanService" interface="com.kalix.common.address.api.biz.IAddressBeanService"
+             ref="addressBeanServiceImpl">
+    </service>
+    <bean id="addressBeanServiceImpl" class="com.kalix.common.address.biz.AddressBeanServiceImpl">
+        <property name="dao" ref="addressBeanDao"/>
+    </bean>
+    <reference id="addressBeanDao" interface="com.kalix.common.address.api.dao.IAddressBeanDao"/>
+
+    <service id="addressGroupBeanService" interface="com.kalix.common.address.api.biz.IAddressGroupBeanService"
+             ref="addressGroupBeanServiceImpl">
+    </service>
+    <bean id="addressGroupBeanServiceImpl" class="com.kalix.common.address.biz.AddressGroupBeanServiceImpl">
+        <property name="dao" ref="addressGroupBeanDao"/>
+        <property name="orgBeanService" ref="organizationBeanService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+        <property name="addressBeanService" ref="addressBeanServiceImpl"/>
+    </bean>
+    <reference id="addressGroupBeanDao" interface="com.kalix.common.address.api.dao.IAddressGroupBeanDao"/>
+    <reference id="organizationBeanService" interface="com.kalix.admin.core.api.biz.IOrganizationBeanService"/>
+    <reference id="userBeanService" interface="com.kalix.admin.core.api.biz.IUserBeanService"/>
+</blueprint>
+
