@@ -7,8 +7,15 @@
     </service>
     <bean id="addressBeanServiceImpl" class="com.kalix.common.address.biz.AddressBeanServiceImpl">
         <property name="dao" ref="addressBeanDao"/>
+        <property name="senderMessageService" ref="senderMessageService"/>
+        <property name="commonDictBeanService" ref="commonDictBeanService"/>
+        <property name="userBeanService" ref="userBeanService"/>
+        <property name="messageBeanService" ref="messageBeanService"/>
     </bean>
     <reference id="addressBeanDao" interface="com.kalix.common.address.api.dao.IAddressBeanDao"/>
+    <reference id="senderMessageService" interface="com.kalix.common.message.api.biz.ISenderMessageBeanService"/>
+    <reference id="commonDictBeanService" interface="com.kalix.common.system.dict.api.biz.ICommonDictBeanService"/>
+    <reference id="messageBeanService" interface="com.kalix.common.message.api.biz.IMessageBeanService"/>
 
     <service id="addressGroupBeanService" interface="com.kalix.common.address.api.biz.IAddressGroupBeanService"
              ref="addressGroupBeanServiceImpl">

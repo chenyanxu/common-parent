@@ -28,6 +28,14 @@
             <groupId>com.kalix.admin.core</groupId>
             <artifactId>admin-core-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.common.message</groupId>
+            <artifactId>common-message-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.common.system.dict</groupId>
+            <artifactId>common-system-dict-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -87,6 +87,12 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         }
     }
 
+    private void setJsonStatus(JsonStatus jsonStatus, String tag, String msg, Boolean isSuccess) {
+        jsonStatus.setTag(tag);
+        jsonStatus.setMsg(msg);
+        jsonStatus.setSuccess(isSuccess);
+    }
+
     public void setUserBeanService(IUserBeanService userBeanService) {
         this.userBeanService = userBeanService;
     }

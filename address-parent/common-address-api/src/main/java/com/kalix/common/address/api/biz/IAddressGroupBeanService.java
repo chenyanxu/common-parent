@@ -4,6 +4,7 @@ package com.kalix.common.address.api.biz;
 import com.kalix.common.address.entities.AddressGroupBean;
 import com.kalix.framework.core.api.biz.IBizService;
 import com.kalix.framework.core.api.persistence.JsonData;
+import com.kalix.framework.core.api.persistence.JsonStatus;
 
 /**
  * @类描述：应用服务接口.
@@ -20,4 +21,16 @@ public interface IAddressGroupBeanService extends IBizService<AddressGroupBean> 
      * @return
      */
     JsonData getAllGroups(String jsonStr);
+
+    /**
+     * 修改当前组下的用户分组为我的好友，删除当前的组
+     * @param id 分组ID
+     * @param jsonStr 用户ID
+     * @return
+     */
+    JsonStatus deleteGroup(Long id, String jsonStr);
+
+    JsonData getMyFriendAddresses(Long currentUserId);
+    JsonData getMyWorkmateAddresses(Long currentUserId);
+    JsonData getMyDefaultGroupAddresses(Long currentUserId);
 }

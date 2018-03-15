@@ -3,7 +3,7 @@ package com.kalix.common.address.dao;
 import com.kalix.common.address.api.dao.IAddressGroupBeanDao;
 import com.kalix.common.address.entities.AddressGroupBean;
 import com.kalix.framework.core.impl.dao.GenericDao;
-import com.kalix.admin.core.api.dao.IOrganizationUserBeanDao;
+//import com.kalix.admin.core.api.dao.IOrganizationUserBeanDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +19,7 @@ import java.util.UUID;
  * @修改备注：
  */
 public class AddressGroupBeanDaoImpl extends GenericDao<AddressGroupBean, Long> implements IAddressGroupBeanDao {
-    private IOrganizationUserBeanDao orgUserBeanDao;
+//    private IOrganizationUserBeanDao orgUserBeanDao;
     private String uuid;
     public AddressGroupBeanDaoImpl() {
         uuid = UUID.randomUUID().toString();
@@ -44,7 +44,13 @@ public class AddressGroupBeanDaoImpl extends GenericDao<AddressGroupBean, Long> 
         return groupBeans.get(0);
     }
 
-    public void setOrgUserBeanDao(IOrganizationUserBeanDao orgUserBeanDao) {
-        this.orgUserBeanDao = orgUserBeanDao;
+    @Override
+    public List<AddressGroupBean> getAllGroupsByDefault(Long userId) {
+        return this.findByNativeSql("select * from common_address_group where userid=" + userId + " and isdefault = true", AddressGroupBean.class, null);
     }
+
+
+//    public void setOrgUserBeanDao(IOrganizationUserBeanDao orgUserBeanDao) {
+//        this.orgUserBeanDao = orgUserBeanDao;
+//    }
 }

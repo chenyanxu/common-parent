@@ -27,6 +27,10 @@
             <groupId>com.kalix.common.address</groupId>
             <artifactId>common-address-entities</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.common.message</groupId>
+            <artifactId>common-message-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

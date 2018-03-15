@@ -44,6 +44,16 @@
                 <artifactId>admin-core-api</artifactId>
                 <version>${project.admin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.kalix.common.message</groupId>
+                <artifactId>common-message-api</artifactId>
+                <version>${project.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.common.system.dict</groupId>
+                <artifactId>common-system-dict-api</artifactId>
+                <version>${project.common.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

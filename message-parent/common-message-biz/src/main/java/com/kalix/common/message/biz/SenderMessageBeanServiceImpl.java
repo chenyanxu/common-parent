@@ -14,6 +14,7 @@ import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
 import com.kalix.framework.core.util.JNDIHelper;
+import org.apache.shiro.subject.Subject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
@@ -92,6 +93,63 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
             jsonStatus.setSuccess(false);
             jsonStatus.setTag("SenderMessageBeanServiceImpl.java:saveAllEntities异常");
             jsonStatus.setMsg("发件失败");
+            return jsonStatus;
+        }
+    }
+
+    @Override
+    public JsonStatus saveInstantMessage(SenderMessageBean senderMessageBean) {
+        JsonStatus jsonStatus = new JsonStatus();
+        String loginName = "";
+        Subject subject = this.getShiroService().getSubject();
+        if (subject != null) {
+            Object principal = subject.getPrincipal();
+            if (principal != null) {
+                loginName = principal.toString();
+            }
+        }
+        if (loginName == null || loginName.isEmpty()) {
+            jsonStatus.setSuccess(false);
+            jsonStatus.setTag("SenderMessageBeanServiceImpl.java:saveInstantMessage 用户未登录");
+            jsonStatus.setMsg("发送失败");
+            return jsonStatus;
+        }
+        String receiverIds = senderMessageBean.getReceiverIds();
+        UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
+        Long senderId = userBean.getId();
+        try {
+            jsonStatus.setSuccess(true);
+            senderMessageBean.setSenderId(senderId);
+            receiverIds = receiverIds.replaceAll(",", ":");
+            receiverIds = receiverIds.replaceAll(";", ":");
+            String[] ids = receiverIds.split(":");
+            for (int i = 0; i < ids.length; i++) {
+                MessageBean newMessageBean = new MessageBean();
+                newMessageBean.setCreationDate(new Date());
+                newMessageBean.setSenderId(senderId);
+                newMessageBean.setSenderName(userBean.getName());
+                newMessageBean.setReceiverId(Long.parseLong(ids[i]));
+                int category = Integer.parseInt(senderMessageBean.getCategory());
+                newMessageBean.setCategory(category);//0 系统消息,1 流程消息， 2 个人消息,3 即时通讯
+                newMessageBean.setTitle(senderMessageBean.getTitle());
+                newMessageBean.setContent(senderMessageBean.getContent());
+                newMessageBean.setRead(false);
+                newMessageBean.setState(0);
+                //发送消息通知
+                postCommonEvent(newMessageBean);
+                // 保存收件信息
+                messageBeanService.saveEntity(newMessageBean);
+            }
+            // 保存发件信息
+            saveEntity(senderMessageBean);
+            jsonStatus.setTag("");
+            jsonStatus.setMsg("发送成功");
+            return jsonStatus;
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setSuccess(false);
+            jsonStatus.setTag("SenderMessageBeanServiceImpl.java:saveAllEntities异常");
+            jsonStatus.setMsg("发送失败");
             return jsonStatus;
         }
     }

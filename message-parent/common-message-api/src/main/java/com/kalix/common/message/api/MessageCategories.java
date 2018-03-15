@@ -4,7 +4,9 @@ package com.kalix.common.message.api;
  * Created by zangyanming on 2016/3/3.
  */
 public enum MessageCategories {
-    SYSTEM("系统消息", 0), WORKFLOW("流程消息", 1), COMMON("个人消息", 2), ASSIGNMENT("计划任务消息", 3);
+    SYSTEM("系统消息", 0), WORKFLOW("流程消息", 1), COMMON("个人消息", 2),
+        INSTANTMESSAGE("即时通讯消息", 3);
+//    ASSIGNMENT("计划任务消息", 3);
     // 成员变量
     private String CategoryName;
     private int id;

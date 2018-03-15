@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="addressGroupService" interface="com.kalix.common.address.api.biz.IAddressGroupBeanService"/>
+
+    <camelContext id="addressgroupCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /group -->
+        <rest path="/addressgroups" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <description>address group rest service</description>
+
+            <!-- this is a rest GET to find all group -->
+            <get id="route-getAllAddressGroups" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all AddressLists</description>
+                <param name="page" type="query" required="true" dataType="String" defaultValue="1"
+                       description="page number"/>
+                <param name="limit" type="query" required="true" dataType="String" defaultValue="10"
+                       description="record size"/>
+                <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:addressGroupService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+            <get uri="/all" id="route-getAllGroupsDefault" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all Groups</description>
+                <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:addressGroupService?method=getAllGroups(${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest POST to create a group -->
+            <post id="route-addAddressGroup" type="com.kalix.common.address.entities.AddressGroupBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a AddressGroup</description>
+                <to uri="bean:addressGroupService?method=saveEntity"/>
+            </post>
+
+            <!-- this is a rest GET to view a group by the given id -->
+            <get uri="/{id}" id="route-getAddressGroup" outType="com.kalix.common.address.entities.AddressGroupBean">
+                <description>Find AddressGroup by id</description>
+                <to uri="bean:addressGroupService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a group -->
+            <put uri="/{id}" id="route-updateAddressGroup" type="com.kalix.common.address.entities.AddressGroupBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a AddressGroup</description>
+                <to uri="bean:addressGroupService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete a group -->
+            <delete uri="/{id}" id="route-deleteAddressGroup"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a AddressGroup</description>
+                <to uri="bean:addressGroupService?method=deleteEntity(${header.id})"/>
+            </delete>
+
+            <delete uri="/all/{id}" id="route-deleteGroup"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a Group</description>
+                <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:addressGroupService?method=deleteGroup(${header.id},${header.jsonStr})"/>
+            </delete>
+        </rest>
+    </camelContext>
+</blueprint>

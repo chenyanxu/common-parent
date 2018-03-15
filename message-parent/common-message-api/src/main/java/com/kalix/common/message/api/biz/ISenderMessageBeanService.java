@@ -19,4 +19,6 @@ public interface ISenderMessageBeanService extends IBizService<SenderMessageBean
     JsonData getSenderMessage(int page, int limit, String jsonStr);
 
     JsonStatus saveAllEntities(SenderMessageBean senderMessageBean);
+
+    JsonStatus saveInstantMessage(SenderMessageBean senderMessageBean);
 }

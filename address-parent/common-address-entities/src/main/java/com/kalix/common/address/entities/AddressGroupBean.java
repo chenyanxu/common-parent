@@ -3,8 +3,6 @@ package com.kalix.common.address.entities;
 import com.kalix.framework.core.api.persistence.PersistentEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 /**
@@ -17,13 +15,24 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "common_address_group")
-@IdClass(AddressGroupPK.class)
+//@IdClass(AddressGroupPK.class)
 public class AddressGroupBean extends PersistentEntity {
-    @Id
+//    @Id
     private Long userId;
-    @Id
+//    @Id
     private String groupName;
     private String describe;
+    private Boolean isDefault;
+
+    public AddressGroupBean() {
+        super();
+    }
+
+    public AddressGroupBean(Long userId, String groupName) {
+        super();
+        this.userId = userId;
+        this.groupName = groupName;
+    }
 
     public String getGroupName() {
         return groupName;
@@ -47,5 +56,13 @@ public class AddressGroupBean extends PersistentEntity {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Boolean getDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(Boolean aDefault) {
+        isDefault = aDefault;
     }
 }

@@ -28,6 +28,7 @@ public class AddressBean extends PersistentEntity {
     private String address; // 通讯地址
     private String remark; // 备注
     private Long groupId; // 分组ID
+    private Boolean isAgree;
 
     public Long getUserId() {
         return userId;
@@ -123,5 +124,13 @@ public class AddressBean extends PersistentEntity {
 
     public void setAddressUserId(Long addressUserId) {
         this.addressUserId = addressUserId;
+    }
+
+    public Boolean getAgree() {
+        return isAgree;
+    }
+
+    public void setAgree(Boolean agree) {
+        isAgree = agree;
     }
 }

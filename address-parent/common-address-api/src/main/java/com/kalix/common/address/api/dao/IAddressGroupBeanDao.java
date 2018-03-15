@@ -29,4 +29,6 @@ public interface IAddressGroupBeanDao extends IGenericDao<AddressGroupBean, Long
      * @return
      */
     public AddressGroupBean getGroupByName(Long userId, String groupName);
+
+    public List<AddressGroupBean> getAllGroupsByDefault(Long userId);
 }

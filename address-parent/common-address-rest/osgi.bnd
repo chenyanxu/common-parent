@@ -5,6 +5,7 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package:com.kalix.framework.core.api.persistence,\
                com.kalix.framework.core.api.biz,\
-               com.kalix.common.address.entities,*
+               com.kalix.common.address.entities,\
+               com.kalix.common.message.entities,*
 Include-Resource: target/classes
 Bundle-Category: Kalix Common Address

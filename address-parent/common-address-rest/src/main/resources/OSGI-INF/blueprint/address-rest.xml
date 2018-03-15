@@ -12,12 +12,12 @@
             <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
         </restConfiguration>
 
-        <!-- defines the rest services using the context-path /addresslist -->
-        <rest path="/addresslists" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+        <!-- defines the rest services using the context-path /address -->
+        <rest path="/addresss" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>address rest service</description>
 
             <!-- this is a rest GET to find all addresslist -->
-            <get id="route-getAllAddressLists" outType="com.kalix.framework.core.api.persistence.JsonData">
+            <get id="route-getAllAddresss" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all AddressLists</description>
                 <param name="page" type="query" required="true" dataType="String" defaultValue="1"
                        description="page number"/>
@@ -26,22 +26,46 @@
                 <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
                 <to uri="bean:addressService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
-
+            <get uri="/{groupId}" id="route-getAddressDefault" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all AddressLists</description>
+                <param name="jsonStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <param name="otherStr" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:addressService?method=getDefaultAddressList(${header.jsonStr},${header.otherStr})"/>
+            </get>
+            <get uri="/users" id="route-getAddressUsers" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all AddressLists</description>
+                <param name="userId" type="query" required="false" dataType="String" description="query parameter"/>
+                <to uri="bean:addressService?method=getAddressUsers(${header.userId})"/>
+            </get>
             <!-- this is a rest POST to create a addresslist -->
-            <post id="route-addAddressList" type="com.kalix.common.note.entities.AddressBean"
+            <post id="route-addAddressList" type="com.kalix.common.address.entities.AddressBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Create a AddressList</description>
                 <to uri="bean:addressService?method=saveEntity"/>
             </post>
-
+            <post uri="/add" id="route-addNewAddressList" type="com.kalix.common.address.entities.AddressBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a AddressList</description>
+                <to uri="bean:addressService?method=saveNewAddress"/>
+            </post>
+            <post uri="/agree" id="route-agreeAddressList" type="com.kalix.common.message.entities.MessageBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Agree a AddressList</description>
+                <to uri="bean:addressService?method=agreeAddFriend"/>
+            </post>
+            <post uri="/degree" id="route-degreeAddressList" type="com.kalix.common.message.entities.MessageBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Degree a AddressList</description>
+                <to uri="bean:addressService?method=degreeAddFriend"/>
+            </post>
             <!-- this is a rest GET to view a addresslist by the given id -->
-            <get uri="/{id}" id="route-getAddressList" outType="com.kalix.common.note.entities.AddressBean">
+            <get uri="/{id}" id="route-getAddressList" outType="com.kalix.common.address.entities.AddressBean">
                 <description>Find AddressList by id</description>
                 <to uri="bean:addressService?method=getEntity(${header.id})"/>
             </get>
 
             <!-- this is a rest PUT to update a addresslist -->
-            <put uri="/{id}" id="route-updateAddressList" type="com.kalix.common.note.entities.AddressBean"
+            <put uri="/{id}" id="route-updateAddressList" type="com.kalix.common.address.entities.AddressBean"
                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Updates a AddressList</description>
                 <to uri="bean:addressService?method=updateEntity"/>
