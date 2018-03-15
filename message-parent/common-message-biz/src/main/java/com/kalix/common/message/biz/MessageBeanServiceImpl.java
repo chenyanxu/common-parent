@@ -12,6 +12,8 @@ import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.api.system.IStackService;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
+import com.kalix.framework.core.impl.dao.CommonMethod;
+import com.kalix.framework.core.util.StringUtils;
 
 import java.util.List;
 
@@ -62,8 +64,19 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         } else {
             jsonStr = jsonStr.replace("}", ",\"receiverId\":\"" + userId + "\"}");
         }
+        /*
         // 按照read进行排序
         return super.getAllEntityByQuery(page, limit, jsonStr,"[{\"property\":\"read\",\"direction\":\"ASC\"}]");
+        */
+        // 按照read进行排序，再按照creationdate排序
+        String condition = CommonMethod.createWhereCondition(jsonStr);
+        String sql = "select t.* " +
+                " from (select a.* from " + this.dao.getTableName() + " a order by a.read,a.creationdate desc) t";
+        if (StringUtils.isNotEmpty(condition)) {
+            sql += " where " + condition;
+        }
+        JsonData jsonData = this.dao.findByNativeSql(sql, page, limit, MessageBean.class);
+        return jsonData;
     }
 
     @Override
