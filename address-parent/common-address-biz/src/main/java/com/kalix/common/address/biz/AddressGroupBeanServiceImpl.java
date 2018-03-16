@@ -128,14 +128,14 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
     private void initMyFriendGroup(Long currentUserId, String friendGroupName) {
         AddressGroupBean myFriendGroup = dao.getGroupByName(currentUserId, friendGroupName);
         if (myFriendGroup == null) {
-            initMyGroup(currentUserId, friendGroupName, true);
+            initMyGroup(currentUserId, friendGroupName, true, "iconfont icon-wodehaoyou");
         }
     }
 
     private void initMyWorkmateGroup(Long currentUserId, String workmateGroupName) {
         AddressGroupBean myWorkMateGroup = dao.getGroupByName(currentUserId, workmateGroupName);
         if (myWorkMateGroup == null) {
-            AddressGroupBean group = initMyGroup(currentUserId, workmateGroupName, true);
+            AddressGroupBean group = initMyGroup(currentUserId, workmateGroupName, true, "iconfont icon-yaoqingtongshi");
             // 初始化我的同事通讯列表
             List<UserBean> users = getMyWorkmateInfos(currentUserId);
             if (users != null && !users.isEmpty()) {
@@ -173,11 +173,12 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
         return userBeanService.getUsersByIds(userIdList);
     }
 
-    private AddressGroupBean initMyGroup(Long userId, String groupName, Boolean isDefault) {
+    private AddressGroupBean initMyGroup(Long userId, String groupName, Boolean isDefault, String iconCls) {
         AddressGroupBean myGroup = new AddressGroupBean();
         myGroup.setUserId(userId);
         myGroup.setGroupName(groupName);
         myGroup.setDefault(isDefault);
+        myGroup.setIconCls(iconCls);
         dao.save(myGroup);
         return myGroup;
     }

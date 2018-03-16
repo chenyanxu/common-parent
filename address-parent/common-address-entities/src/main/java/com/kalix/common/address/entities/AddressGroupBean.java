@@ -23,6 +23,7 @@ public class AddressGroupBean extends PersistentEntity {
     private String groupName;
     private String describe;
     private Boolean isDefault;
+    private String iconCls;
 
     public AddressGroupBean() {
         super();
@@ -64,5 +65,13 @@ public class AddressGroupBean extends PersistentEntity {
 
     public void setDefault(Boolean aDefault) {
         isDefault = aDefault;
+    }
+
+    public String getIconCls() {
+        return iconCls;
+    }
+
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls;
     }
 }
