@@ -113,12 +113,12 @@ public class AddressBeanServiceImpl extends GenericBizServiceImpl<IAddressBeanDa
             if (address != null) {
                 updateEntity(address);
                 sendAddFriendNotice(address);
-                setJsonStatus(jsonStatus, "", "操作成功", true);
+                setJsonStatus(jsonStatus, "", "添加好友信息已发送，请等待好友确认", true);
                 return jsonStatus;
             }
             saveEntity(entity);
             sendAddFriendNotice(entity);
-            setJsonStatus(jsonStatus, "", "操作成功", true);
+            setJsonStatus(jsonStatus, "", "添加好友信息已发送，请等待好友确认", true);
             return jsonStatus;
         } catch(Exception e) {
             e.printStackTrace();
