@@ -4,7 +4,7 @@ node('maven') {
     git url: "https://github.com/chenyanxu/common-parent.git"
     sh "mvn install -DskipTests=true -s settings.xml"
   }
-  stage('Deploy common-parent App') {
+  stage('Deploy Common App') {
     sh "mvn deploy -DskipTests=true -s settings.xml"
   }
 }
