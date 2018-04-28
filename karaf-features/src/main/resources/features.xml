@@ -10,7 +10,7 @@
     </feature>
 
     <feature name="common-core" version="${project.common.version}">
-        <bundle>mvn:com.kalix.common.core/common-core-extjs/${project.common.version}</bundle>
+        <!--<bundle>mvn:com.kalix.common.core/common-core-extjs/${project.common.version}</bundle>-->
         <bundle>mvn:com.kalix.common.core/common-core-etc/${project.common.version}</bundle>
     </feature>
 
@@ -24,7 +24,7 @@
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-dao/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-biz/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.system.dict/common-system-dict-rest/${project.common.version}</bundle>
-        <bundle>mvn:com.kalix.common.system.dict/common-system-dict-extjs/${project.common.version}</bundle>
+        <!--<bundle>mvn:com.kalix.common.system.dict/common-system-dict-extjs/${project.common.version}</bundle>-->
     </feature>
 
     <feature name="common-message" version="${project.common.version}">
@@ -33,7 +33,7 @@
         <bundle>mvn:com.kalix.common.message/common-message-dao/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-biz/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.message/common-message-rest/${project.common.version}</bundle>
-        <bundle>mvn:com.kalix.common.message/common-message-extjs/${project.common.version}</bundle>
+        <!--<bundle>mvn:com.kalix.common.message/common-message-extjs/${project.common.version}</bundle>-->
     </feature>
 
     <feature name="common-news" version="${project.common.version}">
@@ -42,7 +42,7 @@
         <bundle>mvn:com.kalix.common.news/common-news-dao/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-biz/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.news/common-news-rest/${project.common.version}</bundle>
-        <bundle>mvn:com.kalix.common.news/common-news-extjs/${project.common.version}</bundle>
+        <!--<bundle>mvn:com.kalix.common.news/common-news-extjs/${project.common.version}</bundle>-->
     </feature>
 
     <feature name="common-note" version="${project.common.version}">
@@ -51,7 +51,7 @@
         <bundle>mvn:com.kalix.common.note/common-note-dao/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-biz/${project.common.version}</bundle>
         <bundle>mvn:com.kalix.common.note/common-note-rest/${project.common.version}</bundle>
-        <bundle>mvn:com.kalix.common.note/common-note-extjs/${project.common.version}</bundle>
+        <!--<bundle>mvn:com.kalix.common.note/common-note-extjs/${project.common.version}</bundle>-->
     </feature>
 
     <feature name="common-config" version="${project.common.version}">
