@@ -23,7 +23,7 @@
         <module>common-message-dao</module>
         <module>common-message-biz</module>
         <module>common-message-rest</module>
-        <module>common-message-extjs</module>
+        <!--<module>common-message-extjs</module>-->
         <!--<module>common-xmpp-biz</module>-->
     </modules>
 

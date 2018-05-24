@@ -16,7 +16,7 @@
         <module>common-system-dict-dao</module>
         <module>common-system-dict-biz</module>
         <module>common-system-dict-rest</module>
-        <module>common-system-dict-extjs</module>
+        <!--<module>common-system-dict-extjs</module>-->
     </modules>
     <packaging>pom</packaging>
 

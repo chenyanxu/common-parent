@@ -20,7 +20,7 @@
         <module>common-news-dao</module>
         <module>common-news-biz</module>
         <module>common-news-rest</module>
-        <module>common-news-extjs</module>
+        <!--<module>common-news-extjs</module>-->
     </modules>
 
     <dependencyManagement>
