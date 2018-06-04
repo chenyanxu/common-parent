@@ -32,5 +32,18 @@
             <groupId>com.kalix.admin.core</groupId>
             <artifactId>admin-core-biz</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-servlet</artifactId>
+            <version>9.4.6.v20170531</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -106,5 +106,15 @@
         <property name="stackService" ref="stackService"/>
         <property name="userBeanService" ref="userBeanService"/>
     </bean>
+
+    <bean id="websocketServlet" class="com.kalix.common.message.biz.servlet.KarafWebSocketServlet">
+    </bean>
+    <service interface="javax.servlet.Servlet" ref="websocketServlet">
+        <service-properties>
+            <entry key="alias" value="/websocket" />
+            <entry key="matchOnUriPrefix" value="true" />
+            <entry key="servlet-name" value="WebsocketServlet"/>
+        </service-properties>
+    </service>
 </blueprint>
 
