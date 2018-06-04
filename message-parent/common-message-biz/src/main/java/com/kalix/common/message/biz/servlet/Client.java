@@ -1,41 +1,43 @@
 package com.kalix.common.message.biz.servlet;
 
-import org.eclipse.jetty.websocket.client.ClientUpgradeRequest;
-import org.eclipse.jetty.websocket.client.WebSocketClient;
+import org.eclipse.jetty.util.component.LifeCycle;
 
+import javax.websocket.ContainerProvider;
+import javax.websocket.Session;
+import javax.websocket.WebSocketContainer;
 import java.net.URI;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2018/6/4.
  */
 public class Client {
     public static void main(String[] args) {
-        String destUri = "ws://localhost:8181/websocket";
-        if (args.length > 0) {
-            destUri = args[0];
-        }
+//        String destUri = "ws://localhost:8181/websocket";
+        URI uri = URI.create("ws://localhost:8181/websocket");
 
-        WebSocketClient client = new WebSocketClient();
-        KarafWebSocket socket = new KarafWebSocket();
         try {
-            client.start();
+            WebSocketContainer container = ContainerProvider.getWebSocketContainer();
 
-            URI echoUri = new URI(destUri);
-            ClientUpgradeRequest request = new ClientUpgradeRequest();
-            client.connect(socket, echoUri, request);
-            System.out.printf("Connecting to : %s%n", echoUri);
-
-            // wait for closed socket connection.
-
-        } catch (Throwable t) {
-            t.printStackTrace();
-        } finally {
             try {
-                client.stop();
-            } catch (Exception e) {
-                e.printStackTrace();
+                // Attempt Connect
+                Session session = container.connectToServer(KarafWebSocket.class, uri);
+                // Send a message
+                session.getBasicRemote().sendText("Hello");
+                // Close session
+                session.close();
+            } finally {
+                // Force lifecycle stop when done with container.
+                // This is to free up threads and resources that the
+                // JSR-356 container allocates. But unfortunately
+                // the JSR-356 spec does not handle lifecycles (yet)
+                if (container instanceof LifeCycle) {
+                    ((LifeCycle) container).stop();
+                }
             }
+        } catch (Throwable t) {
+            t.printStackTrace(System.err);
         }
+    }
+
     }
 }
