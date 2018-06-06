@@ -21,6 +21,13 @@
         <property name="stackService" ref="stackService"/>
     </bean>
 
+    <service interface="com.kalix.middleware.websocket.api.biz.IWebsocketService"
+             ref="beanServiceImpl">
+        <service-properties>
+            <entry key="wsMessage" value="CommonMessage"/>
+        </service-properties>
+    </service>
+
     <bean id="senderMessageBeanServiceImpl" class="com.kalix.common.message.biz.SenderMessageBeanServiceImpl">
         <property name="dao" ref="senderMessageBeanDao"/>
         <property name="messageBeanService" ref="beanServiceImpl"/>
@@ -106,15 +113,5 @@
         <property name="stackService" ref="stackService"/>
         <property name="userBeanService" ref="userBeanService"/>
     </bean>
-
-    <bean id="websocketServlet" class="com.kalix.common.message.biz.servlet.KarafWebSocketServlet">
-    </bean>
-    <service interface="javax.servlet.Servlet" ref="websocketServlet">
-        <service-properties>
-            <entry key="alias" value="/websocket" />
-            <entry key="matchOnUriPrefix" value="true" />
-            <entry key="servlet-name" value="WebsocketServlet"/>
-        </service-properties>
-    </service>
 </blueprint>
 

@@ -14,6 +14,8 @@ import com.kalix.framework.core.api.system.IStackService;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
 import com.kalix.framework.core.impl.dao.CommonMethod;
 import com.kalix.framework.core.util.StringUtils;
+import com.kalix.middleware.websocket.api.biz.IWebsocketService;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageBeanDao, MessageBean> implements IMessageBeanService {
+public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageBeanDao, MessageBean> implements IMessageBeanService, IWebsocketService {
     private IUserBeanService userBeanService;
     private IStackService stackService;
     private ISenderMessageBeanService senderBeanService;
@@ -114,4 +116,21 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         this.stackService = stackService;
     }
 
+    @Override
+    public JSONObject getData(String key) {
+        JSONObject jsonObject = new JSONObject();
+        String loginName = key;
+        UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
+        List countList = this.dao.find("select mb from MessageBean mb where mb.receiverId=?1 and mb.read=false", userBean.getId());
+        if (countList != null) {
+            jsonObject.put("msgCount", countList.size());
+        }
+        //轮询系统消息
+        String topic = "";
+        if (userBean != null)
+            topic = String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId()));
+        String tag = stackService.consume(topic);
+        jsonObject.put("msgTag", tag);
+        return jsonObject;
+    }
 }

@@ -59,6 +59,11 @@
                 <artifactId>middleware-xmpp-api</artifactId>
                 <version>${project.middleware.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.kalix.middleware.websocket</groupId>
+                <artifactId>middleware-websocket-api</artifactId>
+                <version>${project.middleware.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
