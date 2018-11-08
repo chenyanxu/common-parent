@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class MessageBeanDaoImpl extends GenericDao<MessageBean, Long> implements IMessageBeanDao {
+public class MessageBeanDaoImpl extends GenericDao<MessageBean, String> implements IMessageBeanDao {
     @Override
     @PersistenceContext(unitName = "message-cm")
     public void setEntityManager(EntityManager em) {

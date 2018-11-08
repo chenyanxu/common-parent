@@ -14,9 +14,9 @@ public abstract class BaseMessageEvent implements EventHandler {
 
     protected IUserBeanService userBeanService;
 
-    protected Map<Long, String> getMessage(Event event) { return null; }
+    protected Map<String, String> getMessage(Event event) { return null; }
 
-    protected void sendMessage(Map<Long, String> contents, String msgTitle, String constLabel, boolean isSave){ };
+    protected void sendMessage(Map<String, String> contents, String msgTitle, String constLabel, boolean isSave){ };
 
     public void setUserBeanService(IUserBeanService userBeanService) {
         this.userBeanService = userBeanService;

@@ -12,6 +12,6 @@ import com.kalix.framework.core.api.dao.IGenericDao;
  * @修改时间：
  * @修改备注：
  */
-public interface INoteBeanDao extends IGenericDao<NoteBean, Long> {
+public interface INoteBeanDao extends IGenericDao<NoteBean, String> {
     //在此添加新的DAO方法
 }

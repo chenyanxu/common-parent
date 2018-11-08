@@ -19,9 +19,9 @@ import java.util.List;
  */
 public interface IAddressBeanService extends IBizService<AddressBean> {
     JsonData getDefaultAddressList(String jsonStr, String otherStr);
-    void changeToDefaultGroup(Long userId, Long oldGroupId, Long newGroupId);
-    void deleteAddressByGroup(Long groupId);
-    List<AddressBean> getAddressListByGroup(Long userId, Long groupId);
+    void changeToDefaultGroup(String userId, String oldGroupId, String newGroupId);
+    void deleteAddressByGroup(String groupId);
+    List<AddressBean> getAddressListByGroup(String userId, String groupId);
     JsonStatus saveNewAddress(AddressBean entity);
     JsonStatus agreeAddFriend(MessageBean entity);
     JsonStatus degreeAddFriend(MessageBean entity);

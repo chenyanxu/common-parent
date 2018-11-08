@@ -50,7 +50,7 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
 
     @Override
     public JsonData getAllGroups(String jsonStr) {
-        Long currentUserId = getCurrentUserId(jsonStr);
+        String currentUserId = getCurrentUserId(jsonStr);
         // 初始化我的好友分组
         initMyFriendGroup(currentUserId, groupName_MyFriend);
         // 初始化我的同事分组
@@ -67,15 +67,15 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
     }
 
     @Override
-    public JsonStatus deleteGroup(Long id, String jsonStr) {
-        Long currentUserId = getCurrentUserId(jsonStr);
+    public JsonStatus deleteGroup(String id, String jsonStr) {
+        String currentUserId = getCurrentUserId(jsonStr);
         AddressGroupBean myFriendGroup = dao.getGroupByName(currentUserId, "我的好友");
         addressBeanService.changeToDefaultGroup(currentUserId, id, myFriendGroup.getId());
 //        addressBeanService.deleteAddressByGroup(id);
         return this.deleteEntity(id);
     }
 
-    private List<AddressBean> getMyGroupList(Long currentUserId, String groupName) {
+    private List<AddressBean> getMyGroupList(String currentUserId, String groupName) {
         AddressGroupBean myGroup = dao.getGroupByName(currentUserId, groupName);
         List<AddressBean> myFriendAddresses = null;
         if (myGroup != null) {
@@ -99,19 +99,19 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
     }
 
     @Override
-    public JsonData getMyFriendAddresses(Long currentUserId) {
+    public JsonData getMyFriendAddresses(String currentUserId) {
         List<AddressBean> myFriendAddresses = getMyGroupList(currentUserId, groupName_MyFriend);
         return getJsonData(myFriendAddresses);
     }
 
     @Override
-    public JsonData getMyWorkmateAddresses(Long currentUserId) {
+    public JsonData getMyWorkmateAddresses(String currentUserId) {
         List<AddressBean> myWorkmateAddresses = getMyGroupList(currentUserId, groupName_MyFriend);
         return getJsonData(myWorkmateAddresses);
     }
 
     @Override
-    public JsonData getMyDefaultGroupAddresses(Long currentUserId) {
+    public JsonData getMyDefaultGroupAddresses(String currentUserId) {
         List<AddressGroupBean> defaultGroups = dao.getAllGroupsByDefault(currentUserId);
         List<AddressBean> addressBeans = new ArrayList<>();
         if (defaultGroups != null) {
@@ -125,14 +125,14 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
         return getJsonData(addressBeans);
     }
 
-    private void initMyFriendGroup(Long currentUserId, String friendGroupName) {
+    private void initMyFriendGroup(String currentUserId, String friendGroupName) {
         AddressGroupBean myFriendGroup = dao.getGroupByName(currentUserId, friendGroupName);
         if (myFriendGroup == null) {
             initMyGroup(currentUserId, friendGroupName, true, "iconfont icon-wodehaoyou");
         }
     }
 
-    private void initMyWorkmateGroup(Long currentUserId, String workmateGroupName) {
+    private void initMyWorkmateGroup(String currentUserId, String workmateGroupName) {
         AddressGroupBean myWorkMateGroup = dao.getGroupByName(currentUserId, workmateGroupName);
         if (myWorkMateGroup == null) {
             AddressGroupBean group = initMyGroup(currentUserId, workmateGroupName, true, "iconfont icon-yaoqingtongshi");
@@ -156,16 +156,16 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
         }
     }
 
-    private List<UserBean> getMyWorkmateInfos(Long currentUserId) {
-        List<Long> orgIds = orgBeanService.getOrgsByUserId(currentUserId, false);
+    private List<UserBean> getMyWorkmateInfos(String currentUserId) {
+        List<String> orgIds = orgBeanService.getOrgsByUserId(currentUserId, false);
         if (orgIds == null || orgIds.isEmpty()) {
             return null;
         }
         List<String> userIdList = new ArrayList<>();
-        for (Long orgId : orgIds) {
-            List<Long> userIds = orgBeanService.getUserIdsByOrganizationId(orgId);
-            for (Long uId : userIds) {
-                if (uId != currentUserId && !userIdList.contains(uId)) {
+        for (String orgId : orgIds) {
+            List<String> userIds = orgBeanService.getUserIdsByOrganizationId(orgId);
+            for (String uId : userIds) {
+                if (!uId.equals(currentUserId) && !userIdList.contains(uId)) {
                     userIdList.add(uId.toString());
                 }
             }
@@ -173,7 +173,7 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
         return userBeanService.getUsersByIds(userIdList);
     }
 
-    private AddressGroupBean initMyGroup(Long userId, String groupName, Boolean isDefault, String iconCls) {
+    private AddressGroupBean initMyGroup(String userId, String groupName, Boolean isDefault, String iconCls) {
         AddressGroupBean myGroup = new AddressGroupBean();
         myGroup.setUserId(userId);
         myGroup.setGroupName(groupName);
@@ -183,10 +183,10 @@ public class AddressGroupBeanServiceImpl extends GenericBizServiceImpl<IAddressG
         return myGroup;
     }
 
-    private Long getCurrentUserId(String jsonStr) {
+    private String getCurrentUserId(String jsonStr) {
         Map<String, String> jsonMap = SerializeUtil.json2Map(jsonStr);
         String userId = jsonMap.get("userId");
-        return Long.parseLong(userId);
+        return userId;
     }
 
 }

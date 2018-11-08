@@ -22,7 +22,7 @@ public class SenderMessageBean extends PersistentEntity {
      * @describe 发送者
      * @validator 不能为空
      */
-    private Long senderId;
+    private String senderId;
     /**
      * @describe 接收者与用户表关联的主键id
      * @validator 不能为空
@@ -52,11 +52,11 @@ public class SenderMessageBean extends PersistentEntity {
     @Lob
     private String content;
 
-    public Long getSenderId() {
+    public String getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(Long senderId) {
+    public void setSenderId(String senderId) {
         this.senderId = senderId;
     }
 

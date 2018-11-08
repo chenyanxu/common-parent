@@ -14,8 +14,8 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public interface IAddressBeanDao extends IGenericDao<AddressBean, Long> {
-    List<AddressBean> getDefaultAddresses(Long uesrId, Long groupId, String name);
+public interface IAddressBeanDao extends IGenericDao<AddressBean, String> {
+    List<AddressBean> getDefaultAddresses(String uesrId, String groupId, String name);
 
     /**
      * 修改当前登录用户中通讯录成员的组
@@ -23,13 +23,13 @@ public interface IAddressBeanDao extends IGenericDao<AddressBean, Long> {
      * @param oldGroupId
      * @param newGroupId
      */
-    int changeAddressGroup(Long userId, Long oldGroupId, Long newGroupId);
+    int changeAddressGroup(String userId, String oldGroupId, String newGroupId);
 
     /**
      * 通过分组Id删除通讯录成员
      * @param groupId
      */
-    int deleteByGroupId(Long groupId);
+    int deleteByGroupId(String groupId);
 
     /**
      * 通过分组ID和用户ID获取通讯录信息
@@ -37,17 +37,17 @@ public interface IAddressBeanDao extends IGenericDao<AddressBean, Long> {
      * @param addressUserId
      * @return
      */
-    AddressBean getAddressByGroupAndUser(Long groupId, Long addressUserId);
+    AddressBean getAddressByGroupAndUser(String groupId, String addressUserId);
 
     /**
      * 修改通讯录是否同意的状态
      * @param addressUserId
      */
-    int updateAddressAgree(Long addressUserId);
+    int updateAddressAgree(String addressUserId);
 
     /**
      * 通过组和用户删除通讯录
      * @param addressUserId
      */
-    int deleteAddressByGroupAndUser(Long addressUserId);
+    int deleteAddressByGroupAndUser(String addressUserId);
 }

@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class NoteBeanDaoImpl extends GenericDao<NoteBean, Long> implements INoteBeanDao {
+public class NoteBeanDaoImpl extends GenericDao<NoteBean, String> implements INoteBeanDao {
     @Override
     @PersistenceContext(unitName = "note-cm")
     public void setEntityManager(EntityManager em) {

@@ -16,8 +16,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "common_address")
 public class AddressBean extends PersistentEntity {
-    private Long userId; // 用户ID
-    private Long addressUserId; // 通讯录用户ID
+    private String userId; // 用户ID
+    private String addressUserId; // 通讯录用户ID
     private String name; // 姓名
     private String nickName; // 昵称
     private String icon; // 头像
@@ -27,14 +27,14 @@ public class AddressBean extends PersistentEntity {
     private String sex; // 性别
     private String address; // 通讯地址
     private String remark; // 备注
-    private Long groupId; // 分组ID
+    private String groupId; // 分组ID
     private Boolean isAgree;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -110,19 +110,19 @@ public class AddressBean extends PersistentEntity {
         this.remark = remark;
     }
 
-    public Long getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Long groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
-    public Long getAddressUserId() {
+    public String getAddressUserId() {
         return addressUserId;
     }
 
-    public void setAddressUserId(Long addressUserId) {
+    public void setAddressUserId(String addressUserId) {
         this.addressUserId = addressUserId;
     }
 

@@ -7,7 +7,7 @@ import com.kalix.common.system.dict.entities.CommonDictBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public class CommonDictBeanDaoImpl extends GenericDao<CommonDictBean, Long> implements ICommonDictBeanDao {
+public class CommonDictBeanDaoImpl extends GenericDao<CommonDictBean, String> implements ICommonDictBeanDao {
     @Override
     @PersistenceContext(unitName = "common-system-dict-unit")
     public void setEntityManager(EntityManager em) {

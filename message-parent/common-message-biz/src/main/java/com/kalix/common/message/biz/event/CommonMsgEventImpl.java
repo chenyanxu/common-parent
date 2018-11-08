@@ -30,11 +30,11 @@ public class CommonMsgEventImpl extends BaseMailEvent {
         Gson gson = new Gson();
         stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT, String.valueOf(userBean.getId())), gson.toJson(messageBean), day);*/
 
-        Map<Long,String> contents = getMessage(event);
+        Map<String, String> contents = getMessage(event);
         sendMessage(contents, MSG_TITLE, Const.POLLING_MESSAGE_TOPIC_FORMAT, false);
     }
 
-    protected Map<Long, String> getMessage(Event event) {
+    protected Map<String, String> getMessage(Event event) {
         return MessageUtil.getCommonMessage(event);
     }
 }

@@ -44,12 +44,12 @@ public class ScheduleChangeMsgEventImpl extends BaseMailEvent {
         stackService.publish(String.format(Const.POLLING_MESSAGE_TOPIC_FORMAT,
                 String.valueOf(userId)), gson.toJson(messageBean), day);*/
 
-        Map<Long, String> contents = getMessage(event);
+        Map<String, String> contents = getMessage(event);
         //向布置人发送消息
         sendMessage(contents, MSG_TITLE, Const.POLLING_MESSAGE_TOPIC_FORMAT, true);
     }
 
-    protected Map<Long, String> getMessage(Event event) {
+    protected Map<String, String> getMessage(Event event) {
         return MessageUtil.getScheduleChangeMessage(event);
     }
 }

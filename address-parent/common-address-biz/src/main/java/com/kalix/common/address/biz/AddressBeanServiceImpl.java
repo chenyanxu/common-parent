@@ -70,13 +70,13 @@ public class AddressBeanServiceImpl extends GenericBizServiceImpl<IAddressBeanDa
 //        Map<String, String> jsonOtherMap = SerializeUtil.json2Map(otherStr);
         String userIdTemp = jsonMap.get("userId");
         String groupIdTemp = jsonMap.get("groupId");
-        Long userId = null;
+        String userId = null;
         if (userIdTemp != null) {
-            userId = Long.parseLong(userIdTemp);
+            userId = userIdTemp;
         }
-        Long groupId = null;
+        String groupId = null;
         if (groupIdTemp != null) {
-            groupId = Long.parseLong(groupIdTemp);
+            groupId = groupIdTemp;
         }
         List<AddressBean> addressList = dao.getDefaultAddresses(userId, groupId, name);
         JsonData jsonData = new JsonData();
@@ -90,23 +90,23 @@ public class AddressBeanServiceImpl extends GenericBizServiceImpl<IAddressBeanDa
     }
 
     @Override
-    public void changeToDefaultGroup(Long userId, Long oldGroupId, Long newGroupId) {
+    public void changeToDefaultGroup(String userId, String oldGroupId, String newGroupId) {
         dao.changeAddressGroup(userId, oldGroupId, newGroupId);
     }
 
-    public void deleteAddressByGroup(Long groupId) {
+    public void deleteAddressByGroup(String groupId) {
         dao.deleteByGroupId(groupId);
     }
 
     @Override
-    public List<AddressBean> getAddressListByGroup(Long userId, Long groupId) {
+    public List<AddressBean> getAddressListByGroup(String userId, String groupId) {
         return dao.getDefaultAddresses(userId, groupId, null);
     }
 
     @Override
     public JsonStatus saveNewAddress(AddressBean entity) {
-        Long groupId = entity.getGroupId();
-        Long addressUserId = entity.getAddressUserId();
+        String groupId = entity.getGroupId();
+        String addressUserId = entity.getAddressUserId();
         AddressBean address = dao.getAddressByGroupAndUser(groupId, addressUserId);
         JsonStatus jsonStatus = new JsonStatus();
         try {
@@ -173,9 +173,9 @@ public class AddressBeanServiceImpl extends GenericBizServiceImpl<IAddressBeanDa
 
     @Override
     public JsonData getAddressUsers(String userId) {
-        Long currentUserId = Long.parseLong(userId);
+        String currentUserId = userId;
         List<AddressBean> addressBeans = dao.getDefaultAddresses(currentUserId, null, null);
-        List<Long> addressUserIds = new ArrayList<>();
+        List<String> addressUserIds = new ArrayList<>();
         if (addressBeans != null) {
             addressUserIds = addressBeans.stream().map((item)->item.getAddressUserId()).collect(Collectors.toList());
         }

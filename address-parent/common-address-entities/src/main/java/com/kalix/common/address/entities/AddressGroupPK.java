@@ -3,14 +3,14 @@ package com.kalix.common.address.entities;
 import java.io.Serializable;
 
 public class AddressGroupPK implements Serializable {
-    private Long userId;
+    private String userId;
     private String groupName;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

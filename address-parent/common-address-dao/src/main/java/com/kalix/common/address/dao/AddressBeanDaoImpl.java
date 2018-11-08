@@ -17,7 +17,7 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class AddressBeanDaoImpl extends GenericDao<AddressBean, Long> implements IAddressBeanDao {
+public class AddressBeanDaoImpl extends GenericDao<AddressBean, String> implements IAddressBeanDao {
     private String uuid;
     public AddressBeanDaoImpl() {
         uuid = UUID.randomUUID().toString();
@@ -29,35 +29,35 @@ public class AddressBeanDaoImpl extends GenericDao<AddressBean, Long> implements
     }
 
     @Override
-    public List<AddressBean> getDefaultAddresses(Long uesrId, Long groupId, String name) {
+    public List<AddressBean> getDefaultAddresses(String uesrId, String groupId, String name) {
         StringBuffer sbff = new StringBuffer();
         sbff.append("select * from common_address");
         if (uesrId != null) {
-            sbff.append(" where userid= ").append(uesrId);
+            sbff.append(" where userid= '").append(uesrId).append("'");
         }
         sbff.append(" and isagree= ").append("true");
         if (name != null && !name.isEmpty()) {
             sbff.append(" and name like '%").append(name).append("%'");
         }
         if (groupId != null) {
-            sbff.append(" and groupid= ").append(groupId);
+            sbff.append(" and groupid= '").append(groupId).append("'");
         }
         return this.findByNativeSql(sbff.toString(), AddressBean.class, null);
     }
 
     @Override
-    public int changeAddressGroup(Long userId, Long oldGroupId, Long newGroupId) {
-        return this.updateNativeQuery("update common_address set groupid="+newGroupId+" where userid="+userId+" and groupid="+oldGroupId);
+    public int changeAddressGroup(String userId, String oldGroupId, String newGroupId) {
+        return this.updateNativeQuery("update common_address set groupid='"+newGroupId+"' where userid='"+userId+"' and groupid='"+oldGroupId+"'");
     }
 
     @Override
-    public int deleteByGroupId(Long groupId) {
-        return this.updateNativeQuery("delete from common_address where groupid=" + groupId);
+    public int deleteByGroupId(String groupId) {
+        return this.updateNativeQuery("delete from common_address where groupid='" + groupId + "'");
     }
 
     @Override
-    public AddressBean getAddressByGroupAndUser(Long groupId, Long addressUserId) {
-        String sql = "select * from common_address where groupid=" + groupId + " and addressuserid=" + addressUserId;
+    public AddressBean getAddressByGroupAndUser(String groupId, String addressUserId) {
+        String sql = "select * from common_address where groupid='" + groupId + "' and addressuserid='" + addressUserId + "'";
         List<AddressBean> addresses = this.findByNativeSql(sql, AddressBean.class, null);
         if (addresses != null && addresses.size() > 0) {
             return addresses.get(0);
@@ -66,14 +66,14 @@ public class AddressBeanDaoImpl extends GenericDao<AddressBean, Long> implements
     }
 
     @Override
-    public int updateAddressAgree(Long addressUserId) {
-        String sql = "update common_address set isagree=true where addressuserid="+addressUserId;
+    public int updateAddressAgree(String addressUserId) {
+        String sql = "update common_address set isagree=true where addressuserid='"+addressUserId+"'";
         return this.updateNativeQuery(sql);
     }
 
     @Override
-    public int deleteAddressByGroupAndUser(Long addressUserId) {
-        String sql = "delete from common_address where addressuserid=" + addressUserId;
+    public int deleteAddressByGroupAndUser(String addressUserId) {
+        String sql = "delete from common_address where addressuserid='" + addressUserId + "'";
         return this.updateNativeQuery(sql);
     }
 }

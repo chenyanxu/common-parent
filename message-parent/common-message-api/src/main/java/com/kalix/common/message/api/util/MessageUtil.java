@@ -27,11 +27,11 @@ public class MessageUtil {
     static IUserBeanService userBeanService = OsgiUtil.waitForServices(IUserBeanService.class,null);
     static IDutyBeanService dutyBeanService = OsgiUtil.waitForServices(IDutyBeanService.class,null);
 
-    public static Map<Long,String> getCommonMessage(Event event) {
+    public static Map<String,String> getCommonMessage(Event event) {
 
-        Map<Long, String> msgs = new HashMap<Long, String>();
+        Map<String, String> msgs = new HashMap<>();
 
-        Long userId = (Long) event.getProperty("userId");
+        String userId = (String) event.getProperty("userId");
         String receiverName = getUserName(userId);
         String msg = formatCommonMessage(receiverName);
         msgs.put(userId, msg);
@@ -39,9 +39,9 @@ public class MessageUtil {
         return msgs;
     }
 
-    public static Map<Long,String> getScheduleNewMessage(Event event) {
+    public static Map<String,String> getScheduleNewMessage(Event event) {
 
-        Map<Long, String> msgs = new HashMap<Long, String>();
+        Map<String, String> msgs = new HashMap<>();
 
         //布置人
         String userName = (String) event.getProperty("userName");
@@ -49,7 +49,7 @@ public class MessageUtil {
         String taskName = (String) event.getProperty("taskName");
 
         //负责人
-        Long head = (Long) event.getProperty("head");
+        String head = (String) event.getProperty("head");
         String receiverName = getUserName(head);
         String msg = formatScheduleNewMessage(receiverName, userName, taskName);
         msgs.put(head, msg);
@@ -60,7 +60,7 @@ public class MessageUtil {
         if (participants != null && participants.length > 0) {
             for (int i = 0; i < participants.length; i++) {
                 if (participants[i] != null && !participants[i].isEmpty()) {
-                    Long uid = Long.parseLong(participants[i]);
+                    String uid = participants[i];
                     receiverName = getUserName(uid);
                     msg = formatScheduleNewMessage(receiverName, userName, taskName);
                     msgs.put(uid, msg);
@@ -71,16 +71,16 @@ public class MessageUtil {
         return  msgs;
     }
 
-    public static Map<Long,String> getScheduleChangeMessage(Event event) {
+    public static Map<String,String> getScheduleChangeMessage(Event event) {
 
-        Map<Long, String> msgs = new HashMap<Long, String>();
+        Map<String, String> msgs = new HashMap<>();
 
         //布置人
         String userName = (String) event.getProperty("userName");
         //任务名称
         String taskName = (String) event.getProperty("taskName");
         //负责人
-        Long head = (Long) event.getProperty("head");
+        String head = (String) event.getProperty("head");
         String senderName = getUserName(head);
         //任务旧状态
         String oldState = (String) event.getProperty("oldState");
@@ -92,12 +92,12 @@ public class MessageUtil {
         return msgs;
     }
 
-    public static Map<Long,String> getScheduleSuperviseMessage(Event event) {
+    public static Map<String,String> getScheduleSuperviseMessage(Event event) {
 
-        Map<Long, String> msgs = new HashMap<Long, String>();
+        Map<String, String> msgs = new HashMap<>();
 
         //负责人
-        Long head = (Long) event.getProperty("head");
+        String head = (String) event.getProperty("head");
         String receiverName = getUserName(head);
         //布置人
         String userName = (String) event.getProperty("userName");
@@ -110,9 +110,9 @@ public class MessageUtil {
         return msgs;
     }
 
-    public static Map<Long,String> getWorkFlowNewTaskMessage(Event event) {
+    public static Map<String,String> getWorkFlowNewTaskMessage(Event event) {
 
-        Map<Long, String> msgs = new HashMap<Long, String>();
+        Map<String, String> msgs = new HashMap<String, String>();
 
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
@@ -141,9 +141,9 @@ public class MessageUtil {
         return  msgs;
     }
 
-    public static Map<Long,String> getWorkFlowProgressMessage(Event event) {
+    public static Map<String,String> getWorkFlowProgressMessage(Event event) {
 
-        Map<Long, String> msgs = new HashMap<Long, String>();
+        Map<String, String> msgs = new HashMap<String, String>();
 
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
@@ -182,7 +182,7 @@ public class MessageUtil {
         return String.format(MSG_CONTENT_WORKFLOW_PROGRESS, receiverName, businessNo);
     }
 
-    protected static String getUserName(Long userId) {
+    protected static String getUserName(String userId) {
 
         String userName = "";
         try {

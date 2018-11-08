@@ -28,9 +28,9 @@ public interface IAddressGroupBeanService extends IBizService<AddressGroupBean> 
      * @param jsonStr 用户ID
      * @return
      */
-    JsonStatus deleteGroup(Long id, String jsonStr);
+    JsonStatus deleteGroup(String id, String jsonStr);
 
-    JsonData getMyFriendAddresses(Long currentUserId);
-    JsonData getMyWorkmateAddresses(Long currentUserId);
-    JsonData getMyDefaultGroupAddresses(Long currentUserId);
+    JsonData getMyFriendAddresses(String currentUserId);
+    JsonData getMyWorkmateAddresses(String currentUserId);
+    JsonData getMyDefaultGroupAddresses(String currentUserId);
 }

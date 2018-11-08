@@ -40,11 +40,11 @@ public class WorkFlowNewTaskMsgEventImpl extends BaseMailEvent {
         }
             //获得用户名*/
 
-        Map<Long, String> contents = getMessages(event);
+        Map<String, String> contents = getMessages(event);
         sendMessage(contents, MSG_TITLE, Const.POLLING_MESSAGE_TOPIC_FORMAT, true);
     }
 
-    protected Map<Long, String> getMessages(Event event) {
+    protected Map<String, String> getMessages(Event event) {
         return  MessageUtil.getWorkFlowNewTaskMessage(event);
     }
 }

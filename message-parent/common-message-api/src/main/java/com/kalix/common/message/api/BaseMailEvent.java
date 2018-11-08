@@ -23,9 +23,9 @@ public abstract class BaseMailEvent extends BaseMessageEvent {
     protected static final int ADMIN_USER_ID = 1;
     protected static final String ADMIN_USER_NAME = "管理员";
 
-    protected void sendMessage(Map<Long, String> contents, String msgTitle, String constLabel, boolean isSave) {
+    protected void sendMessage(Map<String, String> contents, String msgTitle, String constLabel, boolean isSave) {
         if (contents != null && !contents.isEmpty()) {
-            for (Long key : contents.keySet()) {
+            for (String key : contents.keySet()) {
                 String content = contents.get(key);
 
                 MessageBean messageBean = createMessageBean(key, content, msgTitle);
@@ -39,10 +39,10 @@ public abstract class BaseMailEvent extends BaseMessageEvent {
         }
     }
 
-    protected MessageBean createMessageBean(Long receiverId, String content, String title) {
+    protected MessageBean createMessageBean(String receiverId, String content, String title) {
         MessageBean messageBean = new MessageBean();
         messageBean.setCreationDate(new Date());
-        messageBean.setSenderId(Long.valueOf(ADMIN_USER_ID));
+        messageBean.setSenderId(String.valueOf(ADMIN_USER_ID));
         messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
         messageBean.setCategory(MessageCategories.SYSTEM.getId());//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息

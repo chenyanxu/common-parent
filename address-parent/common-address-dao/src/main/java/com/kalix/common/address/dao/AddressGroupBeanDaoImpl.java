@@ -18,7 +18,7 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class AddressGroupBeanDaoImpl extends GenericDao<AddressGroupBean, Long> implements IAddressGroupBeanDao {
+public class AddressGroupBeanDaoImpl extends GenericDao<AddressGroupBean, String> implements IAddressGroupBeanDao {
 //    private IOrganizationUserBeanDao orgUserBeanDao;
     private String uuid;
     public AddressGroupBeanDaoImpl() {
@@ -31,13 +31,13 @@ public class AddressGroupBeanDaoImpl extends GenericDao<AddressGroupBean, Long> 
     }
 
     @Override
-    public List<AddressGroupBean> getAllGroupsByUser(Long userId) {
-        return this.findByNativeSql("select * from common_address_group where userid=" + userId, AddressGroupBean.class, null);
+    public List<AddressGroupBean> getAllGroupsByUser(String userId) {
+        return this.findByNativeSql("select * from common_address_group where userid='" + userId + "'", AddressGroupBean.class, null);
     }
 
     @Override
-    public AddressGroupBean getGroupByName(Long userId, String groupName) {
-        List<AddressGroupBean> groupBeans = this.findByNativeSql("select * from common_address_group where userid=" + userId + " and groupname = '" + groupName + "'", AddressGroupBean.class, null);
+    public AddressGroupBean getGroupByName(String userId, String groupName) {
+        List<AddressGroupBean> groupBeans = this.findByNativeSql("select * from common_address_group where userid='" + userId + "' and groupname = '" + groupName + "'", AddressGroupBean.class, null);
         if (groupBeans == null || groupBeans.isEmpty()) {
             return null;
         }
@@ -45,8 +45,8 @@ public class AddressGroupBeanDaoImpl extends GenericDao<AddressGroupBean, Long> 
     }
 
     @Override
-    public List<AddressGroupBean> getAllGroupsByDefault(Long userId) {
-        return this.findByNativeSql("select * from common_address_group where userid=" + userId + " and isdefault = true", AddressGroupBean.class, null);
+    public List<AddressGroupBean> getAllGroupsByDefault(String userId) {
+        return this.findByNativeSql("select * from common_address_group where userid='" + userId + "' and isdefault = true", AddressGroupBean.class, null);
     }
 
 

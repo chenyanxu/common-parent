@@ -14,13 +14,13 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public interface IAddressGroupBeanDao extends IGenericDao<AddressGroupBean, Long> {
+public interface IAddressGroupBeanDao extends IGenericDao<AddressGroupBean, String> {
     /**
      * 获取当前用户下所有的分组信息
      * @param userId
      * @return
      */
-    public List<AddressGroupBean> getAllGroupsByUser(Long userId);
+    public List<AddressGroupBean> getAllGroupsByUser(String userId);
 
     /**
      *
@@ -28,7 +28,7 @@ public interface IAddressGroupBeanDao extends IGenericDao<AddressGroupBean, Long
      * @param groupName
      * @return
      */
-    public AddressGroupBean getGroupByName(Long userId, String groupName);
+    public AddressGroupBean getGroupByName(String userId, String groupName);
 
-    public List<AddressGroupBean> getAllGroupsByDefault(Long userId);
+    public List<AddressGroupBean> getAllGroupsByDefault(String userId);
 }

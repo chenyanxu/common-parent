@@ -60,7 +60,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
         String receiverNames = senderMessageBean.getReceiverNames();
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
-        Long senderId = userBean.getId();
+        String senderId = userBean.getId();
         try {
             jsonStatus.setSuccess(true);
             senderMessageBean.setSenderId(senderId);
@@ -72,7 +72,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
                 newMessageBean.setCreationDate(new Date());
                 newMessageBean.setSenderId(senderId);
                 newMessageBean.setSenderName(userBean.getName());
-                newMessageBean.setReceiverId(Long.parseLong(ids[i]));
+                newMessageBean.setReceiverId(ids[i]);
                 newMessageBean.setCategory(MessageCategories.COMMON.getId());//0 系统消息,1 流程消息， 2 个人消息,3 计划任务消息
                 newMessageBean.setTitle(senderMessageBean.getTitle());
                 newMessageBean.setContent(senderMessageBean.getContent());
@@ -116,7 +116,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
         }
         String receiverIds = senderMessageBean.getReceiverIds();
         UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
-        Long senderId = userBean.getId();
+        String senderId = userBean.getId();
         try {
             jsonStatus.setSuccess(true);
             senderMessageBean.setSenderId(senderId);
@@ -128,7 +128,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
                 newMessageBean.setCreationDate(new Date());
                 newMessageBean.setSenderId(senderId);
                 newMessageBean.setSenderName(userBean.getName());
-                newMessageBean.setReceiverId(Long.parseLong(ids[i]));
+                newMessageBean.setReceiverId(ids[i]);
                 int category = Integer.parseInt(senderMessageBean.getCategory());
                 newMessageBean.setCategory(category);//0 系统消息,1 流程消息， 2 个人消息,3 即时通讯
                 newMessageBean.setTitle(senderMessageBean.getTitle());

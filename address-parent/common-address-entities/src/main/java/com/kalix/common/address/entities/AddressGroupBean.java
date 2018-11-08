@@ -18,7 +18,7 @@ import javax.persistence.Table;
 //@IdClass(AddressGroupPK.class)
 public class AddressGroupBean extends PersistentEntity {
 //    @Id
-    private Long userId;
+    private String userId;
 //    @Id
     private String groupName;
     private String describe;
@@ -29,7 +29,7 @@ public class AddressGroupBean extends PersistentEntity {
         super();
     }
 
-    public AddressGroupBean(Long userId, String groupName) {
+    public AddressGroupBean(String userId, String groupName) {
         super();
         this.userId = userId;
         this.groupName = groupName;
@@ -51,11 +51,11 @@ public class AddressGroupBean extends PersistentEntity {
         this.describe = describe;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
