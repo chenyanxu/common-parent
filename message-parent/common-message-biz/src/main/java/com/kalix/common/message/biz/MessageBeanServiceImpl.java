@@ -121,7 +121,10 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         JSONObject jsonObject = new JSONObject();
         String loginName = key;
         UserBean userBean = userBeanService.getUserBeanByLoginName(loginName);
-        List countList = this.dao.find("select mb from MessageBean mb where mb.receiverId=?1 and mb.read=false", userBean.getId());
+        List countList = null;
+        if (userBean != null) {
+            countList = this.dao.find("select mb from MessageBean mb where mb.receiverId=?1 and mb.read=false", userBean.getId());
+        }
         if (countList != null) {
             jsonObject.put("msgCount", countList.size());
         }
