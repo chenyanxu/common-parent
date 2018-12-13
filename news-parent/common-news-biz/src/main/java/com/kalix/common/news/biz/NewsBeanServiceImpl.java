@@ -8,7 +8,9 @@ import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
 import com.kalix.framework.core.util.Assert;
 import org.apache.commons.lang.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @类描述：
@@ -27,5 +29,19 @@ public class NewsBeanServiceImpl extends ShiroGenericBizServiceImpl<INewsBeanDao
             entity.setPublishPeople(userName);
         }
         super.beforeSaveEntity(entity, status);
+    }
+
+    public void init() {
+        long start = System.currentTimeMillis();
+        List<NewsBean> listBean = new ArrayList<NewsBean>();
+        for (int i = 0; i < 500; i++) {
+            NewsBean bean = new NewsBean();
+            bean.setContent("is number" + String.valueOf(i));
+            listBean.add(bean);
+        }
+
+        dao.addBatch(listBean);
+        long end = System.currentTimeMillis();
+        System.out.println("程序运行时间： " + (end - start) + "ms");
     }
 }

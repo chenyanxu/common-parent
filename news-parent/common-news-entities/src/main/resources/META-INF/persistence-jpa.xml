@@ -18,6 +18,7 @@
             <property name="openjpa.Log" value="SQL=Info"/>
             <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
             <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
+            <!--<property name="openjpa.jdbc.DBDictionary" value="batchLimit=-1"/>-->
         </properties>
     </persistence-unit>
 </persistence>

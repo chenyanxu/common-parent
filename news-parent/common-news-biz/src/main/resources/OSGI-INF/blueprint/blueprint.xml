@@ -7,6 +7,7 @@
     <reference id="newsBeanDao" interface="com.kalix.common.news.api.dao.INewsBeanDao"/>
     <service id="newsBeanService" interface="com.kalix.common.news.api.biz.INewsBeanService"
              ref="beanServiceImpl"/>
+    <!--<bean id="beanServiceImpl" class="com.kalix.common.news.biz.NewsBeanServiceImpl" init-method="init">-->
     <bean id="beanServiceImpl" class="com.kalix.common.news.biz.NewsBeanServiceImpl">
         <property name="dao" ref="newsBeanDao"/>
     </bean>
